@@ -9,13 +9,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './components/Header';
 import MainFeaturedPost from './components/MainFeaturedPost';
 import FeaturedPost from './components/FeaturedPost';
-import Main from './components/Main';
+import Feed from './components/Feed';
 import Sidebar from './components/Sidebar';
-import Footer from './components/Footer';
+import Footer from '../components/Footer';
 import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
 import getLPTheme from '../components/getLPTheme';
+import Testimonials from './components/Community';
 
 const mainFeaturedPost = {
   title: 'Title of a longer featured blog post',
@@ -92,8 +93,10 @@ export default function Blog() {
               <FeaturedPost key={post.title} post={post} />
             ))}
           </Grid>
+          <Testimonials />
+
           <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title="From the firehose" posts={posts} />
+            <Feed title="From the firehose" posts={posts} />
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}

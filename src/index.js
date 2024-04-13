@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import LandingPage from './landing/LandingPage';
 import BlogPage from './blog/Blog';
-import SigInPage from './login/SignIn';
+import SigInPage from './auth/SignIn';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

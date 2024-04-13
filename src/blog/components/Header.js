@@ -91,7 +91,7 @@ function Header(mode, toggleColorMode) {
               />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <MenuItem
-                  onClick={() => scrollToSection('Updates')}
+                  onClick={() => scrollToSection('feed')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
@@ -107,23 +107,14 @@ function Header(mode, toggleColorMode) {
                   </Typography>
                 </MenuItem>
                 <MenuItem
-                  onClick={() => scrollToSection('projects')}
+                  onClick={() => scrollToSection('community')}
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
-                    Projects
-                  </Typography>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('faq')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
-                  <Typography variant="body2" color="text.primary">
-                    FAQ
+                    Community
                   </Typography>
                 </MenuItem>
               </Box>
-
             </Box>
             <Box
               sx={{
@@ -137,9 +128,8 @@ function Header(mode, toggleColorMode) {
                 color="primary"
                 variant="text"
                 size="small"
-                component="a"
-                href="/material-ui/getting-started/templates/sign-in/"
-                target="_blank"
+                component={Link}
+                to='login'
               >
                 Sign in
               </Button>
@@ -147,9 +137,8 @@ function Header(mode, toggleColorMode) {
                 color="primary"
                 variant="contained"
                 size="small"
-                component="a"
-                href="/material-ui/getting-started/templates/sign-up/"
-                target="_blank"
+                component={Link}
+                to='login'
               >
                 Sign up
               </Button>
@@ -182,11 +171,14 @@ function Header(mode, toggleColorMode) {
                   >
                     <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
                   </Box>
-                  <MenuItem onClick={() => scrollToSection('features')}>
-                    Features
+                  <MenuItem onClick={() => scrollToSection('feed')}>
+                    Feed
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('pricing')}>
-                    Pricing
+                  <MenuItem onClick={() => scrollToSection('updates')}>
+                    Updates
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection('community')}>
+                    Community
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
                   <Divider />

@@ -6,13 +6,12 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import AppAppBar from '../components/AppAppBar';
 import Hero from './components/Hero';
 import LogoCollection from './components/LogoCollection';
-import Highlights from './components/Highlights';
 import Pricing from './components/Pricing';
-import Features from './components/Products';
-import Testimonials from './components/Testimonials';
+import Features from './components/Projects';
 import FAQ from './components/FAQ';
-import Footer from './components/Footer';
+import Footer from '../components/Footer';
 import getLPTheme from '../components/getLPTheme';
+import Highlights from './components/Features';
 
 export default function LandingPage() {
   const [mode, setMode] = React.useState('dark');
@@ -29,9 +28,8 @@ export default function LandingPage() {
       <Hero />
       <Box sx={{ bgcolor: 'background.default' }}>
         <LogoCollection />
-        <Features />
         <Divider />
-        <Testimonials />
+        <Features />
         <Divider />
         <Highlights />
         <Divider />
