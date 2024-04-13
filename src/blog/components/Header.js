@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import ToggleColorMode from '../../components/ToggleColorMode';
 import { Link } from 'react-router-dom';
@@ -18,26 +19,14 @@ const logoStyle = {
   height: 'auto',
   cursor: 'pointer',
 };
-function Header(mode, toggleColorMode) {
+
+function Header({mode, toggleColorMode}) {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
 
-  const scrollToSection = (sectionId) => {
-    const sectionElement = document.getElementById(sectionId);
-    const offset = 128;
-    if (sectionElement) {
-      const targetScroll = sectionElement.offsetTop - offset;
-      sectionElement.scrollIntoView({ behavior: 'smooth' });
-      window.scrollTo({
-        top: targetScroll,
-        behavior: 'smooth',
-      });
-      setOpen(false);
-    }
-  };
 
   return (
     <div>
@@ -73,41 +62,42 @@ function Header(mode, toggleColorMode) {
                   : '0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)',
             })}
           >
+            <Link to="/"> 
+              <img
+                src={require('../../img/dark.webp')}
+                style={logoStyle}
+                alt="logo"
+              />
+            </Link>
             <Box
               sx={{
                 flexGrow: 1,
                 display: 'flex',
                 alignItems: 'center',
-                ml: '-18px',
+                justifyContent: 'center',
                 px: 0,
               }}
             >
-              <img
-                src={require('../../img/dark.webp')}
-                alt="logo"
-                style={logoStyle}
-                component={Link}
-                to="/"
-              />
+
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <MenuItem
-                  onClick={() => scrollToSection('feed')}
+                  component={Link}
+                  to='/blog'
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
                     Feed
                   </Typography>
                 </MenuItem>
-                <MenuItem
-                  onClick={() => scrollToSection('updates')}
-                  sx={{ py: '6px', px: '12px' }}
-                >
+                <MenuItem component={Link}
+                  to='/blog/updates'>
                   <Typography variant="body2" color="text.primary">
                     Updates
                   </Typography>
                 </MenuItem>
                 <MenuItem
-                  onClick={() => scrollToSection('community')}
+                  component={Link}
+                  to='/blog/community'
                   sx={{ py: '6px', px: '12px' }}
                 >
                   <Typography variant="body2" color="text.primary">
@@ -151,6 +141,7 @@ function Header(mode, toggleColorMode) {
                 onClick={toggleDrawer(true)}
                 sx={{ minWidth: '30px', p: '4px' }}
               >
+                <MenuIcon />
               </Button>
               <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
                 <Box
@@ -171,16 +162,19 @@ function Header(mode, toggleColorMode) {
                   >
                     <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
                   </Box>
-                  <MenuItem onClick={() => scrollToSection('feed')}>
+                  <MenuItem component={Link}
+                    to='/blog'>
                     Feed
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('updates')}>
+                  <MenuItem component={Link}
+                    to='/blog/updates'>
                     Updates
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('community')}>
+                  <MenuItem
+                    component={Link}
+                    to='/blog/community' >
                     Community
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
                   <Divider />
                   <MenuItem>
                     <Button

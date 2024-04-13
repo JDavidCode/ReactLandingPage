@@ -77,7 +77,7 @@ const logoStyle = {
   opacity: 0.3,
 };
 
-export default function Testimonials() {
+export default function CommunityPost() {
   const theme = useTheme();
   const logos = theme.palette.mode === 'light' ? darkLogos : whiteLogos;
 
@@ -101,7 +101,7 @@ export default function Testimonials() {
         }}
       >
         <Typography component="h2" variant="h4" color="text.primary">
-          Testimonials
+          Community Post
         </Typography>
         <Typography variant="body1" color="text.secondary">
           See what our customers love about our products. Discover how we excel in

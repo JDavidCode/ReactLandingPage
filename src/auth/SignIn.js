@@ -12,25 +12,31 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import getLPTheme from '../components/getLPTheme';
+import ScrollToTopOnMount from '../components/ScrollToTop'
+import ToggleColorMode from '../components/ToggleColorMode';
 
-function Copyright(props) {
+
+function Copyright() {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+    <Typography variant="body2" color="text.secondary" mt={1}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
+      {'Arnica '}
       {new Date().getFullYear()}
-      {'.'}
     </Typography>
   );
 }
-
 // TODO remove, this demo shouldn't need to reset the theme.
 
-const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const [mode, setMode] = React.useState('dark');
+  const theme = createTheme(getLPTheme(mode));
+
+  const toggleColorMode = () => {
+    setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -38,12 +44,16 @@ export default function SignIn() {
       email: data.get('email'),
       password: data.get('password'),
     });
+
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
+        <ScrollToTopOnMount />
+        <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+
         <Box
           sx={{
             marginTop: 8,
@@ -52,7 +62,7 @@ export default function SignIn() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 2, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -68,7 +78,13 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              InputLabelProps={{ shrink: false }}
+              sx={{
+                pt: '12px' // Espaciado superior
+
+              }}
             />
+
             <TextField
               margin="normal"
               required
@@ -78,7 +94,13 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              InputLabelProps={{ shrink: false }}
+              sx={{
+                py: '12px'
+              }}
             />
+
+
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -105,7 +127,18 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            bottom: 0
+          }}
+        >
+          <Copyright />
+
+        </Box>
       </Container>
     </ThemeProvider>
   );

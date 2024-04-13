@@ -115,7 +115,7 @@ export default function Pricing() {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    color: tier.title === 'Professional' ? 'grey.100' : '',
+                    color: tier.title === 'Professional' ? 'color.' : '',
                   }}
                 >
                   <Typography component="h3" variant="h6">

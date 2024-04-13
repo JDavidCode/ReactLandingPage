@@ -3,7 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import AppAppBar from '../components/AppAppBar';
+import AppBar from '../components/AppBar';
 import Hero from './components/Hero';
 import LogoCollection from './components/LogoCollection';
 import Pricing from './components/Pricing';
@@ -12,6 +12,7 @@ import FAQ from './components/FAQ';
 import Footer from '../components/Footer';
 import getLPTheme from '../components/getLPTheme';
 import Highlights from './components/Features';
+import ScrollToTopOnMount from '../components/ScrollToTop'
 
 export default function LandingPage() {
   const [mode, setMode] = React.useState('dark');
@@ -24,7 +25,8 @@ export default function LandingPage() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
+      <ScrollToTopOnMount />
+      <AppBar mode={mode} toggleColorMode={toggleColorMode} />
       <Hero />
       <Box sx={{ bgcolor: 'background.default' }}>
         <LogoCollection />

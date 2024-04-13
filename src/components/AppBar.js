@@ -14,7 +14,7 @@ import ToggleColorMode from './ToggleColorMode';
 import { Link } from 'react-router-dom';
 
 const logoStyle = {
-  width: '120px',
+  width: '100px',
   height: 'auto',
   cursor: 'pointer',
 };
@@ -83,15 +83,13 @@ function AppAppBar({ mode, toggleColorMode }) {
                 px: 0,
               }}
             >
-              <img
-                src={
-                  require('../img/dark.webp')
-                }
-                style={logoStyle}
-                alt="logo"
-                component={Link}
-                to="/"
-              />
+              <Link to="/">
+                <img
+                  src={require('../img/dark.webp')}
+                  style={logoStyle}
+                  alt="logo"
+                />
+              </Link>
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <MenuItem
                   onClick={() => scrollToSection('projects')}
@@ -175,6 +173,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                 sx={{ minWidth: '30px', p: '4px' }}
               >
                 <MenuIcon />
+
               </Button>
               <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
                 <Box
@@ -195,6 +194,32 @@ function AppAppBar({ mode, toggleColorMode }) {
                   >
                     <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
                   </Box>
+                  <MenuItem
+                    onClick={() => scrollToSection('projects')}
+                  >
+                    Projects
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => scrollToSection('features')}
+                  >
+                    Features
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => scrollToSection('pricing')}
+                  >
+                    Pricing
+                  </MenuItem>
+                  <MenuItem
+                    component={Link}
+                    to="/blog"
+                  >
+                    Blog
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => scrollToSection('faq')}
+                  >
+                    FAQ
+                  </MenuItem>
                   <Divider />
                   <MenuItem>
                     <Button

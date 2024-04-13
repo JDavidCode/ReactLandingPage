@@ -58,8 +58,6 @@ export default function Features() {
       sx={{
         pt: { xs: 4, sm: 12 },
         pb: { xs: 8, sm: 16 },
-        color: 'white',
-        bgcolor: '#06090a',
       }}
     >
       <Container
@@ -80,7 +78,7 @@ export default function Features() {
           <Typography component="h2" variant="h4">
             Features
           </Typography>
-          <Typography variant="body1" sx={{ color: 'grey.400' }}>
+          <Typography variant="body1">
             Explore why our product stands out: adaptability, durability,
             user-friendly design, and innovation. Enjoy reliable customer support and
             precision in every detail.
@@ -99,17 +97,16 @@ export default function Features() {
                   p: 3,
                   height: '100%',
                   border: '1px solid',
-                  borderColor: 'grey.800',
                   background: 'transparent',
-                  backgroundColor: 'grey.900',
                 }}
               >
                 <Box sx={{ opacity: '50%' }}>{item.icon}</Box>
                 <div>
-                  <Typography fontWeight="medium" gutterBottom>
+                  <Typography fontWeight="medium" color="text.primary" gutterBottom>
                     {item.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: 'grey.400' }}>
+                  <Typography variant="body2" color="text.secondary"
+                  >
                     {item.description}
                   </Typography>
                 </div>
