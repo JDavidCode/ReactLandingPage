@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 import CommunityPost from '../components/CommunityPost'
 import getLPTheme from '../../components/getLPTheme';
 import ScrollToTopOnMount from '../../components/ScrollToTop'
-
+import PostType1 from '../components/PostType1'
 
 export default function Community() {
 	const [mode, setMode] = React.useState('dark');
@@ -23,7 +23,8 @@ export default function Community() {
 
 			<Container maxWidth="lg" >
 				<Header mode={mode} toggleColorMode={toggleColorMode} />
-				<CommunityPost></CommunityPost>
+				<CommunityPost />
+				<PostType1/>
 			</Container>
 			<Footer />
 		</ThemeProvider>

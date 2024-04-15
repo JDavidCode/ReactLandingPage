@@ -6,14 +6,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './components/Header';
 import MainFeaturedPost from './components/MainFeaturedPost';
 import FeaturedPost from './components/FeaturedPost';
-import Feed from './components/FeedPost';
+import FeedPost from './components/FeedPost';
 import Footer from '../components/Footer';
-import post1 from './blog-post.1.md';
-import post2 from './blog-post.2.md';
-import post3 from './blog-post.3.md';
 import getLPTheme from '../components/getLPTheme';
 import Divider from '@mui/material/Divider';
 import ScrollToTopOnMount from '../components/ScrollToTop'
+import post1 from './blog-post1.md';
+import post2 from './blog-post2.md';
+import post3 from './blog-post3.md';
 
 const mainFeaturedPost = {
   title: 'Title of a longer featured blog post',
@@ -43,8 +43,8 @@ const featuredPosts = [
   },
 ];
 
-const posts = [post1, post2, post3];
 
+const posts = [post1, post2, post3];
 
 export default function Blog() {
   const [mode, setMode] = React.useState('dark');
@@ -67,9 +67,7 @@ export default function Blog() {
             ))}
           </Grid>
           <Divider sx={{ my: '50px' }} />
-
-          <Feed title="FEED" posts={posts} />
-
+          <FeedPost posts={posts} title="FEED" />
         </main>
       </Container>
       <Footer />

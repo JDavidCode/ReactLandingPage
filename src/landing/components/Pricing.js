@@ -14,45 +14,95 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
 const tiers = [
   {
-    title: 'Free',
-    price: '0',
+    title: 'Basic',
+    price: '15',
     description: [
-      '10 users included',
-      '2 GB of storage',
-      'Help center access',
+      '50 requests per hour',
+      '10 image generations per hour',
+      '30GB of storage',
       'Email support',
     ],
-    buttonText: 'Sign up for free',
+    buttonText: 'Choose Basic Plan',
     buttonVariant: 'outlined',
   },
   {
-    title: 'Professional',
+    title: 'Standard',
     subheader: 'Recommended',
-    price: '15',
+    price: '30',
     description: [
-      '20 users included',
-      '10 GB of storage',
-      'Help center access',
+      '100 requests per hour',
+      '20 image generations per hour',
+      '100GB of storage',
       'Priority email support',
-      'Dedicated team',
-      'Best deals',
+      '1 additional service',
+      'Shared with 1 person',
     ],
-    buttonText: 'Start now',
+    buttonText: 'Choose Standard Plan',
     buttonVariant: 'contained',
   },
   {
-    title: 'Enterprise',
-    price: '30',
+    title: 'Advanced',
+    price: '50',
     description: [
-      '50 users included',
-      '30 GB of storage',
-      'Help center access',
-      'Phone & email support',
+      '200 requests per hour',
+      '40 image generations per hour',
+      '250GB of storage',
+      'Priority email and chat support',
+      'Monthly personalized consultation',
+      '+3 additional services',
+      'Shared with 3 people',
     ],
-    buttonText: 'Contact us',
+    buttonText: 'Choose Advanced Plan',
+    buttonVariant: 'outlined',
+  },
+  {
+    title: 'Premium',
+    price: '100',
+    description: [
+      'Unlimited requests per hour',
+      '100 image generations per hour',
+      '1.5TB of storage',
+      '24/7 support via email, chat, and phone',
+      'Weekly personalized consultation',
+      'Custom integration with existing systems',
+      '+5 additional services',
+      'Shared with 5 people',
+    ],
+    buttonText: 'Choose Premium Plan',
+    buttonVariant: 'outlined',
+  },
+  {
+    title: 'Premium+',
+    price: '160',
+    description: [
+      'Unlimited requests per hour',
+      'Unlimited image generations per hour',
+      '4TB of storage',
+      '24/7 personalized consultation',
+      'Custom integration with existing systems',
+      '+7 additional services',
+      'Shared with 10 people',
+    ],
+    buttonText: 'Choose Premium+ Plan',
+    buttonVariant: 'outlined',
+  },
+  {
+    title: 'Enterprise',
+    price: '',
+    description: [
+      'Unlimited requests per hour',
+      'Unlimited image generations per hour',
+      'As needed storage',
+      '24/7 support via email, chat, phone and personalized consultation',
+      'Custom integration with existing systems',
+      'As needed additional services',
+      'Shared as needed',
+    ],
+    buttonText: 'Contact Sales',
     buttonVariant: 'outlined',
   },
 ];
+
 
 export default function Pricing() {
   return (
@@ -90,7 +140,7 @@ export default function Pricing() {
             item
             key={tier.title}
             xs={12}
-            sm={tier.title === 'Enterprise' ? 12 : 6}
+            sm={tier.title === 'Premium+' ? 12 : 6}
             md={4}
           >
             <Card
@@ -99,11 +149,11 @@ export default function Pricing() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 4,
-                border: tier.title === 'Professional' ? '1px solid' : undefined,
+                border: tier.title === 'Standard' ? '1px solid' : undefined,
                 borderColor:
-                  tier.title === 'Professional' ? 'primary.main' : undefined,
+                  tier.title === 'Standard' ? 'primary.main' : undefined,
                 background:
-                  tier.title === 'Professional'
+                  tier.title === 'Standard'
                     ? 'linear-gradient(#033363, #021F3B)'
                     : undefined,
               }}
@@ -115,13 +165,13 @@ export default function Pricing() {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    color: tier.title === 'Professional' ? 'color.' : '',
+                    color: tier.title === 'Standard' ? 'color.' : '',
                   }}
                 >
                   <Typography component="h3" variant="h6">
                     {tier.title}
                   </Typography>
-                  {tier.title === 'Professional' && (
+                  {tier.title === 'Standard' && (
                     <Chip
                       icon={<AutoAwesomeIcon />}
                       label={tier.subheader}
@@ -144,7 +194,7 @@ export default function Pricing() {
                   sx={{
                     display: 'flex',
                     alignItems: 'baseline',
-                    color: tier.title === 'Professional' ? 'grey.50' : undefined,
+                    color: tier.title === 'Standard' ? 'grey.50' : undefined,
                   }}
                 >
                   <Typography component="h3" variant="h2">
@@ -175,7 +225,7 @@ export default function Pricing() {
                       sx={{
                         width: 20,
                         color:
-                          tier.title === 'Professional'
+                          tier.title === 'Standard'
                             ? 'primary.light'
                             : 'primary.main',
                       }}
@@ -185,7 +235,7 @@ export default function Pricing() {
                       variant="subtitle2"
                       sx={{
                         color:
-                          tier.title === 'Professional' ? 'grey.200' : undefined,
+                          tier.title === 'Standard' ? 'grey.200' : undefined,
                       }}
                     >
                       {line}

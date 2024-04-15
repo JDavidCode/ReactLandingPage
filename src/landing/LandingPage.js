@@ -1,18 +1,24 @@
+// React
 import * as React from 'react';
+
+// Material-UI
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+// Components
 import AppBar from '../components/AppBar';
 import Hero from './components/Hero';
-import LogoCollection from './components/LogoCollection';
+import Projects from './components/Projects';
+import Features from './components/Features';
 import Pricing from './components/Pricing';
-import Features from './components/Projects';
+import LogoCollection from '../components/LogoCollection';
 import FAQ from './components/FAQ';
 import Footer from '../components/Footer';
+import ScrollToTopOnMount from '../components/ScrollToTop';
 import getLPTheme from '../components/getLPTheme';
-import Highlights from './components/Features';
-import ScrollToTopOnMount from '../components/ScrollToTop'
+
 
 export default function LandingPage() {
   const [mode, setMode] = React.useState('dark');
@@ -31,9 +37,9 @@ export default function LandingPage() {
       <Box sx={{ bgcolor: 'background.default' }}>
         <LogoCollection />
         <Divider />
-        <Features />
+        <Projects />
         <Divider />
-        <Highlights />
+        <Features />
         <Divider />
         <Pricing />
         <Divider />

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import Markdown from './Markdown'
+import Markdown from '../components/Markdown'
 
-function Main(props) {
+function FeedPost(props) {
   const { posts, title } = props;
-
+  console.log('FeedPost posts:', title);
   return (
     <Grid
       id='feed'
@@ -24,18 +24,16 @@ function Main(props) {
         {title}
       </Typography>
       <Divider />
-      {posts.map((post) => (
-        <Markdown className="markdown" key={post.substring(0, 40)}>
-          {post}
-        </Markdown>
+      {posts.map((postContent, index) => (
+        <Markdown source={postContent} key={index} />
       ))}
     </Grid>
   );
 }
 
-Main.propTypes = {
+FeedPost.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
 };
 
-export default Main;
+export default FeedPost;

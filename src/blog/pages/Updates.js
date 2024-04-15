@@ -9,9 +9,9 @@ import FeaturePost from '../components/FeaturedPost'
 import getLPTheme from '../../components/getLPTheme';
 import Grid from '@mui/material/Grid';
 import Sidebar from '../components/Sidebar';
-import post1 from '../blog-post.1.md';
-import post2 from '../blog-post.2.md';
-import post3 from '../blog-post.3.md';
+import post1 from '../blog-post1.md';
+import post2 from '../blog-post2.md';
+import post3 from '../blog-post3.md';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import XIcon from '@mui/icons-material/X';
@@ -97,7 +97,7 @@ export default function Updates() {
 
 				</Grid>
 				<Grid container spacing={5} sx={{ mt: 3 }}>
-					<FeedPost title="From the firehose" posts={posts} />
+					<FeedPost title="Updates" posts={posts} />
 					<Sidebar
 						title={sidebar.title}
 						description={sidebar.description}

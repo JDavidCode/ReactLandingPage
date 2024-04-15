@@ -12,6 +12,7 @@ import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import ToggleColorMode from './ToggleColorMode';
 import { Link } from 'react-router-dom';
+import ScrollToTopOnMount from '../components/ScrollToTop'
 
 const logoStyle = {
   width: '100px',
@@ -83,13 +84,12 @@ function AppAppBar({ mode, toggleColorMode }) {
                 px: 0,
               }}
             >
-              <Link to="/">
                 <img
                   src={require('../img/dark.webp')}
                   style={logoStyle}
                   alt="logo"
+                  onClick={() => <ScrollToTopOnMount />}
                 />
-              </Link>
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <MenuItem
                   onClick={() => scrollToSection('projects')}

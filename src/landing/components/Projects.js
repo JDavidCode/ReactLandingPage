@@ -1,4 +1,7 @@
+// React components
 import * as React from 'react';
+
+// Material-UI components
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -8,35 +11,34 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+
+// Material-UI icons
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
-import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
-import EdgesensorHighRoundedIcon from '@mui/icons-material/EdgesensorHighRounded';
-import ViewQuiltRoundedIcon from '@mui/icons-material/ViewQuiltRounded';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import GamesIcon from '@mui/icons-material/Games';
+import ViewInArIcon from '@mui/icons-material/ViewInAr';
 
 const items = [
   {
-    icon: <ViewQuiltRoundedIcon />,
-    title: 'Dashboard',
+    icon: <AutoAwesomeIcon />,
+    title: 'AI',
     description:
-      'This item could provide a snapshot of the most important metrics or data points related to the product.',
-    imageLight: 'url("/static/images/templates/templates-images/dash-light.png")',
-    imageDark: 'url("/static/images/templates/templates-images/dash-dark.png")',
+      'Our AI project is designed to offer flexibility, customization, and utility across various industries and applications. With adaptable features and customizable options, it empowers users to tailor solutions to their specific needs.',
+
   },
   {
-    icon: <EdgesensorHighRoundedIcon />,
-    title: 'Mobile integration',
+    icon: <ViewInArIcon />,
+    title: 'VR',
     description:
-      'This item could provide information about the mobile app version of the product.',
-    imageLight: 'url("/static/images/templates/templates-images/mobile-light.png")',
-    imageDark: 'url("/static/images/templates/templates-images/mobile-dark.png")',
+      'Our VR project focuses on delivering immersive experiences utilizing the latest virtual reality technology. We aim to provide users with captivating virtual environments and interactive simulations, opening new possibilities in entertainment, education, and beyond.',
+
   },
   {
-    icon: <DevicesRoundedIcon />,
-    title: 'Available on all platforms',
+    icon: <GamesIcon />,
+    title: 'GAMES',
     description:
-      'This item could let users know the product is available on all platforms, such as web, mobile, and desktop.',
-    imageLight: 'url("/static/images/templates/templates-images/devices-light.png")',
-    imageDark: 'url("/static/images/templates/templates-images/devices-dark.png")',
+      'Our games project ensures accessibility across all platforms, including web, mobile, and desktop. We aim to deliver seamless and enjoyable gameplay experiences to players everywhere.',
+
   },
 ];
 
@@ -53,47 +55,18 @@ export default function Projects() {
     <Container id="projects" sx={{ py: { xs: 8, sm: 16 } }}>
       <Grid container spacing={6}>
         <Grid item xs={12} md={6}>
-          <div>
+          <Box>
             <Typography component="h2" variant="h4" color="text.primary">
-              Product features
+              Explore Our Projects
             </Typography>
             <Typography
               variant="body1"
               color="text.secondary"
               sx={{ mb: { xs: 2, sm: 4 } }}
             >
-              Here you can provide a brief overview of the key features of the
-              product. For example, you could list the number of features, the types
-              of features, add-ons, or the benefits of the features.
+              Explore our innovative projects focusing on AI, VR, and games. Dive into our latest developments to discover the unique features and benefits they offer. From cutting-edge AI algorithms to immersive VR experiences and captivating gaming environments.
             </Typography>
-          </div>
-          <Grid container item gap={1} sx={{ display: { xs: 'auto', sm: 'none' } }}>
-            {items.map(({ title }, index) => (
-              <Chip
-                key={index}
-                label={title}
-                onClick={() => handleItemClick(index)}
-                sx={{
-                  borderColor: (theme) => {
-                    if (theme.palette.mode === 'light') {
-                      return selectedItemIndex === index ? 'primary.light' : '';
-                    }
-                    return selectedItemIndex === index ? 'primary.light' : '';
-                  },
-                  background: (theme) => {
-                    if (theme.palette.mode === 'light') {
-                      return selectedItemIndex === index ? 'none' : '';
-                    }
-                    return selectedItemIndex === index ? 'none' : '';
-                  },
-                  backgroundColor: selectedItemIndex === index ? 'primary.main' : '',
-                  '& .MuiChip-label': {
-                    color: selectedItemIndex === index ? '#fff' : '',
-                  },
-                }}
-              />
-            ))}
-          </Grid>
+          </Box>
           <Box
             component={Card}
             variant="outlined"
@@ -102,17 +75,6 @@ export default function Projects() {
               mt: 4,
             }}
           >
-            <Box
-              sx={{
-                backgroundImage: (theme) =>
-                  theme.palette.mode === 'light'
-                    ? items[selectedItemIndex].imageLight
-                    : items[selectedItemIndex].imageDark,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                minHeight: 280,
-              }}
-            />
             <Box sx={{ px: 2, pb: 2 }}>
               <Typography color="text.primary" variant="body2" fontWeight="bold">
                 {selectedFeature.title}
@@ -256,7 +218,7 @@ export default function Projects() {
               sx={{
                 m: 'auto',
                 width: 420,
-                height: 500,
+                height: 400,
                 backgroundSize: 'contain',
                 backgroundImage: (theme) =>
                   theme.palette.mode === 'light'

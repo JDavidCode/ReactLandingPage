@@ -1,54 +1,91 @@
+// React components
 import * as React from 'react';
+
+// Material-UI components
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import AutoFixHighRoundedIcon from '@mui/icons-material/AutoFixHighRounded';
-import ConstructionRoundedIcon from '@mui/icons-material/ConstructionRounded';
-import QueryStatsRoundedIcon from '@mui/icons-material/QueryStatsRounded';
+
+// Material-UI icons
+import AutoGraphRoundedIcon from '@mui/icons-material/AutoGraphRounded';
 import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
 import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
-import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
+import LensBlurRoundedIcon from '@mui/icons-material/LensBlurRounded';
+import ControlCameraRoundedIcon from '@mui/icons-material/ControlCameraRounded';
+import SensorsRoundedIcon from '@mui/icons-material/SensorsRounded';
+import SmartToyRoundedIcon from '@mui/icons-material/SmartToyRounded';
+import EngineeringRoundedIcon from '@mui/icons-material/EngineeringRounded';
+import SmartDisplayRoundedIcon from '@mui/icons-material/SmartDisplayRounded';
 
-const items = [
+const aiFeatures = [
   {
     icon: <SettingsSuggestRoundedIcon />,
-    title: 'Adaptable performance',
+    title: 'Adaptable AI algorithms',
     description:
-      'Our product effortlessly adjusts to your needs, boosting efficiency and simplifying your tasks.',
+      'Our AI algorithms dynamically adapt to your data, optimizing performance and accuracy for your specific needs.',
   },
   {
-    icon: <ConstructionRoundedIcon />,
-    title: 'Built to last',
+    icon: <AutoGraphRoundedIcon />,
+    title: 'Innovative predictive analytics',
     description:
-      'Experience unmatched durability that goes above and beyond with lasting investment.',
+      'Leverage cutting-edge predictive analytics to uncover valuable insights and anticipate future trends, empowering data-driven decision-making.',
   },
   {
-    icon: <ThumbUpAltRoundedIcon />,
-    title: 'Great user experience',
+    icon: <EngineeringRoundedIcon />,
+    title: 'Expert AI support',
     description:
-      'Integrate our product into your routine with an intuitive and easy-to-use interface.',
+      'Access our team of AI experts for dedicated support and guidance, ensuring smooth integration and optimal performance of our AI solutions.',
+  },
+];
+
+const vrFeatures = [
+  {
+    icon: <LensBlurRoundedIcon />,
+    title: 'Immersive VR environments',
+    description:
+      'Experience immersive virtual environments that transport you to new worlds and unlock unparalleled levels of engagement and interaction.',
   },
   {
-    icon: <AutoFixHighRoundedIcon />,
-    title: 'Innovative functionality',
+    icon: <ControlCameraRoundedIcon />,
+    title: 'Intuitive VR controls',
     description:
-      'Stay ahead with features that set new standards, addressing your evolving needs better than the rest.',
+      'Navigate seamlessly through virtual spaces with intuitive controls and interactions, providing a natural and immersive user experience.',
+  },
+  {
+    icon: <SensorsRoundedIcon />,
+    title: 'Realistic VR simulations',
+    description:
+      'Engage in realistic simulations that replicate real-world scenarios with precision, offering valuable training and educational opportunities.',
+  },
+];
+
+const gamesFeatures = [
+  {
+    icon: <SmartDisplayRoundedIcon />,
+    title: 'Dynamic gameplay mechanics',
+    description:
+      'Explore dynamic gameplay mechanics that offer endless possibilities for creativity, strategy, and skill development, keeping players engaged and entertained.',
   },
   {
     icon: <SupportAgentRoundedIcon />,
-    title: 'Reliable support',
+    title: 'Dedicated game support',
     description:
-      'Count on our responsive customer support, offering assistance that goes beyond the purchase.',
+      'Receive dedicated support from our gaming experts, ensuring smooth gameplay experiences and addressing any issues or inquiries promptly.',
   },
   {
-    icon: <QueryStatsRoundedIcon />,
-    title: 'Precision in every detail',
+    icon: <SmartToyRoundedIcon />,
+    title: 'Immersive storytelling',
     description:
-      'Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.',
+      'Immerse yourself in captivating storylines and narratives that unfold seamlessly within the game world, creating memorable and emotionally resonant experiences.',
   },
+];
+const items = [
+  ...aiFeatures.map(feature => ({ ...feature, category: 'AI' })),
+  ...vrFeatures.map(feature => ({ ...feature, category: 'VR' })),
+  ...gamesFeatures.map(feature => ({ ...feature, category: 'Games' })),
 ];
 
 export default function Features() {
