@@ -20,7 +20,7 @@ const logoStyle = {
   cursor: 'pointer',
 };
 
-function Header({mode, toggleColorMode}) {
+function Header({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
@@ -62,7 +62,7 @@ function Header({mode, toggleColorMode}) {
                   : '0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)',
             })}
           >
-            <Link to="/"> 
+            <Link to="/">
               <img
                 src={require('../../assets/dark.webp')}
                 style={logoStyle}
@@ -116,22 +116,23 @@ function Header({mode, toggleColorMode}) {
               <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
               <Button
                 color="primary"
-                variant="text"
-                size="small"
-                component={Link}
-                to='login'
-              >
-                Sign in
-              </Button>
-              <Button
-                color="primary"
                 variant="contained"
                 size="small"
                 component={Link}
-                to='login'
+                to='/register'
               >
                 Sign up
               </Button>
+              <Button
+                color="primary"
+                variant="text"
+                size="small"
+                component={Link}
+                to='/login'
+              >
+                Sign in
+              </Button>
+
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
               <Button
@@ -180,8 +181,8 @@ function Header({mode, toggleColorMode}) {
                     <Button
                       color="primary"
                       variant="contained"
-                      component="Link"
-                      to='login'
+                      component={Link}
+                      to='/register'
                       sx={{ width: '100%' }}
                     >
                       Sign up
@@ -191,8 +192,8 @@ function Header({mode, toggleColorMode}) {
                     <Button
                       color="primary"
                       variant="outlined"
-                      component="Link"
-                      to='login'
+                      component={Link}
+                      to='/login'
                       sx={{ width: '100%' }}
                     >
                       Sign in

@@ -84,12 +84,12 @@ function AppAppBar({ mode, toggleColorMode }) {
                 px: 0,
               }}
             >
-                <img
-                  src={require('../assets/dark.webp')}
-                  style={logoStyle}
-                  alt="logo"
-                  onClick={() => <ScrollToTopOnMount />}
-                />
+              <img
+                src={require('../assets/dark.webp')}
+                style={logoStyle}
+                alt="logo"
+                onClick={() => <ScrollToTopOnMount />}
+              />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <MenuItem
                   onClick={() => scrollToSection('projects')}
@@ -147,22 +147,23 @@ function AppAppBar({ mode, toggleColorMode }) {
               <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
               <Button
                 color="primary"
-                variant="text"
-                size="small"
-                component={Link}
-                to='login'
-              >
-                Sign in
-              </Button>
-              <Button
-                color="primary"
                 variant="contained"
                 size="small"
                 component={Link}
-                to='login'
+                to='/register'
               >
                 Sign up
               </Button>
+              <Button
+                color="primary"
+                variant="text"
+                size="small"
+                component={Link}
+                to='/login'
+              >
+                Sign in
+              </Button>
+
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
               <Button
@@ -225,8 +226,8 @@ function AppAppBar({ mode, toggleColorMode }) {
                     <Button
                       color="primary"
                       variant="contained"
-                      component="Link"
-                      to='login'
+                      component={Link}
+                      to='/register'
                       sx={{ width: '100%' }}
                     >
                       Sign up
@@ -236,8 +237,8 @@ function AppAppBar({ mode, toggleColorMode }) {
                     <Button
                       color="primary"
                       variant="outlined"
-                      component="Link"
-                      to='login'
+                      component={Link}
+                      to='/login'
                       sx={{ width: '100%' }}
                     >
                       Sign in

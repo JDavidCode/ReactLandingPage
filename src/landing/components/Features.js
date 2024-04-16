@@ -6,6 +6,8 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
+
 
 // Material-UI icons
 import AutoGraphRoundedIcon from '@mui/icons-material/AutoGraphRounded';
@@ -117,30 +119,47 @@ export default function Features() {
             precision in every detail.
           </Typography>
         </Box>
-        <Grid container spacing={2.5}>
-          <Grid item xs={11} sm={5} md={3} height='fit-content'>
-            <Typography component="h2" variant="h4">
+        <Grid container spacing={2.5} useFlexGap>
+          <Grid item xs={12} sm={6} md={4} height='fit-content'>
+            <Typography item component="h2" variant="h4">
               AI
             </Typography>
-            {aiFeatures.map((content, index) => (
-              <SimpleCard1 content={content} index={index} />
-            ))}
+            <Stack direction="column"
+              alignItems="flex-start"
+              spacing={2}
+              useFlexGap
+              sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}>
+              {aiFeatures.map((content, index) => (
+                <SimpleCard1 key={index} content={content} index={index} />
+              ))}
+            </Stack>
           </Grid>
           <Grid item xs={12} sm={6} md={4} height='fit-content'>
-            <Typography component="h2" variant="h4">
+            <Typography item component="h2" variant="h4">
               VR
             </Typography>
-            {vrFeatures.map((content, index) => (
-              <SimpleCard1 content={content} index={index} />
-            ))}
+            <Stack direction="column"
+              spacing={2}
+              useFlexGap
+              sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}>
+              {vrFeatures.map((content, index) => (
+                <SimpleCard1 key={index} content={content} index={index} />
+              ))}
+            </Stack>
           </Grid>
           <Grid item xs={12} sm={6} md={4} height='fit-content'>
-            <Typography component="h2" variant="h4">
+            <Typography item component="h2" variant="h4">
               GAMES
             </Typography>
-            {gamesFeatures.map((content, index) => (
-              <SimpleCard1 content={content} index={index} />
-            ))}
+            <Stack direction="column"
+              spacing={2}
+              useFlexGap
+              sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}>
+              {gamesFeatures.map((content, index) => (
+                <SimpleCard1 key={index} content={content} index={index} />
+              ))}
+            </Stack>
+
           </Grid>
         </Grid>
       </Container>

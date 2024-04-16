@@ -5,8 +5,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
-function SimpleCard({ content, index }) {
+function SimpleCard({ content, index, selected, onClick }) {
 
 	return (
 		<Card
@@ -14,12 +15,22 @@ function SimpleCard({ content, index }) {
 			color="inherit"
 			index={index}
 			spacing={1}
+			component={Button}
+			onClick={onClick}
 			useFlexGap
 			sx={{
 				p: 3,
-				height: '100%',
-				border: '1px solid',
-				background: 'transparent',
+				height: 'fit-content',
+				width: '100%',
+				background: 'none',
+				minHeight: '200px',
+				backgroundColor: selected ? 'action.hover' : undefined,
+				borderColor: (theme) => {
+					if (theme.palette.mode === 'light') {
+						return selected ? 'primary.light' : 'grey.200';
+					}
+					return selected ? 'primary.dark' : 'grey.800';
+				},
 			}}
 		>
 			<Box sx={{ opacity: '50%' }}>{content.icon}</Box>
@@ -27,8 +38,7 @@ function SimpleCard({ content, index }) {
 				<Typography fontWeight="medium" color="text.primary" gutterBottom>
 					{content.title}
 				</Typography>
-				<Typography variant="body2" color="text.secondary"
-				>
+				<Typography variant="body2" color="text.secondary" >
 					{content.description}
 				</Typography>
 			</div>

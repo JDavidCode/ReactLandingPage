@@ -46,11 +46,11 @@ const ai_items = [{
 },
 {
   title: 'JONAS',
-  description: 'A great assistant, for Coders.'
+  description: 'A great assistant for Coders.'
 },
 {
-  title: 'YULS',
-  description: 'A great assistant, for Engineers.'
+  title: 'KATERINE',
+  description: 'A great trader bot, risk.'
 }
 ]
 
