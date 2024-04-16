@@ -3,10 +3,8 @@ import * as React from 'react';
 
 // Material-UI components
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 // Material-UI icons
@@ -19,6 +17,8 @@ import SensorsRoundedIcon from '@mui/icons-material/SensorsRounded';
 import SmartToyRoundedIcon from '@mui/icons-material/SmartToyRounded';
 import EngineeringRoundedIcon from '@mui/icons-material/EngineeringRounded';
 import SmartDisplayRoundedIcon from '@mui/icons-material/SmartDisplayRounded';
+
+import SimpleCard1 from '../../components/cards/SimpleCard-1'
 
 const aiFeatures = [
   {
@@ -82,11 +82,7 @@ const gamesFeatures = [
       'Immerse yourself in captivating storylines and narratives that unfold seamlessly within the game world, creating memorable and emotionally resonant experiences.',
   },
 ];
-const items = [
-  ...aiFeatures.map(feature => ({ ...feature, category: 'AI' })),
-  ...vrFeatures.map(feature => ({ ...feature, category: 'VR' })),
-  ...gamesFeatures.map(feature => ({ ...feature, category: 'Games' })),
-];
+
 
 export default function Features() {
   return (
@@ -122,34 +118,30 @@ export default function Features() {
           </Typography>
         </Box>
         <Grid container spacing={2.5}>
-          {items.map((item, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Stack
-                direction="column"
-                color="inherit"
-                component={Card}
-                spacing={1}
-                useFlexGap
-                sx={{
-                  p: 3,
-                  height: '100%',
-                  border: '1px solid',
-                  background: 'transparent',
-                }}
-              >
-                <Box sx={{ opacity: '50%' }}>{item.icon}</Box>
-                <div>
-                  <Typography fontWeight="medium" color="text.primary" gutterBottom>
-                    {item.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary"
-                  >
-                    {item.description}
-                  </Typography>
-                </div>
-              </Stack>
-            </Grid>
-          ))}
+          <Grid item xs={11} sm={5} md={3} height='fit-content'>
+            <Typography component="h2" variant="h4">
+              AI
+            </Typography>
+            {aiFeatures.map((content, index) => (
+              <SimpleCard1 content={content} index={index} />
+            ))}
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} height='fit-content'>
+            <Typography component="h2" variant="h4">
+              VR
+            </Typography>
+            {vrFeatures.map((content, index) => (
+              <SimpleCard1 content={content} index={index} />
+            ))}
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} height='fit-content'>
+            <Typography component="h2" variant="h4">
+              GAMES
+            </Typography>
+            {gamesFeatures.map((content, index) => (
+              <SimpleCard1 content={content} index={index} />
+            ))}
+          </Grid>
         </Grid>
       </Container>
     </Box>

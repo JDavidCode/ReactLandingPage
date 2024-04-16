@@ -59,7 +59,7 @@ export default function Footer() {
             <Box sx={{ ml: '-15px' }}>
               <img
                 src={
-                  require('../img/dark.webp')
+                  require('../assets/dark.webp')
                 }
                 style={logoStyle}
                 alt="logo"

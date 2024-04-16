@@ -96,7 +96,7 @@ export default function Hero() {
           })}
         >
           <video
-            src={require("../../img/muestra.mp4")}
+            src={require("../../assets/muestra.mp4")}
             width="100%"
             height="100%"
             autoPlay

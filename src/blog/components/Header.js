@@ -64,7 +64,7 @@ function Header({mode, toggleColorMode}) {
           >
             <Link to="/"> 
               <img
-                src={require('../../img/dark.webp')}
+                src={require('../../assets/dark.webp')}
                 style={logoStyle}
                 alt="logo"
               />

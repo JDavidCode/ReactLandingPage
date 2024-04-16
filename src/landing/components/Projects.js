@@ -3,20 +3,18 @@ import * as React from 'react';
 
 // Material-UI components
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
-import Chip from '@mui/material/Chip';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 // Material-UI icons
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import GamesIcon from '@mui/icons-material/Games';
 import ViewInArIcon from '@mui/icons-material/ViewInAr';
+
+import SimpleCard from '../../components/cards/SimpleCard'
 
 const items = [
   {
@@ -42,6 +40,47 @@ const items = [
   },
 ];
 
+const ai_items = [{
+  title: 'EMMA',
+  description: 'A great assistant, for everyone.'
+},
+{
+  title: 'JONAS',
+  description: 'A great assistant, for Coders.'
+},
+{
+  title: 'YULS',
+  description: 'A great assistant, for Engineers.'
+}
+]
+
+const vr_items = [{
+  title: 'FACTIONS',
+  description: 'A huge factions, for everyone.'
+},
+{
+  title: 'TOWE',
+  description: 'A small world, for families.'
+},
+{
+  title: 'ALMY',
+  description: 'A custom space to design your own vr worlds.'
+}
+]
+
+const game_items = [{
+  title: 'EPLO',
+  description: 'Need some action?, come and play with friends.'
+},
+{
+  title: 'ART',
+  description: 'A game for the creatives one, come and get the top painting.'
+},
+{
+  title: 'ROUD',
+  description: 'Need fast?, drive the most fast cars.'
+}
+]
 export default function Projects() {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
 
@@ -49,7 +88,23 @@ export default function Projects() {
     setSelectedItemIndex(index);
   };
 
+  const [selectedSection, setItems] = React.useState(ai_items);
   const selectedFeature = items[selectedItemIndex];
+  React.useEffect(() => {
+    switch (selectedFeature.title) {
+      case 'AI':
+        setItems(ai_items);
+        break;
+      case 'VR':
+        setItems(vr_items);
+        break;
+      case 'GAMES':
+        setItems(game_items);
+        break;
+      default:
+        break;
+    }
+  }, [selectedFeature]);
 
   return (
     <Container id="projects" sx={{ py: { xs: 8, sm: 16 } }}>
@@ -67,40 +122,7 @@ export default function Projects() {
               Explore our innovative projects focusing on AI, VR, and games. Dive into our latest developments to discover the unique features and benefits they offer. From cutting-edge AI algorithms to immersive VR experiences and captivating gaming environments.
             </Typography>
           </Box>
-          <Box
-            component={Card}
-            variant="outlined"
-            sx={{
-              display: { xs: 'auto', sm: 'none' },
-              mt: 4,
-            }}
-          >
-            <Box sx={{ px: 2, pb: 2 }}>
-              <Typography color="text.primary" variant="body2" fontWeight="bold">
-                {selectedFeature.title}
-              </Typography>
-              <Typography color="text.secondary" variant="body2" sx={{ my: 0.5 }}>
-                {selectedFeature.description}
-              </Typography>
-              <Link
-                color="primary"
-                variant="body2"
-                fontWeight="bold"
-                sx={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  '& > svg': { transition: '0.2s' },
-                  '&:hover > svg': { transform: 'translateX(2px)' },
-                }}
-              >
-                <span>Learn more</span>
-                <ChevronRightRoundedIcon
-                  fontSize="small"
-                  sx={{ mt: '1px', ml: '2px' }}
-                />
-              </Link>
-            </Box>
-          </Box>
+
           <Stack
             direction="column"
             justifyContent="center"
@@ -109,123 +131,53 @@ export default function Projects() {
             useFlexGap
             sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}
           >
-            {items.map(({ icon, title, description }, index) => (
-              <Card
+            {items.map((content, index) => (
+              <SimpleCard
                 key={index}
-                variant="outlined"
-                component={Button}
+                content={content}
+                index={index}
+                selected={selectedItemIndex === index}
                 onClick={() => handleItemClick(index)}
-                sx={{
-                  p: 3,
-                  height: 'fit-content',
-                  width: '100%',
-                  background: 'none',
-                  backgroundColor:
-                    selectedItemIndex === index ? 'action.selected' : undefined,
-                  borderColor: (theme) => {
-                    if (theme.palette.mode === 'light') {
-                      return selectedItemIndex === index
-                        ? 'primary.light'
-                        : 'grey.200';
-                    }
-                    return selectedItemIndex === index ? 'primary.dark' : 'grey.800';
-                  },
-                }}
-              >
-                <Box
-                  sx={{
-                    width: '100%',
-                    display: 'flex',
-                    textAlign: 'left',
-                    flexDirection: { xs: 'column', md: 'row' },
-                    alignItems: { md: 'center' },
-                    gap: 2.5,
-                  }}
-                >
-                  <Box
-                    sx={{
-                      color: (theme) => {
-                        if (theme.palette.mode === 'light') {
-                          return selectedItemIndex === index
-                            ? 'primary.main'
-                            : 'grey.300';
-                        }
-                        return selectedItemIndex === index
-                          ? 'primary.main'
-                          : 'grey.700';
-                      },
-                    }}
-                  >
-                    {icon}
-                  </Box>
-                  <Box sx={{ textTransform: 'none' }}>
-                    <Typography
-                      color="text.primary"
-                      variant="body2"
-                      fontWeight="bold"
-                    >
-                      {title}
-                    </Typography>
-                    <Typography
-                      color="text.secondary"
-                      variant="body2"
-                      sx={{ my: 0.5 }}
-                    >
-                      {description}
-                    </Typography>
-                    <Link
-                      color="primary"
-                      variant="body2"
-                      fontWeight="bold"
-                      sx={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        '& > svg': { transition: '0.2s' },
-                        '&:hover > svg': { transform: 'translateX(2px)' },
-                      }}
-                      onClick={(event) => {
-                        event.stopPropagation();
-                      }}
-                    >
-                      <span>Learn more</span>
-                      <ChevronRightRoundedIcon
-                        fontSize="small"
-                        sx={{ mt: '1px', ml: '2px' }}
-                      />
-                    </Link>
-                  </Box>
-                </Box>
-              </Card>
-            ))}
+              />))}
           </Stack>
         </Grid>
         <Grid
           item
           xs={12}
           md={6}
-          sx={{ display: { xs: 'none', sm: 'flex' }, width: '100%' }}
-        >
+
+          sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'flex-end', width: '100%', }}>
           <Card
             variant="outlined"
             sx={{
-              height: '100%',
+              height: '80%',
               width: '100%',
               display: { xs: 'none', sm: 'flex' },
               pointerEvents: 'none',
+              alignItems: 'center',
+              justifyContent: "center"
             }}
           >
-            <Box
-              sx={{
-                m: 'auto',
-                width: 420,
-                height: 400,
-                backgroundSize: 'contain',
-                backgroundImage: (theme) =>
-                  theme.palette.mode === 'light'
-                    ? items[selectedItemIndex].imageLight
-                    : items[selectedItemIndex].imageDark,
-              }}
-            />
+            <Grid item xs={12} md={10}
+            >
+              <Stack
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                spacing={2}
+                useFlexGap
+                sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}
+              >
+                {selectedSection.map((content, index) => (
+                  <SimpleCard
+                    key={index}
+                    content={content}
+                    index={index}
+                    selected={selectedItemIndex === index}
+                    onClick={() => handleItemClick(index)}
+                  />                ))}
+              </Stack>
+            </Grid>
           </Card>
         </Grid>
       </Grid>

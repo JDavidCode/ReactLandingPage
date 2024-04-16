@@ -85,7 +85,7 @@ function AppAppBar({ mode, toggleColorMode }) {
               }}
             >
                 <img
-                  src={require('../img/dark.webp')}
+                  src={require('../assets/dark.webp')}
                   style={logoStyle}
                   alt="logo"
                   onClick={() => <ScrollToTopOnMount />}
