@@ -4,10 +4,10 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../components/Header';
 import Footer from '../../components/Footer';
-import CommunityPost from '../components/CommunityPost'
+import CommunityPost from '../components/CommunityPost';
 import getLPTheme from '../../components/getLPTheme';
-import ScrollToTopOnMount from '../../components/ScrollToTop'
-import PostType1 from '../components/PostType1'
+import ScrollToTopOnMount from '../../components/ScrollToTop';
+import PostType1 from '../components/PostType1';
 
 export default function Community() {
 	const [mode, setMode] = React.useState('dark');
@@ -20,11 +20,10 @@ export default function Community() {
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<ScrollToTopOnMount />
-
-			<Container maxWidth="lg" >
+			<Container maxWidth="lg">
 				<Header mode={mode} toggleColorMode={toggleColorMode} />
 				<CommunityPost />
-				<PostType1/>
+				<PostType1 />
 			</Container>
 			<Footer />
 		</ThemeProvider>

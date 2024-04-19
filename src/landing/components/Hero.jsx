@@ -6,6 +6,7 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import Video from '../../assets/muestra.mp4';
 
 export default function Hero() {
   return (
@@ -96,7 +97,8 @@ export default function Hero() {
           })}
         >
           <video
-            src={require("../../assets/muestra.mp4")}
+            src={Video}
+            type='video/mp4'
             width="100%"
             height="100%"
             autoPlay

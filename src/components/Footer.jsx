@@ -19,7 +19,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" mt={1}>
       {'Copyright © '}
-      {<Typography component={Link} to='/'>Arnica</Typography>}
+      {<Typography component={Link} to='/'>Arnica </Typography>}
       {new Date().getFullYear()}
     </Typography>
   );

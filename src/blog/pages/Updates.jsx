@@ -4,8 +4,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../components/Header';
 import Footer from '../../components/Footer';
-import FeedPost from '../components/FeedPost'
-import FeaturePost from '../components/FeaturedPost'
+import FeedPost from '../components/FeedPost';
+import FeaturePost from '../components/FeaturedPost';
 import getLPTheme from '../../components/getLPTheme';
 import Grid from '@mui/material/Grid';
 import Sidebar from '../components/Sidebar';
@@ -15,7 +15,7 @@ import post3 from '../blog-post3.md';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import XIcon from '@mui/icons-material/X';
-import ScrollToTopOnMount from '../../components/ScrollToTop'
+import ScrollToTopOnMount from '../../components/ScrollToTop';
 
 const posts = [post1, post2, post3];
 
@@ -35,11 +35,12 @@ const sidebar = {
 		{ title: 'June 1999', url: '#' },
 		{ title: 'May 1999', url: '#' },
 		{ title: 'April 1999', url: '#' },
-	], social: [
+	],
+	social: [
 		{ name: 'GitHub', icon: GitHubIcon },
 		{ name: 'X', icon: XIcon },
 		{ name: 'Facebook', icon: FacebookIcon },
-	]
+	],
 };
 
 const featuredPosts = [
@@ -76,6 +77,7 @@ const featuredPosts = [
 		imageLabel: 'Image Text',
 	},
 ];
+
 export default function Updates() {
 	const [mode, setMode] = React.useState('dark');
 	const theme = createTheme(getLPTheme(mode));
@@ -87,14 +89,12 @@ export default function Updates() {
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<ScrollToTopOnMount />
-
-			<Container maxWidth="lg" >
+			<Container maxWidth="lg">
 				<Header mode={mode} toggleColorMode={toggleColorMode} />
-				<Grid container spacing={4} sx={{pt: '100px'}}>
+				<Grid container spacing={4} sx={{ pt: '100px' }}>
 					{featuredPosts.map((post) => (
 						<FeaturePost key={post.title} post={post} />
 					))}
-
 				</Grid>
 				<Grid container spacing={5} sx={{ mt: 3 }}>
 					<FeedPost title="Updates" posts={posts} />

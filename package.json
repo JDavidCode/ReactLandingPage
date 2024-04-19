@@ -2,6 +2,7 @@
   "name": "arnica",
   "version": "0.2.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "",
     "@emotion/react": "^11.11.4",
@@ -21,10 +22,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.6"
   },
   "eslintConfig": {
     "extends": [

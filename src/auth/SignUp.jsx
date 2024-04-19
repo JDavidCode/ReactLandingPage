@@ -12,19 +12,18 @@ import Typography from '@mui/material/Typography';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import getLPTheme from '../components/getLPTheme';
-import ScrollToTopOnMount from '../components/ScrollToTop'
+import ScrollToTopOnMount from '../components/ScrollToTop';
 import ToggleColorMode from '../components/ToggleColorMode';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" mt={1}>
-      {'Copyright © '}
-      {<Typography component={Link} to='/'>Arnica </Typography>}
-      {new Date().getFullYear()}
+      <Typography >Copyright © </Typography>
+      <Typography component={Link} to='/'>Arnica </Typography>
+      <Typography>      {new Date().getFullYear()}</Typography>
     </Typography>
   );
 }
-
 
 export default function SignUp() {
   const [mode, setMode] = React.useState('dark');
@@ -40,15 +39,14 @@ export default function SignUp() {
       email: data.get('email'),
       password: data.get('password'),
     });
-
   };
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'grid', gridTemplateColumns: '8fr 4fr', height: '100vh' }} xs={12}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: '8fr 4fr', height: '100vh' }}>
         <Grid xs={false} sm={4} md={7} sx={{ backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)', backgroundSize: 'cover' }}>
           <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
         </Grid>
-        <Grid xs={12} sm={8} md={5} p={4} my='auto' alignItems='center' >
+        <Grid xs={12} sm={8} md={5} p={4} my='auto' alignItems='center'>
           <CssBaseline />
           <ScrollToTopOnMount />
           <Box sx={{
@@ -147,8 +145,7 @@ export default function SignUp() {
             <Copyright />
           </Box>
         </Grid>
-      </Box >
-    </ThemeProvider >
-
+      </Box>
+    </ThemeProvider>
   );
 }

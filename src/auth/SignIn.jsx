@@ -18,13 +18,12 @@ import LogoDark512 from '../assets/LogoDark512.webp'; // Import the image file
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" mt={1}>
-      {'Copyright © '}
-      {<Typography component={Link} to='/'>Arnica </Typography>}
-      {new Date().getFullYear()}
+      <Typography >Copyright © </Typography>
+      <Typography component={Link} to='/'>Arnica </Typography>
+      <Typography>      {new Date().getFullYear()}</Typography>
     </Typography>
   );
 }
-// TODO remove, this demo shouldn't need to reset the theme.
 
 
 export default function SignIn() {
