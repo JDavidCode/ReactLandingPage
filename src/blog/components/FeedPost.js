@@ -7,7 +7,6 @@ import Markdown from '../components/Markdown'
 
 function FeedPost(props) {
   const { posts, title } = props;
-  console.log('FeedPost posts:', title);
   return (
     <Grid
       id='feed'

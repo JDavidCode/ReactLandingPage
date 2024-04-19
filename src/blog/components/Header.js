@@ -10,15 +10,11 @@ import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import MenuIcon from '@mui/icons-material/Menu';
+import BannerDark from '../../assets/BannerDark.webp'; // Import the image file
 
 import ToggleColorMode from '../../components/ToggleColorMode';
 import { Link } from 'react-router-dom';
 
-const logoStyle = {
-  width: '120px',
-  height: 'auto',
-  cursor: 'pointer',
-};
 
 function Header({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
@@ -63,10 +59,15 @@ function Header({ mode, toggleColorMode }) {
             })}
           >
             <Link to="/">
-              <img
-                src={require('../../assets/dark.webp')}
-                style={logoStyle}
-                alt="logo"
+              <Box
+                mb={1}
+                mx={.7}
+                sx={{
+                  backgroundImage: `url(${BannerDark})`,
+                  backgroundSize: 'cover',
+                  width: 50,
+                  height: 20,
+                }}
               />
             </Link>
             <Box
@@ -75,10 +76,9 @@ function Header({ mode, toggleColorMode }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                px: 0,
+                ml: 9,
               }}
             >
-
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <MenuItem
                   component={Link}
@@ -116,15 +116,6 @@ function Header({ mode, toggleColorMode }) {
               <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
               <Button
                 color="primary"
-                variant="contained"
-                size="small"
-                component={Link}
-                to='/register'
-              >
-                Sign up
-              </Button>
-              <Button
-                color="primary"
                 variant="text"
                 size="small"
                 component={Link}
@@ -132,7 +123,15 @@ function Header({ mode, toggleColorMode }) {
               >
                 Sign in
               </Button>
-
+              <Button
+                color="primary"
+                variant="contained"
+                size="small"
+                component={Link}
+                to='/register'
+              >
+                Sign up
+              </Button>
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
               <Button

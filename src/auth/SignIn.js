@@ -1,27 +1,25 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import getLPTheme from '../components/getLPTheme';
 import ScrollToTopOnMount from '../components/ScrollToTop'
 import ToggleColorMode from '../components/ToggleColorMode';
-import Background from '../components/background/SparkleBackground';
+import LogoDark512 from '../assets/LogoDark512.webp'; // Import the image file
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" mt={1}>
       {'Copyright © '}
-      {'Arnica '}
+      {<Typography component={Link} to='/'>Arnica </Typography>}
       {new Date().getFullYear()}
     </Typography>
   );
@@ -49,7 +47,9 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Background />
+      <Box xs={12} sx={{ backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)', backgroundSize: 'cover', width: '100vw', height: '100vh' }}>
+        <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+      </Box>
       <Box position="fixed"
         sx={{
           boxShadow: 0,
@@ -77,8 +77,6 @@ export default function SignIn() {
           })}>
           <CssBaseline />
           <ScrollToTopOnMount />
-          <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-
           <Box
             sx={{
               marginTop: 8,
@@ -87,10 +85,18 @@ export default function SignIn() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 2, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
+            <Box
+              component={Link}
+              to='/'
+              sx={{
+                backgroundImage: `url(${LogoDark512})`,
+                backgroundSize: 'cover',
+                width: 65,
+                height: 65,
+                borderRadius: '50%'
+              }}
+            />
+            <Typography component="h1" variant="h5" mt={2}>
               Sign in
             </Typography>
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -145,9 +151,9 @@ export default function SignIn() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/register" variant="body2">
+                  <Typography component={Link} to="/register" variant="body2">
                     {"Don't have an account? Sign Up"}
-                  </Link>
+                  </Typography>
                 </Grid>
               </Grid>
             </Box>

@@ -3,25 +3,23 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
-import Link from '@mui/material/Link';
+import LinkComp from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 import FacebookIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/X';
 
-const logoStyle = {
-  width: '140px',
-  height: 'auto',
-};
+
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" mt={1}>
       {'Copyright © '}
-      {'Arnica '}
+      {<Typography component={Link} to='/'>Arnica</Typography>}
       {new Date().getFullYear()}
     </Typography>
   );
@@ -56,15 +54,6 @@ export default function Footer() {
           }}
         >
           <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
-            <Box sx={{ ml: '-15px' }}>
-              <img
-                src={
-                  require('../assets/dark.webp')
-                }
-                style={logoStyle}
-                alt="logo"
-              />
-            </Box>
             <Typography variant="body2" fontWeight={600} gutterBottom>
               Newsletter
             </Typography>
@@ -121,15 +110,15 @@ export default function Footer() {
           <Typography variant="body2" fontWeight={600}>
             Legal
           </Typography>
-          <Link color="text.secondary" href="#">
+          <LinkComp color="text.secondary" href="#">
             Terms
-          </Link>
-          <Link color="text.secondary" href="#">
+          </LinkComp>
+          <LinkComp color="text.secondary" href="#">
             Privacy
-          </Link>
-          <Link color="text.secondary" href="#">
+          </LinkComp>
+          <LinkComp color="text.secondary" href="#">
             Contact
-          </Link>
+          </LinkComp>
         </Box>
       </Box>
       <Box
@@ -143,15 +132,15 @@ export default function Footer() {
         }}
       >
         <div>
-          <Link color="text.secondary" href="#">
+          <LinkComp color="text.secondary" href="#">
             Privacy Policy
-          </Link>
+          </LinkComp>
           <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>
             &nbsp;•&nbsp;
           </Typography>
-          <Link color="text.secondary" href="#">
+          <LinkComp color="text.secondary" href="#">
             Terms of Service
-          </Link>
+          </LinkComp>
           <Copyright />
         </div>
         <Stack
