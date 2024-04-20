@@ -18,7 +18,7 @@ FROM nginx:alpine
 COPY --from=builder /dist /usr/share/nginx/html
 
 # Exponer el puerto 80 para que pueda ser accesible desde el exterior
-EXPOSE 80
+EXPOSE 5173
 
 # Iniciar Nginx en primer plano cuando se ejecute el contenedor
 CMD ["nginx", "-g", "daemon off;"]
