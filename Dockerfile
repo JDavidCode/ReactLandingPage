@@ -2,23 +2,24 @@
 FROM node:latest AS builder
 
 # Establece el directorio de trabajo dentro del contenedor
-WORKDIR /
+WORKDIR /app
 
 # Copia los archivos de tu aplicación al directorio de trabajo del contenedor
+COPY package*.json .
+RUN npm install
+
 COPY . .
 
 # Instala las dependencias del proyecto
-RUN npm install
 RUN npm run build
 
 # Define una segunda etapa de construcción para mantener la imagen lo más pequeña posible
 FROM nginx:alpine
 
 # Copia los archivos estáticos generados durante la construcción a la ubicación predeterminada de Nginx
-COPY --from=builder /dist /usr/share/nginx/html
+COPY --from=builder /app/dist/ /app/dist/
 
 # Exponer el puerto 80 para que pueda ser accesible desde el exterior
-EXPOSE 5173
+EXPOSE 8080
 
-# Iniciar Nginx en primer plano cuando se ejecute el contenedor
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "run", "preview"]

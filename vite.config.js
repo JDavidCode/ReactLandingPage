@@ -3,5 +3,10 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  assetsInclude: "**/*.md"
+  assetsInclude: "**/*.md",
+  
+  preview: {
+    host: true,
+    port:8080
+  }
 })
