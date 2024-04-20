@@ -14,7 +14,6 @@ COPY . .
 RUN npm run build
 
 # Define una segunda etapa de construcción para mantener la imagen lo más pequeña posible
-FROM nginx:alpine
 
 # Copia los archivos estáticos generados durante la construcción a la ubicación predeterminada de Nginx
 COPY --from=builder /app/dist/ /app/dist/
