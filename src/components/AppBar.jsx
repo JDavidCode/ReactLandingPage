@@ -8,11 +8,13 @@ import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
+import LinkComp from '@mui/material/Link';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import ToggleColorMode from './ToggleColorMode';
 import { Link } from 'react-router-dom';
 import BannerDark from '../assets/BannerDark.webp'; // Import the image file
+import BannerLight from '../assets/BannerWhite.webp'; // Import the image file
 
 function AppAppBar({ mode, toggleColorMode}) {
   const [open, setOpen] = React.useState(false);
@@ -79,16 +81,18 @@ function AppAppBar({ mode, toggleColorMode}) {
               }}
             >
               <Box
-                component={Link}
-                to='/'
+                component={LinkComp}
+                href='#'
                 mx={3}
                 mb={1}
-                sx={{
-                  backgroundImage: `url(${BannerDark})`,
+                sx={(theme) => ({
+                  backgroundImage:  theme.palette.mode === 'light'
+                  ? `url(${BannerLight})`
+                  : `url(${BannerDark})`,
                   backgroundSize: 'cover',
                   width: 50,
                   height: 20,
-                }}
+                })}
               />
               <Box
                 sx={{
@@ -116,13 +120,12 @@ function AppAppBar({ mode, toggleColorMode}) {
                       Features
                     </Typography>
                   </MenuItem>
-
                   <MenuItem
-                    onClick={() => scrollToSection('pricing')}
+                    onClick={() => scrollToSection('services')}
                     sx={{ py: '6px', px: '12px' }}
                   >
                     <Typography variant="body2" color="text.primary">
-                      Pricing
+                      Services
                     </Typography>
                   </MenuItem>
                   <MenuItem

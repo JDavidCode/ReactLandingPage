@@ -12,6 +12,8 @@ import AppBar from '../components/AppBar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Features from './components/Features';
+import Services from './components/Services';
+
 import Pricing from './components/Pricing';
 import LogoCollection from '../components/LogoCollection';
 import FAQ from './components/FAQ';
@@ -40,6 +42,8 @@ export default function LandingPage() {
         <Projects />
         <Divider />
         <Features />
+        <Divider />
+        <Services />
         <Divider />
         <Pricing />
         <Divider />

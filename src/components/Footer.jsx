@@ -90,36 +90,17 @@ export default function Footer() {
           <Typography variant="body2" fontWeight={600}>
             Company
           </Typography>
-          <Link color="text.secondary" href="#">
-            About us
-          </Link>
-          <Link color="text.secondary" href="#">
-            Careers
-          </Link>
-          <Link color="text.secondary" href="#">
-            Press
-          </Link>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: 'none', sm: 'flex' },
-            flexDirection: 'column',
-            gap: 1,
-          }}
-        >
-          <Typography variant="body2" fontWeight={600}>
-            Legal
-          </Typography>
           <LinkComp color="text.secondary" href="#">
-            Terms
+            About us
           </LinkComp>
           <LinkComp color="text.secondary" href="#">
-            Privacy
+            Events
           </LinkComp>
           <LinkComp color="text.secondary" href="#">
             Contact
           </LinkComp>
         </Box>
+
       </Box>
       <Box
         sx={{
@@ -131,7 +112,13 @@ export default function Footer() {
           borderColor: 'divider',
         }}
       >
-        <div>
+        <Box>
+          <LinkComp color="text.secondary" href="#">
+            Terms of Service
+          </LinkComp>
+          <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>
+            &nbsp;•&nbsp;
+          </Typography>
           <LinkComp color="text.secondary" href="#">
             Privacy Policy
           </LinkComp>
@@ -139,10 +126,16 @@ export default function Footer() {
             &nbsp;•&nbsp;
           </Typography>
           <LinkComp color="text.secondary" href="#">
-            Terms of Service
+            Data Policy
+          </LinkComp>
+          <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>
+            &nbsp;•&nbsp;
+          </Typography>
+          <LinkComp color="text.secondary" href="#">
+            Cookies
           </LinkComp>
           <Copyright />
-        </div>
+        </Box>
         <Stack
           direction="row"
           justifyContent="left"

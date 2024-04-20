@@ -6,14 +6,11 @@ import {
 } from 'react-router-dom';
 import './css/style.css';
 
-
 // Import pages
-import LandingPage from './landing/LandingPage';
+import LandingPage from './components/Countdown';
 
 function App() {
-
   const location = useLocation();
-
   useEffect(() => {
     document.querySelector('html').style.scrollBehavior = 'auto'
     window.scroll({ top: 0 })
@@ -28,5 +25,4 @@ function App() {
     </>
   );
 }
-
 export default App;
