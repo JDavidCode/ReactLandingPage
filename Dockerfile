@@ -1,24 +1,17 @@
-# Usa la imagen oficial de Node.js como base
+# Stage 1: Build the application
 FROM node:latest AS builder
 
-# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
-
-# Copia los archivos de tu aplicación al directorio de trabajo del contenedor
 COPY package*.json .
 RUN npm install
-
 COPY . .
+RUN npm run build 
 
-# Instala las dependencias del proyecto
-RUN npm run build
+# Stage 2: Create a production image
+FROM nginx:latest 
 
-# Define una segunda etapa de construcción para mantener la imagen lo más pequeña posible
+# Copy the built files from the "builder" stage
+COPY --from=builder /app/dist/ /usr/share/nginx/html/
 
-# Copia los archivos estáticos generados durante la construcción a la ubicación predeterminada de Nginx
-COPY --from=builder /app/dist/ /app/dist/
-
-# Exponer el puerto 80 para que pueda ser accesible desde el exterior
-EXPOSE 8080
-
-CMD ["npm", "run", "preview"]
+# Expose port 80 for Nginx
+EXPOSE 80
