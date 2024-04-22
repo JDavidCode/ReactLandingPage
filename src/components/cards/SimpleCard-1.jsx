@@ -7,7 +7,7 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-function SimpleCard({ content, index, selected, onClick }) {
+function SimpleCard1({ content, index, selected, onClick }) {
 
 	return (
 		<Card
@@ -46,4 +46,4 @@ function SimpleCard({ content, index, selected, onClick }) {
 	);
 }
 
-export default SimpleCard;
+export default SimpleCard1;

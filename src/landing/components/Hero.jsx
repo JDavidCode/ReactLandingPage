@@ -9,6 +9,19 @@ import Typography from '@mui/material/Typography';
 import Video from '../../assets/muestra.mp4';
 
 export default function Hero() {
+  const scrollToSection = (sectionId) => {
+    const sectionElement = document.getElementById(sectionId);
+    const offset = 10;
+    if (sectionElement) {
+      const targetScroll = sectionElement.offsetTop - offset;
+      sectionElement.scrollIntoView({ behavior: 'smooth' });
+      window.scrollTo({
+        top: targetScroll,
+        behavior: 'smooth',
+      });
+      setOpen(false);
+    }
+  };
   return (
     <Box
       id="hero"
@@ -31,7 +44,7 @@ export default function Hero() {
           pb: { xs: 12, sm: 16 },
         }}
       >
-        <Stack spacing={2} useFlexGap sx={{ width: { xs: '100%', sm: '70%' } }}>
+        <Stack spacing={2} mb={20} sx={{ width: { xs: '100%', sm: '80%'} }}>
           <Typography
             variant="h1"
             sx={{
@@ -42,7 +55,7 @@ export default function Hero() {
               fontSize: 'clamp(3.5rem, 10vw, 4rem)',
             }}
           >
-            We are getting&nbsp;
+            Prepare for the&nbsp;
             <Typography
               component="span"
               variant="h1"
@@ -52,7 +65,7 @@ export default function Hero() {
                   theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
               }}
             >
-              Ready
+              Future
             </Typography>
           </Typography>
           <Typography
@@ -60,9 +73,7 @@ export default function Hero() {
             color="text.secondary"
             sx={{ alignSelf: 'center', width: { sm: '100%', md: '80%' } }}
           >
-            Explore our cutting-edge dashboard, delivering high-quality solutions
-            tailored to your needs. Elevate your experience with top-tier features
-            and services.
+          Unlock a new level of functionality and customization with our premium features and services.
           </Typography>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
@@ -72,12 +83,12 @@ export default function Hero() {
             sx={{ pt: 2, width: { xs: '100%', sm: 'auto' } }}
           >
 
-            <Button variant="contained" color="primary">
-              Start now
+            <Button variant="contained" color="primary" onClick={() => scrollToSection('discover')}>
+              Discover
             </Button>
           </Stack>
-          <Typography variant="caption" textAlign="center" sx={{ opacity: 0.8 }}>
-            By clicking &quot;Start now&quot; you agree to our&nbsp;
+          <Typography variant="caption" textAlign="center" pt={2} sx={{ opacity: 0.8 }}>
+            By clicking &quot;Discover&quot; you agree to our&nbsp;
             <Link href="#" color="primary">
               Terms & Conditions
             </Link>
@@ -85,8 +96,8 @@ export default function Hero() {
           </Typography>
         </Stack>
         <Box
-          id="video"
-          sx={(theme) => ({
+          id="discover"
+          sx={{
             mt: { xs: 8, sm: 10 },
             alignSelf: 'center',
             height: { xs: 180, sm: 600 },
@@ -94,7 +105,7 @@ export default function Hero() {
             position: 'relative',
             borderRadius: '10px',
             overflow: 'hidden',
-          })}
+          }}
         >
           <video
             src={Video}

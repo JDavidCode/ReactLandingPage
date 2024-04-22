@@ -16,100 +16,108 @@ import ViewInArIcon from '@mui/icons-material/ViewInAr';
 
 import SimpleCard from '../../components/cards/SimpleCard'
 
-const items = [
+const mainItems = [
   {
     icon: <AutoAwesomeIcon />,
     title: 'AI',
     description:
-      'Our AI project is designed to offer flexibility, customization, and utility across various industries and applications. With adaptable features and customizable options, it empowers users to tailor solutions to their specific needs.',
-
+      'Our AI project offers flexible and customizable solutions for various industries. With adaptable features, users can create tailored applications to meet their specific needs.',
   },
   {
     icon: <ViewInArIcon />,
     title: 'VR',
     description:
-      'Our VR project focuses on delivering immersive experiences utilizing the latest virtual reality technology. We aim to provide users with captivating virtual environments and interactive simulations, opening new possibilities in entertainment, education, and beyond.',
-
+      'Our VR project delivers immersive virtual reality experiences using the latest technology. We create captivating environments and interactive simulations for entertainment, education, and more.',
   },
   {
     icon: <GamesIcon />,
     title: 'GAMES',
     description:
-      'Our games project ensures accessibility across all platforms, including web, mobile, and desktop. We aim to deliver seamless and enjoyable gameplay experiences to players everywhere.',
-
+      'Our games project ensures seamless gameplay across all platforms—web, mobile, and desktop. We focus on delivering enjoyable gaming experiences to players everywhere.',
   },
 ];
 
 const ai_items = [{
   title: 'EMMA',
-  description: 'A great assistant, for everyone.'
+  description: 'Your everyday assistant, designed to make life easier.'
 },
 {
   title: 'JONAS',
-  description: 'A great assistant for Coders.'
+  description: 'The perfect coding assistant, crafted for developers.'
 },
 {
   title: 'KATERINE',
-  description: 'A great trader bot, risk.'
+  description: 'A trading bot that balances opportunity with risk.'
 }
 ]
 
 const vr_items = [{
   title: 'FACTIONS',
-  description: 'A huge factions, for everyone.'
+  description: ' A large-scale VR environment, accessible to everyone.'
 },
 {
   title: 'TOWE',
-  description: 'A small world, for families.'
+  description: 'A smaller virtual world designed with families in mind.'
 },
 {
   title: 'ALMY',
-  description: 'A custom space to design your own vr worlds.'
+  description: ' A customizable VR space to create and design your own virtual worlds.'
 }
 ]
 
 const game_items = [{
   title: 'EPLO',
-  description: 'Need some action?, come and play with friends.'
+  description: 'Ready for action? Join friends for thrilling gameplay.'
 },
 {
   title: 'ART',
-  description: 'A game for the creatives one, come and get the top painting.'
+  description: 'A game for creative minds—showcase your artistic talents.'
 },
 {
   title: 'ROUD',
-  description: 'Need fast?, drive the most fast cars.'
+  description: 'Love speed? Get behind the wheel of the fastest cars.'
 }
 ]
 export default function Projects() {
-  const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
+  const [selectedMainItemIndex, setSelectedMainItemIndex] = React.useState(0);
+  const [selectedSubItemIndex, setSelectedSubItemIndex] = React.useState(0);
 
-  const handleItemClick = (index) => {
-    setSelectedItemIndex(index);
+  
+  const [items, setItems] = React.useState(ai_items);
+  const currentSubItems = Array.isArray(items) ? items : [];
+
+  const handleMainItemClick = (index) => {
+    setSelectedMainItemIndex(index);
+    setSelectedSubItemIndex(0)
   };
 
-  const [selectedSection, setItems] = React.useState(ai_items);
-  const selectedFeature = items[selectedItemIndex];
+  const handleSubItemClick = (index) => {
+    setSelectedSubItemIndex(index);
+  };
+
+  
   React.useEffect(() => {
-    switch (selectedFeature.title) {
-      case 'AI':
+    switch (selectedMainItemIndex) {
+      case 0:
         setItems(ai_items);
         break;
-      case 'VR':
+      case 1:
         setItems(vr_items);
         break;
-      case 'GAMES':
-        setItems(game_items);
+      case 2:
+        setItems(game_items); 
         break;
       default:
+        setItems([]);
         break;
     }
-  }, [selectedFeature]);
+  }, [selectedMainItemIndex]);
+
 
   return (
     <Container id="projects" sx={{ py: { xs: 8, sm: 16 } }}>
-      <Grid container spacing={6}>
-        <Grid item xs={12} md={6}>
+      <Grid container spacing={6} >
+        <Grid item xs={12} md={8} >
           <Box>
             <Typography component="h2" variant="h4" color="text.primary">
               Explore Our Projects
@@ -117,68 +125,36 @@ export default function Projects() {
             <Typography
               variant="body1"
               color="text.secondary"
-              sx={{ mb: { xs: 2, sm: 4 } }}
+              sx={{ mb: { xs: 2, sm: 4 }, mt:2 }}
             >
-              Explore our innovative projects focusing on AI, VR, and games. Dive into our latest developments to discover the unique features and benefits they offer. From cutting-edge AI algorithms to immersive VR experiences and captivating gaming environments.
+              Discover our innovative projects in AI, VR, and gaming. Dive into our latest developments to uncover unique features and benefits. From advanced AI algorithms to immersive VR experiences and engaging gaming environments, we push the boundaries of technology.
             </Typography>
           </Box>
-
-          <Stack
-            direction="column"
-            justifyContent="center"
-            alignItems="flex-start"
-            spacing={2}
-            useFlexGap
-            sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}
-          >
-            {items.map((content, index) => (
+        </Grid>
+        <Grid display={'grid'} gridTemplateColumns={'5fr 4fr'}>
+          <Stack spacing={2} sx={{px:8}}>
+            {mainItems.map((content, index) => (
               <SimpleCard
-                key={index}
                 content={content}
                 index={index}
-                selected={selectedItemIndex === index}
-                onClick={() => handleItemClick(index)}
-              />))}
+                selected={selectedMainItemIndex === index}
+                onClick={() => handleMainItemClick(index)}
+              />
+            ))}
           </Stack>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={6}
+        <Card variant="outlined" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Stack spacing={2} sx={{ px: 8 , width:'85%', position:'relative', overflowY:'scroll'}}>
+            {currentSubItems.map((content, index) => (
+              <SimpleCard
+                content={content}
+                index={index}
+                selected={selectedSubItemIndex === index}
+                onClick={() => handleSubItemClick(index)}
+              />
+            ))}
+          </Stack>
+        </Card>
 
-          sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'flex-end', width: '100%', }}>
-          <Card
-            variant="outlined"
-            sx={{
-              height: '80%',
-              width: '100%',
-              display: { xs: 'none', sm: 'flex' },
-              pointerEvents: 'none',
-              alignItems: 'center',
-              justifyContent: "center"
-            }}
-          >
-            <Grid item xs={12} md={10}
-            >
-              <Stack
-                direction="column"
-                justifyContent="center"
-                alignItems="center"
-                spacing={2}
-                useFlexGap
-                sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}
-              >
-                {selectedSection.map((content, index) => (
-                  <SimpleCard
-                    key={index}
-                    content={content}
-                    index={index}
-                    selected={selectedItemIndex === index}
-                    onClick={() => handleItemClick(index)}
-                  />                ))}
-              </Stack>
-            </Grid>
-          </Card>
         </Grid>
       </Grid>
     </Container>

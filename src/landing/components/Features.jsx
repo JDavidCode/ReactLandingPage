@@ -8,7 +8,6 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 
-
 // Material-UI icons
 import AutoGraphRoundedIcon from '@mui/icons-material/AutoGraphRounded';
 import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
@@ -88,38 +87,30 @@ const gamesFeatures = [
 
 export default function Features() {
   return (
-    <Box
+    <Container
       id="features"
       sx={{
         pt: { xs: 4, sm: 12 },
         pb: { xs: 8, sm: 16 },
       }}
     >
-      <Container
-        sx={{
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: { xs: 3, sm: 6 },
-        }}
-      >
-        <Box
-          sx={{
-            width: { sm: '100%', md: '60%' },
-            textAlign: { sm: 'left', md: 'center' },
-          }}
-        >
-          <Typography component="h2" variant="h4">
-            Features
-          </Typography>
-          <Typography variant="body1">
-            Explore why our product stands out: adaptability, durability,
-            user-friendly design, and innovation. Enjoy reliable customer support and
-            precision in every detail.
-          </Typography>
-        </Box>
-        <Grid container spacing={2.5} useFlexGap>
+      <Grid container spacing={6}>
+        <Grid item xs={12} md={8} >
+          <Box>
+            <Typography component="h2" variant="h4" color="text.primary">
+              Features
+            </Typography>
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              sx={{ mb: { xs: 2, sm: 4 } }}
+            >
+              Discover what sets our product apart: adaptability, durability, intuitive design, and innovation. Experience precision in every detail and benefit from our reliable customer support.
+            </Typography>
+          </Box>
+        </Grid>
+
+        <Grid container spacing={3} useFlexGap px={8}>
           <Grid item xs={12} sm={6} md={4} height='fit-content'>
             <Typography item component="h2" variant="h4">
               AI
@@ -130,7 +121,7 @@ export default function Features() {
               useFlexGap
               sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}>
               {aiFeatures.map((content, index) => (
-                <SimpleCard1 key={index} content={content} index={index} />
+                <SimpleCard1 content={content} index={index} />
               ))}
             </Stack>
           </Grid>
@@ -162,7 +153,7 @@ export default function Features() {
 
           </Grid>
         </Grid>
-      </Container>
-    </Box>
+      </Grid>
+    </Container>
   );
 }
