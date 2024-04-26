@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 
-function MainFeaturedPost(props) {
+function MediumPaperPost(props) {
   const { post } = props;
 
   return (
@@ -15,15 +15,16 @@ function MainFeaturedPost(props) {
         position: 'relative',
         backgroundColor: 'grey.800',
         color: '#fff',
-        mb: 4,
-        mt: 12,
+        mt: 2,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundImage: `url(${post.image})`,
+        height: 200, // Fix the maximum height to 200px
+        overflow: 'hidden', // Ensure no content overflow
       }}
     >
-      {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
+      <img style={{ display: 'none' }} src={post.image} alt={post.imageText} />
       <Box
         sx={{
           position: 'absolute',
@@ -34,22 +35,37 @@ function MainFeaturedPost(props) {
           backgroundColor: 'rgba(0,0,0,.3)',
         }}
       />
-      <Grid container>
+      <Grid container sx={{ height: 200 }}> {/* Set grid height to 200px */}
         <Grid item md={6}>
           <Box
             sx={{
               position: 'relative',
               p: { xs: 3, md: 6 },
               pr: { md: 0 },
+              overflow: 'hidden', // Ensure content remains within bounds
             }}
           >
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+            <Typography
+              component="h1"
+              variant="h3"
+              color="inherit"
+              gutterBottom
+              noWrap
+            >
               {post.title}
             </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
+            <Typography
+              variant="h5"
+              color="inherit"
+              paragraph
+              sx={{
+                whiteSpace: 'nowrap', // Prevent text wrapping
+                textOverflow: 'ellipsis', // Ensure text doesn't overflow
+              }}
+            >
               {post.description}
             </Typography>
-            <Link variant="subtitle1" href="#">
+            <Link variant="subtitle1" href="#" sx={{ textOverflow: 'ellipsis' }}>
               {post.linkText}
             </Link>
           </Box>
@@ -59,7 +75,7 @@ function MainFeaturedPost(props) {
   );
 }
 
-MainFeaturedPost.propTypes = {
+MediumPaperPost.propTypes = {
   post: PropTypes.shape({
     description: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
@@ -69,4 +85,4 @@ MainFeaturedPost.propTypes = {
   }).isRequired,
 };
 
-export default MainFeaturedPost;
+export default MediumPaperPost;

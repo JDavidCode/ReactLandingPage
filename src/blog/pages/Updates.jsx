@@ -4,20 +4,71 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../components/Header';
 import Footer from '../../components/Footer';
-import FeedPost from '../components/FeedPost';
-import FeaturePost from '../components/FeaturedPost';
+import LeftSideImageMiniPost from '../components/posts/LeftSideImageMiniPost';
 import getLPTheme from '../../components/getLPTheme';
 import Grid from '@mui/material/Grid';
-import Sidebar from '../components/Sidebar';
-import post1 from '../blog-post1.md';
-import post2 from '../blog-post2.md';
-import post3 from '../blog-post3.md';
+import Stack from '@mui/material/Stack';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import XIcon from '@mui/icons-material/X';
+import Sidebar from '../components/Sidebar';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
+import MediumPaperPost from '../components/posts/MediumPaperPost';
+import Box from '@mui/material/Box';
 
-const posts = [post1, post2, post3];
+const featuredPosts = [
+	{
+		title: 'Featured post',
+		date: 'Nov 12',
+		description:
+			'This is a wider card with supporting text below as a natural lead-in to additional content.',
+		image: 'https://source.unsplash.com/random?wallpapers',
+		imageLabel: 'Image Text',
+	},
+	{
+		title: 'Post title',
+		date: 'Nov 11',
+		description:
+			'This is a wider card with supporting text below as a natural lead-in to additional content.',
+		image: 'https://picsum.photos/250/250',
+		imageLabel: 'Image Text',
+	},
+	{
+		title: 'Featured post 2',
+		date: 'Nov 12',
+		description:
+			'This is a wider card with supporting text below as a natural lead-in to additional content.',
+		image: 'https://source.unsplash.com/random?wallpapers',
+		imageLabel: 'Image Text',
+	},
+	{
+		title: 'Post title 3',
+		date: 'Nov 11',
+		description:
+			'This is a wider card with supporting text below as a natural lead-in to additional content.',
+		image: 'https://picsum.photos/300/300',
+		imageLabel: 'Image Text',
+	},
+];
+
+const mainFeaturedPost = [
+{
+  title: 'Title of a longer featured blog post',
+  description:
+    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
+  image: 'https://source.unsplash.com/random?wallpapers',
+  imageText: 'main image description',
+  linkText: 'Continue reading…',
+	},
+	{
+  title: 'Title of a longer featured blog post',
+  description:
+    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
+  image: 'https://picsum.photos/600',
+  imageText: 'main image description',
+  linkText: 'Continue reading…',
+}
+]
 
 const sidebar = {
 	title: 'About',
@@ -42,42 +93,6 @@ const sidebar = {
 		{ name: 'Facebook', icon: FacebookIcon },
 	],
 };
-
-const featuredPosts = [
-	{
-		title: 'Featured post',
-		date: 'Nov 12',
-		description:
-			'This is a wider card with supporting text below as a natural lead-in to additional content.',
-		image: 'https://source.unsplash.com/random?wallpapers',
-		imageLabel: 'Image Text',
-	},
-	{
-		title: 'Post title',
-		date: 'Nov 11',
-		description:
-			'This is a wider card with supporting text below as a natural lead-in to additional content.',
-		image: 'https://source.unsplash.com/random?wallpapers',
-		imageLabel: 'Image Text',
-	},
-	{
-		title: 'Featured post 2',
-		date: 'Nov 12',
-		description:
-			'This is a wider card with supporting text below as a natural lead-in to additional content.',
-		image: 'https://source.unsplash.com/random?wallpapers',
-		imageLabel: 'Image Text',
-	},
-	{
-		title: 'Post title 3',
-		date: 'Nov 11',
-		description:
-			'This is a wider card with supporting text below as a natural lead-in to additional content.',
-		image: 'https://source.unsplash.com/random?wallpapers',
-		imageLabel: 'Image Text',
-	},
-];
-
 export default function Updates() {
 	const [mode, setMode] = React.useState('dark');
 	const theme = createTheme(getLPTheme(mode));
@@ -89,22 +104,28 @@ export default function Updates() {
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<ScrollToTopOnMount />
+			<Header mode={mode} toggleColorMode={toggleColorMode} />
 			<Container maxWidth="lg">
-				<Header mode={mode} toggleColorMode={toggleColorMode} />
-				<Grid container spacing={4} sx={{ pt: '100px' }}>
-					{featuredPosts.map((post) => (
-						<FeaturePost key={post.title} post={post} />
-					))}
-				</Grid>
-				<Grid container spacing={5} sx={{ mt: 3 }}>
-					<FeedPost title="Updates" posts={posts} />
-					<Sidebar
-						title={sidebar.title}
-						description={sidebar.description}
-						archives={sidebar.archives}
-						social={sidebar.social}
-					/>
-				</Grid>
+				<Box mt={10}>
+					<Stack>
+            {mainFeaturedPost.map((post) => (
+								<MediumPaperPost key={post.title} post={post} />
+							))}
+					</Stack>
+					<Box mt={4} display={'grid'} gridTemplateColumns={'6fr 3fr'}>
+						<Stack spacing={2} mr={4} >
+							{featuredPosts.map((post) => (
+								<LeftSideImageMiniPost key={post.title} post={post} />
+							))}
+						</Stack>
+						<Sidebar
+	            title={sidebar.title}
+	            description={sidebar.description}
+	            archives={sidebar.archives}
+							social={sidebar.social}
+						/>
+          </Box>
+				</Box>
 			</Container>
 			<Footer />
 		</ThemeProvider>

@@ -81,8 +81,7 @@ function AppAppBar({ mode, toggleColorMode}) {
               }}
             >
               <Box
-                component={LinkComp}
-                href='#'
+                onClick={() => scrollToSection('hero')}
                 mx={3}
                 mb={1}
                 sx={(theme) => ({
@@ -92,6 +91,7 @@ function AppAppBar({ mode, toggleColorMode}) {
                   backgroundSize: 'cover',
                   width: 50,
                   height: 20,
+                  cursor: 'pointer'
                 })}
               />
               <Box

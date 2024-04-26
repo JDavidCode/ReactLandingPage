@@ -4,16 +4,14 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './components/Header';
-import MainFeaturedPost from './components/MainFeaturedPost';
-import FeaturedPost from './components/FeaturedPost';
-import FeedPost from './components/FeedPost';
+import WidePaperPost from './components/posts/WidePaperPost';
+import RightSideImagePost from './components/posts/RightSideImagePost';
+import TopSideImagePost from './components/posts/TopSideImagePost';
 import Footer from '../components/Footer';
 import getLPTheme from '../components/getLPTheme';
-import Divider from '@mui/material/Divider';
 import ScrollToTopOnMount from '../components/ScrollToTop'
-import post1 from './blog-post1.md';
-import post2 from './blog-post2.md';
-import post3 from './blog-post3.md';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
 const mainFeaturedPost = {
   title: 'Title of a longer featured blog post',
@@ -24,7 +22,7 @@ const mainFeaturedPost = {
   linkText: 'Continue reading…',
 };
 
-const featuredPosts = [
+const SecondaryFeaturePost = [
   {
     title: 'Featured post',
     date: 'Nov 12',
@@ -42,9 +40,81 @@ const featuredPosts = [
     imageLabel: 'Image Text',
   },
 ];
+const TercearyFeaturePost = [
+  {
+    title: 'Featured post',
+    date: 'Nov 12',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: 'https://source.unsplash.com/random?wallpapers',
+    imageLabel: 'Image Text',
+  },
+  {
+    title: 'Post title',
+    date: 'Nov 11',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: 'https://source.unsplash.com/random?wallpapers',
+    imageLabel: 'Image Text',
+  },
+  {
+    title: 'Post title',
+    date: 'Nov 11',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: 'https://source.unsplash.com/random?wallpapers',
+    imageLabel: 'Image Text',
+  },
+  {
+    title: 'Post title',
+    date: 'Nov 11',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: 'https://source.unsplash.com/random?wallpapers',
+    imageLabel: 'Image Text',
+  },
+    {
+    title: 'Post title',
+    date: 'Nov 11',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: 'https://source.unsplash.com/random?wallpapers',
+    imageLabel: 'Image Text',
+  },
+      {
+    title: 'Post title',
+    date: 'Nov 11',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: 'https://picsum.photos/250/300',
+    imageLabel: 'Image Text',
+  },
+  {
+    title: 'Post title',
+    date: 'Nov 11',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: 'https://source.unsplash.com/random?wallpapers',
+    imageLabel: 'Image Text',
+  },
+  {
+    title: 'Post title',
+    date: 'Nov 11',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: 'https://picsum.photos/250/250',
+    imageLabel: 'Image Text',
+  },
+  {
+    title: 'Post title',
+    date: 'Nov 11',
+    description:
+      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+    image: 'https://source.unsplash.com/random?wallpapers',
+    imageLabel: 'Image Text',
+  },
+];
 
-
-const posts = [post1, post2, post3];
 
 export default function Blog() {
   const [mode, setMode] = React.useState('dark');
@@ -59,16 +129,23 @@ export default function Blog() {
       <ScrollToTopOnMount />
       <Header mode={mode} toggleColorMode={toggleColorMode} />
       <Container maxWidth="lg">
-        <main>
-          <MainFeaturedPost post={mainFeaturedPost} />
-          <Grid container spacing={4}>
-            {featuredPosts.map((post) => (
-              <FeaturedPost key={post.title} post={post} />
+        <Box mt={12} >
+          <WidePaperPost post={mainFeaturedPost} />
+          <Stack display={'grid'} gridTemplateColumns={'3fr 3fr'} mt={2}>
+            {SecondaryFeaturePost.map((post) => (
+              <Box>
+                <RightSideImagePost key={post.title} post={post} />
+              </Box>
             ))}
-          </Grid>
-          <Divider sx={{ my: '50px' }} />
-          <FeedPost posts={posts} title="FEED" />
-        </main>
+          </Stack>
+          <Stack mt={2} display={'grid'} gridTemplateColumns={'repeat(3, 1fr)'}>
+            {TercearyFeaturePost.map((post) => (
+              <Box>
+                <TopSideImagePost key={post.title} post={post} />
+              </Box>
+               ))}
+          </Stack>
+        </Box>
       </Container>
       <Footer />
     </ThemeProvider>

@@ -7,11 +7,11 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 
-function FeaturedPost(props) {
+function TopSideImageMiniPost(props) {
   const { post } = props;
 
   return (
-    <Grid item xs={12} md={6} id='updates'>
+    <Grid item>
       <CardActionArea component="a" href="#">
         <Card sx={{ display: 'flex' }}>
           <CardContent sx={{ flex: 1 }}>
@@ -40,7 +40,7 @@ function FeaturedPost(props) {
   );
 }
 
-FeaturedPost.propTypes = {
+TopSideImageMiniPost.propTypes = {
   post: PropTypes.shape({
     date: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -50,4 +50,4 @@ FeaturedPost.propTypes = {
   }).isRequired,
 };
 
-export default FeaturedPost;
+export default TopSideImageMiniPost;
