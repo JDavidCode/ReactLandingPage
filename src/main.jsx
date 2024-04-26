@@ -23,22 +23,12 @@ ReactDOM.render(
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes>
-          <Route path="/" element={<Countdown />} />
-          {/* 
-                    <Route path="/" element={<LandingPage />} />
-
-          <Route path="/" element={<Countdown />} />
-          {/* 
-                    <Route path="/" element={<LandingPage />} />
-
+<Route path="/" element={<LandingPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/updates" element={<UpdatesBlogPage />} />
           <Route path="/blog/community" element={<CommunityBlogPage />} />
           <Route path="/login" element={<SignInPage />} />
           <Route path="/register" element={<SignUpPage />} />
-          */}
-
-          */}
 
 				</Routes>
       </ThemeProvider>
