@@ -1,9 +1,16 @@
+# Stage 1: Build the application
 FROM node:latest AS builder
 
 WORKDIR /app
-COPY package*.json .
+
+# Ensure destination ends with '/' to indicate it's a directory
+COPY package*.json ./
 RUN npm install
-COPY . .
+
+# Copy all other files from the current context
+COPY ./ ./
+
+# Build the application
 RUN npm run build 
 
 # Stage 2: Create a production image
@@ -14,3 +21,6 @@ COPY --from=builder /app/dist/ /usr/share/nginx/html/
 
 # Expose port 80 for Nginx
 EXPOSE 80
+
+# For Nginx, use "nginx" command instead of npm
+CMD ["nginx", "-g", "daemon off;"]
