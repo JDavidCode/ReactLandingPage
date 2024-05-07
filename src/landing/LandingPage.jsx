@@ -19,14 +19,14 @@ import getLPTheme from '../components/getLPTheme';
 const FadeInSection = ({ children }) => {
   const { ref, inView } = useInView({
     triggerOnce: true, // Activa solo una vez
-    threshold: 0.2, // Qué porcentaje del componente debe ser visible para activar
+    threshold: 0.1, // Qué porcentaje del componente debe ser visible para activar
   });
 
   return (
     <div
       ref={ref}
       style={{
-        transition: 'opacity 1s ease-in-out', // Suaviza la animación
+        transition: 'opacity 1.5s ease-in-out', // Suaviza la animación
         opacity: inView ? 1 : 0, // Cambia la opacidad en función de la visibilidad
       }}
     >

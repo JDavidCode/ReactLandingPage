@@ -13,9 +13,11 @@ const Banner = () => {
         backgroundColor: 'background.default',
         borderRadius: '8px',
         flexWrap: 'wrap', // Ensure content wraps on smaller screens
-                  boxShadow: '4px 4px 12px 3px rgba(0, 200, 255, 0.5)', // Aplica sombra si `border` es falso
-
-      }}
+              boxShadow: (theme) => {
+                return theme.palette.mode === 'light'
+                  ? '1px 1px 8px 4px rgba(0, 0, 0, 0.2)' // Sombra para modo claro
+                  : '1px 1px 8px 4px rgba(0, 200, 255, 0.3)'; // Sombra para modo oscuro
+              },      }}
     >
       {/* Image Box */}
       <Box

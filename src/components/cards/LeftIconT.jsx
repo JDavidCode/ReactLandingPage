@@ -33,17 +33,12 @@ function LeftIconT({ content, index, selected, onClick }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'flex-start',
-          gap: 2, // Espacio uniforme entre icono y texto
         }}
       >
         <Box
           sx={{
-            color: (theme) => {
-              if (theme.palette.mode === 'light') {
-                return selected ? 'primary.main' : 'grey.300';
-              }
-              return selected ? 'primary.main' : 'grey.700';
-            },
+            color: selected ? 'primary.main' : 'inherit', // Se hereda el color del padre
+            marginRight:3
           }}
         >
           {content.icon}

@@ -10,11 +10,13 @@ import Typography from '@mui/material/Typography';
 // Material-UI icons
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
 import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded'
-import ArchitectureRoundedIcon from '@mui/icons-material/ArchitectureRounded';
+import SyncAltRoundedIcon from '@mui/icons-material/SyncAltRounded';
 import GroupRoundedIcon from '@mui/icons-material/GroupRounded';
 import LaptopRoundedIcon from '@mui/icons-material/LaptopRounded';
 import TopIconTD from '../../components/cards/TopIconTD'
 import MsipBanner from '../components/MsipBanner'
+
+//import Security from '../../assets/svg/security.svg?react';
 
 const MainFeatures = [
   // Security Features
@@ -30,7 +32,7 @@ const MainFeatures = [
     category: 'Privacy Features',
     icon: <VisibilityOffRoundedIcon />,
     title: 'Robust Privacy Controls',
-    description: 'Gain full control over your personal information and choose how its shared.',
+    description: 'Gain full control over your personal information and choose how it\'s shared.',
   },
 
   // User-Centric Features
@@ -49,14 +51,15 @@ const MainFeatures = [
     description: 'Enjoy a compact and portable design that allows you to take your tools anywhere.',
   },
 
-  // Customizable Features
+  // Interoperability Features
   {
-    category: 'Customizable Features',
-    icon: <ArchitectureRoundedIcon />,
-    title: 'Flexible Customization Options',
-    description: 'Customize the system to fit your unique preferences and needs.',
+    category: 'Interoperability Features',
+    icon: <SyncAltRoundedIcon />,
+    title: 'Seamless Integration with Other Tools',
+    description: 'Integrate with popular tools and services for a seamless experience across platforms.',
   },
 ];
+
 
 
 export default function Features() {
@@ -83,7 +86,7 @@ export default function Features() {
               gutterBottom
               sx={{ mb: { xs: 4, sm: 6 }, mt:2}}
             >
-              Discover what sets our product apart: adaptability, durability, intuitive design, and innovation. Experience precision in every detail and benefit from our reliable customer support.
+            Our applications are designed with five core features in mind: adaptability, intuitive design, innovation, precision, and reliable customer support. Explore how these attributes make our products stand out in the market.
             </Typography>
           </Box>
         </Grid>

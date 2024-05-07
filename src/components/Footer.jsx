@@ -78,7 +78,37 @@ export default function Footer() {
                 Subscribe
               </Button>
             </Stack>
+            <Typography variant="caption" textAlign="center" pt={2} sx={{ opacity: 0.8 }}>
+              By clicking &quot;subscribe&quot; you agree to our&nbsp;
+              <Link href="#" color="primary">
+                Terms & Conditions
+              </Link>
+              .
+            </Typography>
           </Box>
+        </Box>
+                <Box
+          sx={{
+            display: { xs: 'none', sm: 'flex' },
+            flexDirection: 'column',
+            gap: 1,
+          }}
+        >
+          <Typography variant="body2" fontWeight={600}>
+            Legal
+          </Typography>
+          <LinkComp color="text.secondary" href="#">
+            Terms of Service
+          </LinkComp>
+          <LinkComp color="text.secondary" href="#">
+            Privacy Policy
+          </LinkComp>
+          <LinkComp color="text.secondary" href="#">
+            Data Policy
+          </LinkComp>
+                    <LinkComp color="text.secondary" href="#">
+            Cookies
+          </LinkComp>
         </Box>
         <Box
           sx={{
@@ -100,7 +130,6 @@ export default function Footer() {
             Contact
           </LinkComp>
         </Box>
-
       </Box>
       <Box
         sx={{
@@ -112,30 +141,7 @@ export default function Footer() {
           borderColor: 'divider',
         }}
       >
-        <Box>
-          <LinkComp color="text.secondary" href="#">
-            Terms of Service
-          </LinkComp>
-          <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>
-            &nbsp;•&nbsp;
-          </Typography>
-          <LinkComp color="text.secondary" href="#">
-            Privacy Policy
-          </LinkComp>
-          <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>
-            &nbsp;•&nbsp;
-          </Typography>
-          <LinkComp color="text.secondary" href="#">
-            Data Policy
-          </LinkComp>
-          <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>
-            &nbsp;•&nbsp;
-          </Typography>
-          <LinkComp color="text.secondary" href="#">
-            Cookies
-          </LinkComp>
-          <Copyright />
-        </Box>
+        <Copyright />
         <Stack
           direction="row"
           justifyContent="left"

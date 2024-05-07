@@ -14,7 +14,7 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import GamesIcon from '@mui/icons-material/Games';
 import ViewInArIcon from '@mui/icons-material/ViewInAr';
 
-import LeftIconTDCard from '../../components/cards/LeftIconT'
+import LeftIconTCard from '../../components/cards/LeftIconT'
 import SimpleCard from '../../components/cards/SimpleCard'
 
 const mainItems = [
@@ -152,7 +152,7 @@ export default function Projects() {
         <Grid container display={'grid'} gridTemplateColumns={'5fr 4fr'} mx={10} minHeight={500}>
           <Stack item='true' spacing={2} sx={{px:6}} justifyContent={'center'}>
             {mainItems.map((content, index) => (
-              <LeftIconTDCard
+              <LeftIconTCard
                 content={content}
                 key={index}
                 index={index}
@@ -166,8 +166,13 @@ export default function Projects() {
             height={500}
             sx={{
               borderRadius: '8px',
-              padding: '16px', // Padding to avoid content touching the edges
-              overflowY: 'auto', // Allows vertical scrolling
+              padding: '16px', // Espacio para evitar que el contenido toque los bordes
+              overflowY: 'auto', // Permitir el desplazamiento vertical
+              boxShadow: (theme) => {
+                return theme.palette.mode === 'light'
+                  ? '1px 1px 8px 4px rgba(0, 0, 0, 0.2)' // Sombra para modo claro
+                  : '1px 1px 8px 4px rgba(100, 255, 255, 0.05)'; // Sombra para modo oscuro
+              },
             }}
           >
             <Grid

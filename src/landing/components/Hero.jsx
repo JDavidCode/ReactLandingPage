@@ -7,7 +7,6 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Video from '../../assets/muestra.mp4';
-
 export default function Hero() {
   const scrollToSection = (sectionId) => {
     const sectionElement = document.getElementById(sectionId);

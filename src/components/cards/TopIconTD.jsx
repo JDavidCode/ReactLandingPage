@@ -6,13 +6,11 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 
-function TopIconTD({ content, index, selected, onClick, border = true }) {
+function TopIconTD({ content, index, selected=false, onClick, border = true }) {
   return (
     <Card
-      direction="column"
       key={index}
-      index={index}
-      variant={border ? 'outlined' : 'elevation'} // Cambia el tipo de card según el borde
+      variant={border ? 'outlined' : 'elevation'}
       component={Button}
       onClick={onClick}
       sx={{
@@ -20,11 +18,20 @@ function TopIconTD({ content, index, selected, onClick, border = true }) {
         height: 'fit-content',
         width: '100%',
         background: 'none',
-        backgroundColor: selected ? 'action.hover' : undefined,
         borderColor: border
           ? (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
-          : 'transparent', // Si `border` es falso, no se muestra
-        boxShadow: !border ? '4px 4px 12px 3px rgba(0, 0, 0, 0.5)' : 0, // Aplica sombra si `border` es falso
+          : 'transparent',
+        boxShadow: !border
+          ? (theme) =>
+              theme.palette.mode === 'light'
+                ? '1px 1px 8px 4px rgba(0, 0, 0, 0.2)'
+                : '1px 1px 8px 4px rgba(255, 255, 255, 0.05)'
+          : 0,
+        transition: 'color 0.3s', // Transición suave
+        '&:hover': {
+          backgroundColor: 'action.hover', // Cambiar el color de fondo en hover
+          color: 'primary.main', // Cambiar el color del texto
+        },
       }}
     >
       <Box
@@ -35,18 +42,15 @@ function TopIconTD({ content, index, selected, onClick, border = true }) {
       >
         <Box
           sx={{
-            color: (theme) => {
-              if (theme.palette.mode === 'light') {
-                return selected ? 'primary.main' : 'grey.300';
-              }
-              return selected ? 'primary.main' : 'grey.700';
-            },
-            my: 2,
+          textAlign: 'center',
+          my: 1 ,
+          color: selected ? 'primary.main' : 'inherit', // Se hereda el color del padre
           }}
+          fontSize={10}
         >
           {content.icon}
         </Box>
-        <Box sx={{ textTransform: 'none' }}>
+        <Box sx={{ textTransform: 'none', my:2 }}>
           <Typography
             color="text.primary"
             variant="body2"
