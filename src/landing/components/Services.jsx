@@ -1,89 +1,210 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Fade from '@mui/material/Fade'
 import { Link } from '@mui/material';
 import Stack from '@mui/material/Stack';
+import SimpleCard from '../../components/cards/TopIconTD'
 
-// MUI Icons for the services section
-import ChatRoundedIcon from '@mui/icons-material/ChatRounded';
-import LanguageRoundedIcon from '@mui/icons-material/LanguageRounded';
-import AssistantIcon from '@mui/icons-material/Assistant';
-import WidgetsIcon from '@mui/icons-material/WidgetsRounded';
-import SimpleCard from '../../components/cards/SimpleCard-2'
+// Import necessary MUI icons
+import PeopleRoundedIcon from '@mui/icons-material/PeopleRounded';
+import BusinessRoundedIcon from '@mui/icons-material/BusinessRounded';
+import MessageRoundedIcon from '@mui/icons-material/MessageRounded';
+import AnalyticsRoundedIcon from '@mui/icons-material/AnalyticsRounded';
+import LockRoundedIcon from '@mui/icons-material/LockRounded';
 
-// Data for the "Services" section
-const emmaFeatures = [
+// User-Focused Services
+const UserSolutions = [
   {
-    icon: <AssistantIcon />,
+    icon: <PeopleRoundedIcon />,
+    title: 'Personalized Messaging',
+    description: 'Connect with friends and family through personalized messages. Integration with popular apps like WhatsApp and Telegram for seamless communication.',
+  },
+  {
+    icon: <MessageRoundedIcon />,
+    title: 'Adaptable Content',
+    description: 'Discover relevant and interesting content tailored to you, thanks to algorithms that analyze your preferences and behavior.',
+  },
+  {
+    icon: <PeopleRoundedIcon />,
+    title: 'Parental Controls',
+    description: 'Create a safe environment for kids with robust parental controls, including content filtering and usage monitoring.',
+  },
+  {
+    icon: <BusinessRoundedIcon />,
     title: 'Information Services',
-    description:
-      'Emma provides information on various topics, including chat, document answering, image generation, weather, and news. She can also connect with Arnica´s provided services, offering everything in one place.',
+    description: 'Access information on various topics such as weather, news, and interactive content, customized to your interests and location.',
   },
   {
-		icon: <WidgetsIcon />,
-		title: 'Tailored Solutions',
-		description:
-	  'Emma adapts to your unique needs with personalized web searches, reminders, alarms, and task lists. She also offers additional features like QR code generation, screenshot capture, and web page link extraction.',
-	},
-  {
-    icon: <ChatRoundedIcon />,
-    title: 'Messaging App Integration',
-    description:
-      'Emma integrates with popular messaging apps like WhatsApp and Telegram, allowing you to interact with her on your preferred platform.',
+    icon: <PeopleRoundedIcon />,
+    title: 'Virtual Events',
+    description: 'Join virtual events and conferences with interactive features like Q&A sessions, real-time polls, and group chat.',
   },
   {
-    icon: <LanguageRoundedIcon />,
-    title: 'Multi-Language Support',
-    description:
-      'Emma understands and translates multiple languages, enabling seamless communication and a diverse global user base.',
+    icon: <MessageRoundedIcon />,
+    title: 'Language Translation',
+    description: 'Translate messages and content into various languages for barrier-free communication, with automatic translation and multilingual support.',
   },
+  {
+    icon: <PeopleRoundedIcon />,
+    title: 'Health and Wellness Insights',
+    description: 'Receive recommendations and reminders for healthy activities, habit tracking, and personal wellness.',
+  },
+];
 
+// Business-Focused Services
+const BusinessSolutions = [
+  {
+    icon: <BusinessRoundedIcon />,
+    title: 'Custom Containers for Enterprises',
+    description: 'Deploy custom container solutions to meet the specific needs of your enterprise with scalable and secure infrastructure.',
+  },
+  {
+    icon: <AnalyticsRoundedIcon />,
+    title: 'Data Analytics',
+    description: 'Gain insights into operations, customer behavior, and market trends with advanced data analytics, including predictive models.',
+  },
+  {
+    icon: <MessageRoundedIcon />,
+    title: 'API Integration',
+    description: 'Integrate your applications with powerful APIs to facilitate data exchange and improve operational efficiency.',
+  },
+  {
+    icon: <BusinessRoundedIcon />,
+    title: 'Enterprise-Level Security',
+    description: 'Protect sensitive data and comply with industry standards through robust security measures like encryption and multi-factor authentication.',
+  },
+  {
+    icon: <LockRoundedIcon />,
+    title: 'Compliance and Regulations',
+    description: 'Ensure compliance with industry standards and regulations through audits and certifications.',
+  },
+  {
+    icon: <BusinessRoundedIcon />,
+    title: 'Remote Team Collaboration',
+    description: 'Facilitate remote collaboration with project management tools, video conferencing, and shared workspaces.',
+  },
+  {
+    icon: <AnalyticsRoundedIcon />,
+    title: 'Market Research Tools',
+    description: 'Access market research tools to gain insights into your competitors and industry trends.',
+  },
 ];
 
 export default function Services() {
+  const [selected, setSelected] = useState('UserSolutions'); // 'UserSolutions' or 'BusinessSolutions'
+
+  const handleSelect = (option) => {
+    setSelected(option);
+  };
+
   return (
     <Container
-      id="services"
-      sx={{
-        pt: { xs: 4, sm: 12 },
-        pb: { xs: 8, sm: 16 },
-      }}
+      id="solutions" sx={{ py: { xs: 8, sm: 16 } }}
     >
-      <Grid container spacing={2} >
+      <Grid container spacing={6} >
         <Grid item xs={12} md={8} mx='auto' textAlign={'center'}>
           <Box>
-            <Typography component="h2" variant="h4" color="text.primary">
-            Emma: Your Customizable AI Assistant
+            <Typography component="h2" variant="h4" color="text.primary" >
+              Adaptable Services for Any Requirement
             </Typography>
             <Typography
               variant="body1"
               color="text.secondary"
-              sx={{ mb: { xs: 2, sm: 4 }, mt:2 }}
+              sx={{ mb: { xs: 4, sm: 6 }, mt:2 }}
             >
-            Emma is an AI designed to adapt to your needs and be your companion wherever you go. Emma is the ideal assistant for anyone, anywhere. Here's a look at her key features:
+              Discover our adaptable services designed to meet every need. Whether you’re an individual seeking personalized support or a business with unique requirements, we have the flexibility and expertise to deliver. From tailored solutions to versatile support, experience a new level of service that adapts to you.
             </Typography>
           </Box>
         </Grid>
         <Box>
-          <Grid item spacing={2} justifyContent="center" alignItems="center" mx={'auto'}>
-            <Stack
-              display={'grid'}
-              gridTemplateColumns={'2fr 2fr'}
-              spacing={4}
-              mx={20}
-              useFlexGap>
-              {emmaFeatures.map((content, index) => (
-                <SimpleCard
-                  key={index}
-                  content={content}
-                  index={index}
-                />
-              ))}
-            </Stack>
-          </Grid>
-        </Box>
+        <Stack direction="row" spacing={0} sx={{ justifyContent: 'center', mb: 8 }}>
+          {/* Botón izquierdo */}
+          <Button
+            variant={selected === 'UserSolutions' ? 'contained' : 'outlined'}
+            onClick={() => handleSelect('UserSolutions')}
+            sx={{
+              borderRadius: '0px', // Bordes redondeados solo a la izquierda
+              border: '1px solid gray', // Mantener el borde
+              borderRight: 'none', // Borde compartido con el segundo botón
+              transform: 'skewX(-10deg)', // Inclinación hacia la derecha
+              backgroundColor: selected === 'UserSolutions' ? 'primary.main' : 'transparent',
+              color: selected === 'UserSolutions' ? 'common.white' : 'gray',
+              '&:hover': {
+                backgroundColor: selected === 'UserSolutions' ? 'primary.dark' : 'gray.100',
+              borderRadius: '0px', // Bordes redondeados solo a la izquierda
+              border: '1px solid gray', // Mantener el borde
+              transform: 'skewX(-10deg)', // Inclinación hacia la izquierda
+              },
+            }}
+          >
+            For Users
+          </Button>
+
+          {/* Botón derecho */}
+          <Button
+            variant={selected === 'BusinessSolutions' ? 'contained' : 'outlined'}
+            onClick={() => handleSelect('BusinessSolutions')}
+            sx={{
+              borderRadius: '0px', // Bordes redondeados solo a la izquierda
+              border: '1px solid gray', // Mantener el borde
+              transform: 'skewX(-10deg)', // Inclinación hacia la izquierda
+              backgroundColor: selected === 'BusinessSolutions' ? 'primary.main' : 'transparent',
+              color: selected === 'BusinessSolutions' ? 'common.white' : 'gray',
+              '&:hover': {
+                backgroundColor: selected === 'BusinessSolutions' ? 'primary.dark' : 'gray.100',
+              borderRadius: '0px', // Bordes redondeados solo a la izquierda
+              border: '1px solid gray', // Mantener el borde
+              transform: 'skewX(-10deg)', // Inclinación hacia la izquierda
+              },
+            }}
+          >
+            For Business
+          </Button>
+        </Stack>
+        {selected === 'UserSolutions' && (
+        <Fade  in={selected === 'UserSolutions'} timeout={1200}>
+          <Box>
+            <Grid container spacing={2} justifyContent="center" alignItems="center">
+              <Stack
+                display="grid"
+                gridTemplateColumns="repeat(2, 1fr)"
+                spacing={4}
+                mx={20}
+                useFlexGap
+              >
+                {UserSolutions.map((content, index) => (
+                  <SimpleCard key={index} content={content} index={index} />
+                ))}
+              </Stack>
+            </Grid>
+          </Box>
+        </Fade>
+        )}
+
+        {selected === 'BusinessSolutions' && (
+          <Fade in={selected === 'BusinessSolutions'} timeout={1200}>
+            <Box>
+              <Grid container spacing={2} justifyContent="center" alignItems="center">
+                <Stack
+                  display="grid"
+                  gridTemplateColumns="repeat(2, 1fr)"
+                  spacing={4}
+                  mx={20}
+                  useFlexGap
+                >
+                  {BusinessSolutions.map((content, index) => (
+                    <SimpleCard key={index} content={content} index={index} />
+                  ))}
+                </Stack>
+              </Grid>
+            </Box>
+          </Fade>
+        )}
+      </Box>
         <Box textAlign={'center'} xs={8} mt={8} mx={'auto'}>
         <Typography variant="body2" >
             If you'd like to learn more about how Emma can help you, visit our <Link href="#contact">contact page</Link> or explore our FAQs.

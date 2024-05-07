@@ -6,96 +6,73 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
 
 // Material-UI icons
-import AutoGraphRoundedIcon from '@mui/icons-material/AutoGraphRounded';
-import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
-import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
-import LensBlurRoundedIcon from '@mui/icons-material/LensBlurRounded';
-import ControlCameraRoundedIcon from '@mui/icons-material/ControlCameraRounded';
-import SensorsRoundedIcon from '@mui/icons-material/SensorsRounded';
-import SmartToyRoundedIcon from '@mui/icons-material/SmartToyRounded';
-import EngineeringRoundedIcon from '@mui/icons-material/EngineeringRounded';
-import SmartDisplayRoundedIcon from '@mui/icons-material/SmartDisplayRounded';
+import LockRoundedIcon from '@mui/icons-material/LockRounded'
+import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded'
+import ArchitectureRoundedIcon from '@mui/icons-material/ArchitectureRounded';
+import GroupRoundedIcon from '@mui/icons-material/GroupRounded';
+import LaptopRoundedIcon from '@mui/icons-material/LaptopRounded';
+import TopIconTD from '../../components/cards/TopIconTD'
+import MsipBanner from '../components/MsipBanner'
 
-import SimpleCard1 from '../../components/cards/SimpleCard-1'
+const MainFeatures = [
+  // Security Features
+  {
+    category: 'Security Features',
+    icon: <LockRoundedIcon />,
+    title: 'Advanced Security Protocols',
+    description: 'Protect your data with advanced security protocols, including encryption and multi-factor authentication.',
+  },
 
-const aiFeatures = [
+  // Privacy Features
   {
-    icon: <SettingsSuggestRoundedIcon />,
-    title: 'Adaptable AI algorithms',
-    description:
-      'Our AI algorithms dynamically adapt to your data, optimizing performance and accuracy for your specific needs.',
+    category: 'Privacy Features',
+    icon: <VisibilityOffRoundedIcon />,
+    title: 'Robust Privacy Controls',
+    description: 'Gain full control over your personal information and choose how its shared.',
   },
-  {
-    icon: <AutoGraphRoundedIcon />,
-    title: 'Innovative predictive analytics',
-    description:
-      'Leverage cutting-edge predictive analytics to uncover valuable insights and anticipate future trends, empowering data-driven decision-making.',
-  },
-  {
-    icon: <EngineeringRoundedIcon />,
-    title: 'Expert AI support',
-    description:
-      'Access our team of AI experts for dedicated support and guidance, ensuring smooth integration and optimal performance of our AI solutions.',
-  },
-];
 
-const vrFeatures = [
+  // User-Centric Features
   {
-    icon: <LensBlurRoundedIcon />,
-    title: 'Immersive VR environments',
-    description:
-      'Experience immersive virtual environments that transport you to new worlds and unlock unparalleled levels of engagement and interaction.',
+    category: 'User-Centric Features',
+    icon: <GroupRoundedIcon />,
+    title: 'User Feedback Integration',
+    description: 'We integrate your feedback to improve the product and adapt it to your needs.',
   },
-  {
-    icon: <ControlCameraRoundedIcon />,
-    title: 'Intuitive VR controls',
-    description:
-      'Navigate seamlessly through virtual spaces with intuitive controls and interactions, providing a natural and immersive user experience.',
-  },
-  {
-    icon: <SensorsRoundedIcon />,
-    title: 'Realistic VR simulations',
-    description:
-      'Engage in realistic simulations that replicate real-world scenarios with precision, offering valuable training and educational opportunities.',
-  },
-];
 
-const gamesFeatures = [
+  // Portable Features
   {
-    icon: <SmartDisplayRoundedIcon />,
-    title: 'Dynamic gameplay mechanics',
-    description:
-      'Explore dynamic gameplay mechanics that offer endless possibilities for creativity, strategy, and skill development, keeping players engaged and entertained.',
+    category: 'Portable Features',
+    icon: <LaptopRoundedIcon />,
+    title: 'Compact and Portable Design',
+    description: 'Enjoy a compact and portable design that allows you to take your tools anywhere.',
   },
+
+  // Customizable Features
   {
-    icon: <SupportAgentRoundedIcon />,
-    title: 'Dedicated game support',
-    description:
-      'Receive dedicated support from our gaming experts, ensuring smooth gameplay experiences and addressing any issues or inquiries promptly.',
-  },
-  {
-    icon: <SmartToyRoundedIcon />,
-    title: 'Immersive storytelling',
-    description:
-      'Immerse yourself in captivating storylines and narratives that unfold seamlessly within the game world, creating memorable and emotionally resonant experiences.',
+    category: 'Customizable Features',
+    icon: <ArchitectureRoundedIcon />,
+    title: 'Flexible Customization Options',
+    description: 'Customize the system to fit your unique preferences and needs.',
   },
 ];
 
 
 export default function Features() {
+
+  const rowCount = Math.ceil(MainFeatures.length / 2);
+  const isLastRowSingle = (MainFeatures.length % 2) === 1;
+
   return (
     <Container
       id="features"
       sx={{
-        pt: { xs: 4, sm: 12 },
-        pb: { xs: 8, sm: 16 },
+        py: { xs: 8, sm: 16 },
       }}
     >
       <Grid container spacing={6}>
-        <Grid item xs={12} md={8} >
+        <Grid item xs={12} md={8} ml={8} >
           <Box>
             <Typography component="h2" variant="h4" color="text.primary">
               Features
@@ -103,57 +80,46 @@ export default function Features() {
             <Typography
               variant="body1"
               color="text.secondary"
-              sx={{ mb: { xs: 2, sm: 4 } }}
+              gutterBottom
+              sx={{ mb: { xs: 4, sm: 6 }, mt:2}}
             >
               Discover what sets our product apart: adaptability, durability, intuitive design, and innovation. Experience precision in every detail and benefit from our reliable customer support.
             </Typography>
           </Box>
         </Grid>
+        <Grid 
+          container 
+          mx={10} 
+          spacing={2}
+          sx={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gridGap: '16px',
+          }}
+        >
+          {MainFeatures.map((content, index) => {
+            const isLastItem = index === MainFeatures.length - 1;
 
-        <Grid container spacing={3} useFlexGap px={8}>
-          <Grid item xs={12} sm={6} md={4} height='fit-content'>
-            <Typography item component="h2" variant="h4">
-              AI
-            </Typography>
-            <Stack direction="column"
-              alignItems="flex-start"
-              spacing={2}
-              useFlexGap
-              sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}>
-              {aiFeatures.map((content, index) => (
-                <SimpleCard1 content={content} index={index} />
-              ))}
-            </Stack>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} height='fit-content'>
-            <Typography item component="h2" variant="h4">
-              VR
-            </Typography>
-            <Stack direction="column"
-              spacing={2}
-              useFlexGap
-              sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}>
-              {vrFeatures.map((content, index) => (
-                <SimpleCard1 key={index} content={content} index={index} />
-              ))}
-            </Stack>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} height='fit-content'>
-            <Typography item component="h2" variant="h4">
-              GAMES
-            </Typography>
-            <Stack direction="column"
-              spacing={2}
-              useFlexGap
-              sx={{ width: '100%', display: { xs: 'none', sm: 'flex' } }}>
-              {gamesFeatures.map((content, index) => (
-                <SimpleCard1 key={index} content={content} index={index} />
-              ))}
-            </Stack>
-
-          </Grid>
-        </Grid>
+            return (
+              <Grid 
+                item 
+                key={index}
+                sx={{
+                  ...(isLastItem && isLastRowSingle && {
+                    gridColumn: '1 / -1',
+                    justifySelf: 'center',
+                  }),
+                }}
+              >
+                <TopIconTD content={content} index={index} border={false} />
+              </Grid>
+            );
+          })}
+        </Grid>         
       </Grid>
+      <Box mx={12} mt={12}>
+      <MsipBanner/>
+      </Box>
     </Container>
   );
 }

@@ -21,7 +21,7 @@ function SimpleCard({ content, index, selected, onClick }) {
 				height: 'fit-content',
 				width: '100%',
 				background: 'none',
-				backgroundColor: selected ? 'action.selected' : undefined,
+				backgroundColor: selected ? 'action.hover' : undefined,
 				borderColor: (theme) => {
 					if (theme.palette.mode === 'light') {
 						return selected ? 'primary.light' : 'grey.200';
@@ -41,22 +41,6 @@ function SimpleCard({ content, index, selected, onClick }) {
 					gap: 2.5,
 				}}
 			>
-				<Box
-					sx={{
-						color: (theme) => {
-							if (theme.palette.mode === 'light') {
-								return selected === index
-									? 'primary.main'
-									: 'grey.300';
-							}
-							return selected === index
-								? 'primary.main'
-								: 'grey.700';
-						},
-					}}
-				>
-					{content.icon}
-				</Box>
 				<Box sx={{ textTransform: 'none' }}>
 					<Typography
 						color="text.primary"

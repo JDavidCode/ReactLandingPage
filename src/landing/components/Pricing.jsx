@@ -12,22 +12,21 @@ import Typography from '@mui/material/Typography';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
-const tiers = [
+const userTiers = [
   {
-    title: 'Basic',
-    price: '15',
+    title: 'Bronze',
+    price: '0',
     description: [
-      '50 requests per hour',
-      '10 image generations per hour',
-      '30GB of storage',
-      'Email support',
+      '20 requests per hour',
+      '5 image generations per hour',
+      '10GB of storage',
+      'Basic email support',
     ],
-    buttonText: 'Choose Basic Plan',
+    buttonText: 'Choose Bronze Plan',
     buttonVariant: 'outlined',
   },
   {
-    title: 'Standard',
-    subheader: 'Recommended',
+    title: 'Silver',
     price: '30',
     description: [
       '100 requests per hour',
@@ -37,11 +36,11 @@ const tiers = [
       '1 additional service',
       'Shared with 1 person',
     ],
-    buttonText: 'Choose Standard Plan',
+    buttonText: 'Choose Silver Plan',
     buttonVariant: 'contained',
   },
   {
-    title: 'Advanced',
+    title: 'Platinum',
     price: '50',
     description: [
       '200 requests per hour',
@@ -52,11 +51,11 @@ const tiers = [
       '+3 additional services',
       'Shared with 3 people',
     ],
-    buttonText: 'Choose Advanced Plan',
+    buttonText: 'Choose Platinum Plan',
     buttonVariant: 'outlined',
   },
   {
-    title: 'Premium',
+    title: 'Diamond',
     price: '100',
     description: [
       'Unlimited requests per hour',
@@ -68,40 +67,28 @@ const tiers = [
       '+5 additional services',
       'Shared with 5 people',
     ],
-    buttonText: 'Choose Premium Plan',
-    buttonVariant: 'outlined',
-  },
-  {
-    title: 'Premium+',
-    price: '160',
-    description: [
-      'Unlimited requests per hour',
-      'Unlimited image generations per hour',
-      '4TB of storage',
-      '24/7 personalized consultation',
-      'Custom integration with existing systems',
-      '+7 additional services',
-      'Shared with 10 people',
-    ],
-    buttonText: 'Choose Premium+ Plan',
-    buttonVariant: 'outlined',
-  },
-  {
-    title: 'Enterprise',
-    price: '',
-    description: [
-      'Unlimited requests per hour',
-      'Unlimited image generations per hour',
-      'As needed storage',
-      '24/7 support via email, chat, phone and personalized consultation',
-      'Custom integration with existing systems',
-      'As needed additional services',
-      'Shared as needed',
-    ],
-    buttonText: 'Contact Sales',
+    buttonText: 'Choose Diamond Plan',
     buttonVariant: 'outlined',
   },
 ];
+
+const enterpriseTier = {
+  title: 'Enterprise',
+  price: '',
+  description: [
+    'Unlimited requests per hour',
+    'Unlimited image generations per hour',
+    'As needed storage',
+    '24/7 support via email, chat, phone, and personalized consultation',
+    'Custom integration with existing systems',
+    'As needed additional services',
+    'Shared as needed',
+  ],
+  buttonText: 'Contact Sales',
+  buttonVariant: 'outlined',
+};
+
+
 
 
 export default function Pricing() {
@@ -109,8 +96,7 @@ export default function Pricing() {
     <Container
       id="pricing"
       sx={{
-        pt: { xs: 4, sm: 12 },
-        pb: { xs: 8, sm: 16 },
+        py: { xs: 8, sm: 16 },
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
@@ -127,15 +113,12 @@ export default function Pricing() {
         <Typography component="h2" variant="h4" color="text.primary">
           Pricing
         </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Quickly build an effective pricing table for your potential customers with
-          this layout. <br />
-          It&apos;s built with default Material UI components with little
-          customization.
+        <Typography variant="body1" color="text.secondary" sx={{ mb: { xs: 4, sm: 6 }, mt: 2 }}>
+          Our pricing is tailored to your unique needs, so you only pay for the services and features you choose. If you're looking for convenience, we also offer pre-built packages designed to suit a range of common requirements.
         </Typography>
       </Box>
       <Grid container spacing={3} alignItems="center" justifyContent="center">
-        {tiers.map((tier) => (
+        {userTiers.map((tier) => (
           <Grid
             item
             key={tier.title}

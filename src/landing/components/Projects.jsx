@@ -8,12 +8,13 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-
+import Fade from '@mui/material/Fade'
 // Material-UI icons
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import GamesIcon from '@mui/icons-material/Games';
 import ViewInArIcon from '@mui/icons-material/ViewInAr';
 
+import LeftIconTDCard from '../../components/cards/LeftIconT'
 import SimpleCard from '../../components/cards/SimpleCard'
 
 const mainItems = [
@@ -22,18 +23,23 @@ const mainItems = [
     title: 'AI',
     description:
       'Our AI project offers flexible and customizable solutions for various industries. With adaptable features, users can create tailored applications to meet their specific needs.',
+    background_url:'https://source.unsplash.com/random?wallpapers'
   },
   {
     icon: <ViewInArIcon />,
     title: 'VR',
     description:
       'Our VR project delivers immersive virtual reality experiences using the latest technology. We create captivating environments and interactive simulations for entertainment, education, and more.',
+        background_url:'https://source.unsplash.com/random?wallpapers'
+
   },
   {
     icon: <GamesIcon />,
     title: 'GAMES',
     description:
       'Our games project ensures seamless gameplay across all platforms—web, mobile, and desktop. We focus on delivering enjoyable gaming experiences to players everywhere.',
+    background_url:'https://source.unsplash.com/random?wallpapers'
+
   },
 ];
 
@@ -52,6 +58,18 @@ const ai_items = [{
 ]
 
 const vr_items = [{
+  title: 'FACTIONS',
+  description: ' A large-scale VR environment, accessible to everyone.'
+},
+{
+  title: 'TOWE',
+  description: 'A smaller virtual world designed with families in mind.'
+},
+{
+  title: 'ALMY',
+  description: ' A customizable VR space to create and design your own virtual worlds.'
+},
+{
   title: 'FACTIONS',
   description: ' A large-scale VR environment, accessible to everyone.'
 },
@@ -117,7 +135,7 @@ export default function Projects() {
   return (
     <Container id="projects" sx={{ py: { xs: 8, sm: 16 } }}>
       <Grid container spacing={6} >
-        <Grid item xs={12} md={8} >
+        <Grid item xs={12} md={8} ml={8} >
           <Box>
             <Typography component="h2" variant="h4" color="text.primary">
               Explore Our Projects
@@ -125,36 +143,56 @@ export default function Projects() {
             <Typography
               variant="body1"
               color="text.secondary"
-              sx={{ mb: { xs: 2, sm: 4 }, mt:2 }}
+              sx={{ mb: { xs: 4, sm: 6 }, mt:2 }}
             >
-              Discover our innovative projects in AI, VR, and gaming. Dive into our latest developments to uncover unique features and benefits. From advanced AI algorithms to immersive VR experiences and engaging gaming environments, we push the boundaries of technology.
+              Discover our innovative projects in AI, VR, and gaming. Dive into our latest developments to uncover unique features and benefits. Every project is built upon our core features stack, ensuring innovation and quality in everything we create.
             </Typography>
           </Box>
         </Grid>
-        <Grid display={'grid'} gridTemplateColumns={'5fr 4fr'}>
-          <Stack spacing={2} sx={{px:8}}>
+        <Grid container display={'grid'} gridTemplateColumns={'5fr 4fr'} mx={10} minHeight={500}>
+          <Stack item='true' spacing={2} sx={{px:6}} justifyContent={'center'}>
             {mainItems.map((content, index) => (
-              <SimpleCard
+              <LeftIconTDCard
                 content={content}
+                key={index}
                 index={index}
                 selected={selectedMainItemIndex === index}
                 onClick={() => handleMainItemClick(index)}
               />
-            ))}
+            ))} 
           </Stack>
-        <Card variant="outlined" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <Stack spacing={2} sx={{ px: 8 , width:'85%', position:'relative', overflowY:'scroll'}}>
-            {currentSubItems.map((content, index) => (
-              <SimpleCard
-                content={content}
-                index={index}
-                selected={selectedSubItemIndex === index}
-                onClick={() => handleSubItemClick(index)}
-              />
-            ))}
-          </Stack>
-        </Card>
-
+          <Box
+            width={'100%'}
+            height={500}
+            sx={{
+              borderRadius: '8px',
+              padding: '16px', // Padding to avoid content touching the edges
+              overflowY: 'auto', // Allows vertical scrolling
+            }}
+          >
+            <Grid
+              container
+              sx={{
+                justifyContent:'center'
+              }}
+              spacing={2}
+            >
+              {currentSubItems.map((content, index) => (
+                <Grid
+                  item
+                  xs={12} // Ensures that the grid item takes the full width of its container
+                  key={index}
+                >
+                  <SimpleCard
+                    content={content}
+                    index={index}
+                    selected={selectedSubItemIndex === index}
+                    onClick={() => handleSubItemClick(index)}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
         </Grid>
       </Grid>
     </Container>

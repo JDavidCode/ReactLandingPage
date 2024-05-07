@@ -33,7 +33,7 @@ function Header({ mode, toggleColorMode }) {
           boxShadow: 0,
           bgcolor: 'transparent',
           backgroundImage: 'none',
-          mt: 2,
+          mt: 1,
         }}
       >
         <Container maxWidth="lg">

@@ -25,7 +25,7 @@ function AppAppBar({ mode, toggleColorMode}) {
 
   const scrollToSection = (sectionId) => {
     const sectionElement = document.getElementById(sectionId);
-    const offset = 0;
+    const offset = -3;
     if (sectionElement) {
       const targetScroll = sectionElement.offsetTop - offset;
       sectionElement.scrollIntoView({ behavior: 'smooth' });
@@ -45,7 +45,7 @@ function AppAppBar({ mode, toggleColorMode}) {
           boxShadow: 0,
           bgcolor: 'transparent',
           backgroundImage: 'none',
-          mt: 2,
+          mt: 1,
         }}
       >
         <Container maxWidth="lg">
@@ -56,15 +56,13 @@ function AppAppBar({ mode, toggleColorMode}) {
               alignItems: 'center',
               justifyContent: 'space-between',
               flexShrink: 0,
-              borderRadius: '999px',
+              borderRadius: '99px',
               bgcolor:
                 theme.palette.mode === 'light'
                   ? 'rgba(255, 255, 255, 0.4)'
                   : 'rgba(0, 0, 0, 0.4)',
               backdropFilter: 'blur(24px)',
               maxHeight: 40,
-              border: '1px solid',
-              borderColor: 'divider',
               boxShadow:
                 theme.palette.mode === 'light'
                   ? `0 0 1px rgba(85, 166, 246, 0.1), 1px 1.5px 2px -1px rgba(85, 166, 246, 0.15), 4px 4px 12px -2.5px rgba(85, 166, 246, 0.15)`
@@ -121,7 +119,7 @@ function AppAppBar({ mode, toggleColorMode}) {
                     </Typography>
                   </MenuItem>
                   <MenuItem
-                    onClick={() => scrollToSection('services')}
+                    onClick={() => scrollToSection('solutions')}
                     sx={{ py: '6px', px: '12px' }}
                   >
                     <Typography variant="body2" color="text.primary">
@@ -215,6 +213,11 @@ function AppAppBar({ mode, toggleColorMode}) {
                     onClick={() => scrollToSection('features')}
                   >
                     Features
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => scrollToSection('services')}
+                  >
+                    Services
                   </MenuItem>
                   <MenuItem
                     onClick={() => scrollToSection('pricing')}

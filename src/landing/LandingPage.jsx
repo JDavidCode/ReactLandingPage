@@ -1,26 +1,39 @@
-// React
 import * as React from 'react';
+import { ThemeProvider, createTheme, CssBaseline, Box, Divider } from '@mui/material';
+import { useInView } from 'react-intersection-observer';
 
-// Material-UI
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-// Components
+// Tus componentes
 import AppBar from '../components/AppBar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Features from './components/Features';
 import Services from './components/Services';
-
 import Pricing from './components/Pricing';
 import LogoCollection from '../components/LogoCollection';
-import FAQ from './components/FAQ';
+import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
+import BlogBanner from './components/BlogBanner';
 import ScrollToTopOnMount from '../components/ScrollToTop';
 import getLPTheme from '../components/getLPTheme';
 
+const FadeInSection = ({ children }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Activa solo una vez
+    threshold: 0.2, // Qué porcentaje del componente debe ser visible para activar
+  });
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        transition: 'opacity 1s ease-in-out', // Suaviza la animación
+        opacity: inView ? 1 : 0, // Cambia la opacidad en función de la visibilidad
+      }}
+    >
+      {children}
+    </div>
+  );
+};
 
 export default function LandingPage() {
   const [mode, setMode] = React.useState('dark');
@@ -37,19 +50,37 @@ export default function LandingPage() {
       <AppBar mode={mode} toggleColorMode={toggleColorMode} />
       <Hero />
       <Box sx={{ bgcolor: 'background.default' }}>
-        <LogoCollection />
+        <FadeInSection>
+          <LogoCollection />
+        </FadeInSection>
         <Divider />
-        <Projects />
+        <FadeInSection>
+          <Projects />
+        </FadeInSection>
         <Divider />
-        <Features />
+        <FadeInSection>
+          <BlogBanner />
+        </FadeInSection>
         <Divider />
-        <Services />
+        <FadeInSection>
+          <Features />
+        </FadeInSection>
         <Divider />
-        <Pricing />
+        <FadeInSection>
+          <Services />
+        </FadeInSection>
         <Divider />
-        <FAQ />
+        <FadeInSection>
+          <Pricing />
+        </FadeInSection>
         <Divider />
-        <Footer />
+        <FadeInSection>
+          <FAQ />
+        </FadeInSection>
+        <Divider />
+        <FadeInSection>
+          <Footer />
+        </FadeInSection>
       </Box>
     </ThemeProvider>
   );
