@@ -10,10 +10,10 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import getLPTheme from '../components/getLPTheme';
-import ScrollToTopOnMount from '../components/ScrollToTop'
-import ToggleColorMode from '../components/ToggleColorMode';
-import LogoDark512 from '../assets/LogoDark512.webp'; // Import the image file
+import getLPTheme from '../../components/getTheme';
+import ScrollToTopOnMount from '../../components/ScrollToTop'
+import ToggleColorMode from '../../components/ToggleColorMode';
+import LogoDark512 from '../../assets/LogoDark512.webp'; // Import the image file
 
 function Copyright() {
   return (

@@ -13,8 +13,8 @@ import LogoCollection from '../components/LogoCollection';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
 import BlogBanner from './components/BlogBanner';
-import ScrollToTopOnMount from '../components/ScrollToTop';
-import getLPTheme from '../components/getLPTheme';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
+import getLPTheme from '../../components/getTheme';
 
 const FadeInSection = ({ children }) => {
   const { ref, inView } = useInView({

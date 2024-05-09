@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography, Button, Container, Stack } from '@mui/material';
-import backgroundImage from '../../assets/arnica-tech.png';
+import backgroundImage from '../../../assets/arnica-tech.png';
 
 const Banner = () => {
   return (

@@ -7,13 +7,13 @@ import Checkbox from '@mui/material/Checkbox';
 import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LogoDark512 from '../assets/LogoDark512.webp'; // Import the image file
+import LogoDark512 from '../../assets/LogoDark512.webp'; // Import the image file
 import Typography from '@mui/material/Typography';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import getLPTheme from '../components/getLPTheme';
-import ScrollToTopOnMount from '../components/ScrollToTop';
-import ToggleColorMode from '../components/ToggleColorMode';
+import getLPTheme from '../../components/getTheme';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
+import ToggleColorMode from '../../components/ToggleColorMode';
 
 function Copyright() {
   return (

@@ -14,7 +14,7 @@ import SyncAltRoundedIcon from '@mui/icons-material/SyncAltRounded';
 import GroupRoundedIcon from '@mui/icons-material/GroupRounded';
 import LaptopRoundedIcon from '@mui/icons-material/LaptopRounded';
 import TopIconTD from '../../components/cards/TopIconTD'
-import MsipBanner from '../components/MsipBanner'
+import MsipBanner from './MsipBanner'
 
 //import Security from '../../assets/svg/security.svg?react';
 

@@ -7,8 +7,8 @@ import WidePaperPost from './components/posts/WidePaperPost';
 import RightSideImagePost from './components/posts/RightSideImagePost';
 import TopSideImagePost from './components/posts/TopSideImagePost';
 import Footer from '../components/Footer';
-import getLPTheme from '../components/getLPTheme';
-import ScrollToTopOnMount from '../components/ScrollToTop'
+import getLPTheme from '../../components/getTheme';
+import ScrollToTopOnMount from '../../components/ScrollToTop'
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import FAQ from '../components/FAQ';

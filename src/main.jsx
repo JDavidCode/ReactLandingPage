@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LandingPage from './landing/LandingPage';
-import BlogPage from './blog/Blog';
-import CommunityBlogPage from './blog/pages/Community';
-import UpdatesBlogPage from './blog/pages/Updates';
-import SignInPage from './auth/SignIn';
-import SignUpPage from './auth/SignUp';
+import LandingPage from './pages/landing/LandingPage';
+import BlogPage from './pages/blog/Blog';
+import CommunityBlogPage from './pages/blog/pages/Community';
+import UpdatesBlogPage from './pages/blog/pages/Updates';
+import SignInPage from './pages/auth/SignIn';
+import SignUpPage from './pages/auth/SignUp';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import getLPTheme from './components/getLPTheme';
+import getTheme from './components/getTheme';
 
-const theme = createTheme(getLPTheme('dark'));
+const theme = createTheme(getTheme('dark'));
 
 ReactDOM.render(
   <React.StrictMode>
@@ -25,7 +25,7 @@ ReactDOM.render(
           <Route path="/blog/community" element={<CommunityBlogPage />} />
           <Route path="/login" element={<SignInPage />} />
           <Route path="/register" element={<SignUpPage />} />
-				</Routes>
+        </Routes>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,

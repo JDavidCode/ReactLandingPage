@@ -5,14 +5,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../components/Header';
 import Footer from '../../components/Footer';
 import LeftSideImageMiniPost from '../components/posts/LeftSideImageMiniPost';
-import getLPTheme from '../../components/getLPTheme';
+import getTheme from '../../../components/getTheme';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import XIcon from '@mui/icons-material/X';
 import Sidebar from '../components/Sidebar';
-import ScrollToTopOnMount from '../../components/ScrollToTop';
+import ScrollToTopOnMount from '../../../components/ScrollToTop';
 import MediumPaperPost from '../components/posts/MediumPaperPost';
 import Box from '@mui/material/Box';
 
@@ -52,22 +52,22 @@ const featuredPosts = [
 ];
 
 const mainFeaturedPost = [
-{
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://source.unsplash.com/random?wallpapers',
-  imageText: 'main image description',
-  linkText: 'Continue reading…',
+	{
+		title: 'Title of a longer featured blog post',
+		description:
+			"Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
+		image: 'https://source.unsplash.com/random?wallpapers',
+		imageText: 'main image description',
+		linkText: 'Continue reading…',
 	},
 	{
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://picsum.photos/600',
-  imageText: 'main image description',
-  linkText: 'Continue reading…',
-}
+		title: 'Title of a longer featured blog post',
+		description:
+			"Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
+		image: 'https://picsum.photos/600',
+		imageText: 'main image description',
+		linkText: 'Continue reading…',
+	}
 ]
 
 const sidebar = {
@@ -95,7 +95,7 @@ const sidebar = {
 };
 export default function Updates() {
 	const [mode, setMode] = React.useState('dark');
-	const theme = createTheme(getLPTheme(mode));
+	const theme = createTheme(getTheme(mode));
 
 	const toggleColorMode = () => {
 		setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -108,9 +108,9 @@ export default function Updates() {
 			<Container maxWidth="lg">
 				<Box mt={10}>
 					<Stack>
-            {mainFeaturedPost.map((post) => (
-								<MediumPaperPost key={post.title} post={post} />
-							))}
+						{mainFeaturedPost.map((post) => (
+							<MediumPaperPost key={post.title} post={post} />
+						))}
 					</Stack>
 					<Box mt={4} display={'grid'} gridTemplateColumns={'6fr 3fr'}>
 						<Stack spacing={2} mr={4} >
@@ -119,12 +119,12 @@ export default function Updates() {
 							))}
 						</Stack>
 						<Sidebar
-	            title={sidebar.title}
-	            description={sidebar.description}
-	            archives={sidebar.archives}
+							title={sidebar.title}
+							description={sidebar.description}
+							archives={sidebar.archives}
 							social={sidebar.social}
 						/>
-          </Box>
+					</Box>
 				</Box>
 			</Container>
 			<Footer />

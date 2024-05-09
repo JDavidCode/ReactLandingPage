@@ -11,10 +11,10 @@ import MenuItem from '@mui/material/MenuItem';
 import LinkComp from '@mui/material/Link';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
-import ToggleColorMode from './ToggleColorMode';
+import ToggleColorMode from '../../components/ToggleColorMode';
 import { Link } from 'react-router-dom';
-import BannerDark from '../assets/BannerDark.webp'; // Import the image file
-import BannerLight from '../assets/BannerWhite.webp'; // Import the image file
+import BannerDark from '../../assets/BannerDark.webp'; // Import the image file
+import BannerLight from '../../assets/BannerWhite.webp'; // Import the image file
 
 function AppAppBar({ mode, toggleColorMode}) {
   const [open, setOpen] = React.useState(false);

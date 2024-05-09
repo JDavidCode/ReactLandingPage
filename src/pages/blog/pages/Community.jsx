@@ -5,14 +5,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../components/Header';
 import Footer from '../../components/Footer';
 import CommunityPost from '../components/posts/CommunityPost';
-import getLPTheme from '../../components/getLPTheme';
-import ScrollToTopOnMount from '../../components/ScrollToTop';
+import getTheme from '../../../components/getTheme';
+import ScrollToTopOnMount from '../../../components/ScrollToTop';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 export default function Community() {
 	const [mode, setMode] = React.useState('dark');
-	const theme = createTheme(getLPTheme(mode));
+	const theme = createTheme(getTheme(mode));
 
 	const toggleColorMode = () => {
 		setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
