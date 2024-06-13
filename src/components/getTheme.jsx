@@ -130,32 +130,38 @@ const getDesignTokens = (mode) => ({
     },
   },
   typography: {
-    fontFamily: ['"Inter", "sans-serif"'].join(','),
+    fontFamily: '"Cabin", "Merriweather", sans-serif',
     h1: {
+      fontFamily: 'Merriweather, serif',
       fontSize: 60,
       fontWeight: 600,
       lineHeight: 78 / 70,
       letterSpacing: -0.2,
     },
     h2: {
+      fontFamily: 'Merriweather, serif',
       fontSize: 48,
       fontWeight: 600,
       lineHeight: 1.2,
     },
     h3: {
+      fontFamily: 'Merriweather, serif',
       fontSize: 42,
       lineHeight: 1.2,
     },
     h4: {
+      fontFamily: 'Merriweather, serif',
       fontSize: 36,
       fontWeight: 500,
       lineHeight: 1.5,
     },
     h5: {
+      fontFamily: 'Merriweather, serif',
       fontSize: 20,
       fontWeight: 600,
     },
     h6: {
+      fontFamily: 'Merriweather, serif',
       fontSize: 18,
     },
     subtitle1: {

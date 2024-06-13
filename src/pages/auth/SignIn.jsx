@@ -137,6 +137,8 @@ export default function SignIn() {
               />
               <Button
                 type="submit"
+                component={Link}
+                to='http://localhost:5174/'
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
