@@ -46,17 +46,20 @@ export default function SignUp() {
       <Box xs={12} sx={{ backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)', backgroundSize: 'cover', width: '100vw', height: '100vh' }}>
         <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
       </Box>
-      <Box position="fixed"
-        sx={{
-          boxShadow: 0,
-          bgcolor: 'transparent',
-          backgroundImage: mode === 'dark' ? `url(${BackgroundDark})` : `url(${BackgroundWhite})`,
-          m: 'auto',
-          left: 0,
-          right: 0,
-          top: '50%',
-          transform: 'translateY(-50%)',
-        }}>
+
+        <Box
+          sx={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100vh',
+            backgroundImage: mode === 'dark' ? `url(${BackgroundDark})` : `url(${BackgroundWhite})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            zIndex: -1,
+          }}
+        >
         <Container
           maxWidth="xs"
           sx={(theme) => ({

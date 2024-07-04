@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import AppBar from '../components/AppBar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
-import Features from './components/Features';
+import Features from './components/FeaturesTimeline';
 import Services from './components/Services';
 import Pricing from './components/Pricing';
 import LogoCollection from '../components/LogoCollection';
