@@ -25,18 +25,15 @@ function SignIn() {
 
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission
+    let r
     try {
       const formData = new FormData(event.target);
       const username = formData.get('username');
       const password = formData.get('password');
       await auth(username, password);
 
-      const redirectUrl = `http://127.0.0.1:5173/?token=${token}`;
-
-      // Redirect the user
-      window.location.href = redirectUrl;
     } catch (error) {
-      console.error('Error en el login:', 'Error en el login.Verifica tus credenciales.');
+      console.error("");
     }
   };
 

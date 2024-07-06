@@ -1,4 +1,4 @@
-import {getToken, saveToken } from './auth';
+import { getToken, saveToken } from './auth';
 
 // Función para manejar el login y obtener el token
 export const auth = async (username, password) => {
@@ -18,8 +18,10 @@ export const auth = async (username, password) => {
 
 		const data = await response.json();
 		const token = data.token;
-		saveToken(token); // Guarda el token en localStorage usando saveToken
-		return token;
+		saveToken(token);
+		const redirectUrl = `http://127.0.0.1:5173/?token=${token}`;
+		window.location.href = redirectUrl;
+
 	} catch (error) {
 		console.error('Error:', error.message);
 		throw new Error('Error en el login');
@@ -27,7 +29,7 @@ export const auth = async (username, password) => {
 };
 
 // Método para registrar al usuario
-export const register = async (username, password, email, ) => {
+export const register = async (username, password, email,) => {
 	try {
 		const response = await fetch('http://localhost:3000/register', {
 			method: 'POST',
