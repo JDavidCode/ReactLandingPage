@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/landing/LandingPage';
 import BlogPage from './pages/blog/Blog';
@@ -13,7 +13,10 @@ import getTheme from './components/getTheme';
 
 const theme = createTheme(getTheme('dark'));
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+ 
+root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
@@ -28,6 +31,5 @@ ReactDOM.render(
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );

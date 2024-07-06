@@ -1,30 +1,20 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import getLPTheme from '../../components/getTheme';
-import ScrollToTopOnMount from '../../components/ScrollToTop'
+import ScrollToTopOnMount from '../../components/ScrollToTop';
 import ToggleColorMode from '../../components/ToggleColorMode';
-import LogoDark512 from '../../assets/LogoDark512.webp'; // Import the image file
-import { Container, Typography, Box, TextField, Button, Link as fLink, Divider, IconButton } from '@mui/material';
+import { Container, Typography, Box, TextField, Button, Link as MuiLink, Divider, IconButton } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import BackgroundDark from '../../assets/bg/quantumBg-1.svg'
 import BackgroundWhite from '../../assets/bg/quantumBg-2.svg'
+import { auth } from '../../utils/api'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" mt={1}>
-      <Typography >Copyright © </Typography>
-      <Typography component={Link} to='/'>Arnica </Typography>
-      <Typography>      {new Date().getFullYear()}</Typography>
-    </Typography>
-  );
-}
-
-
-export default function SignIn() {
+function SignIn() {
   const [mode, setMode] = React.useState('dark');
   const theme = createTheme(getLPTheme(mode));
 
@@ -32,15 +22,24 @@ export default function SignIn() {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
 
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevent default form submission
+    try {
+      const formData = new FormData(event.target);
+      const username = formData.get('username');
+      const password = formData.get('password');
+      await auth(username, password);
+
+      const redirectUrl = `http://127.0.0.1:5173/?token=${token}`;
+
+      // Redirect the user
+      window.location.href = redirectUrl;
+    } catch (error) {
+      console.error('Error en el login:', 'Error en el login.Verifica tus credenciales.');
+    }
   };
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -75,7 +74,6 @@ export default function SignIn() {
                 : '0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)',
           })}
         >
-          <CssBaseline />
           <ScrollToTopOnMount />
           <Box
             maxWidth="xs"
@@ -95,7 +93,7 @@ export default function SignIn() {
             >
               Login
             </Typography>
-            <Box component="form" sx={{ mt: 3 }}>
+            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
               <Box sx={{ mt: 1 }}>
                 <Typography
                   component="label"
@@ -137,11 +135,7 @@ export default function SignIn() {
                 <Typography
                   component="label"
                   htmlFor="password"
-                  sx={{
-                    display: 'block',
-                    color: 'rgba(156, 163, 175, 1)',
-                    mb: '4px',
-                  }}
+                  sx={{ display: 'block', color: 'rgba(156, 163, 175, 1)', mb: '4px' }}
                 >
                   Password
                 </Typography>
@@ -171,12 +165,17 @@ export default function SignIn() {
                   }}
                 />
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 1 }}>
-                  <Link href="#" sx={{ fontSize: '0.75rem', color: 'rgba(156, 163, 175, 1)', textDecoration: 'none' }}>
+                  <MuiLink
+                    href="#"
+                    variant="body2"
+                    sx={{ fontSize: '0.75rem', color: 'rgba(156, 163, 175, 1)', textDecoration: 'none' }}
+                  >
                     Forgot Password?
-                  </Link>
+                  </MuiLink>
                 </Box>
               </Box>
               <Button
+                type="submit"
                 fullWidth
                 variant="contained"
                 sx={{
@@ -218,7 +217,8 @@ export default function SignIn() {
           </Box>
         </Container>
       </Box>
-
     </ThemeProvider>
   );
 }
+
+export default SignIn;

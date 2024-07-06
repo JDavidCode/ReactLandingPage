@@ -12,16 +12,8 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import BackgroundDark from '../../assets/bg/quantumBg-1.svg'
 import BackgroundWhite from '../../assets/bg/quantumBg-2.svg'
+import { register } from '../../utils/api'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" mt={1}>
-      <Typography>Copyright © </Typography>
-      <Typography component={Link} to='/'>Arnica </Typography>
-      <Typography>{new Date().getFullYear()}</Typography>
-    </Typography>
-  );
-}
 
 export default function SignUp() {
   const [mode, setMode] = React.useState('dark');
@@ -31,14 +23,21 @@ export default function SignUp() {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      username: data.get('username'),
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevent default form submission
+    try {
+      const formData = new FormData(event.target);
+      const username = formData.get('username');
+      const password = formData.get('password');
+      await register(username, password);
+
+      const redirectUrl = `/login`;
+      // Redirect the user
+      window.location.href = redirectUrl;
+    } catch (error) {
+      console.error('Error en el login:', 'Error en el login.Verifica tus credenciales.');
+    }
   };
 
   return (
@@ -47,19 +46,17 @@ export default function SignUp() {
         <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
       </Box>
 
-        <Box
-          sx={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100vh',
-            backgroundImage: mode === 'dark' ? `url(${BackgroundDark})` : `url(${BackgroundWhite})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            zIndex: -1,
-          }}
-        >
+
+      <Box position="fixed"
+        sx={{
+          boxShadow: 0,
+          bgcolor: 'transparent',
+          backgroundImage: mode === 'dark' ? `url(${BackgroundDark})` : `url(${BackgroundWhite})`,
+          left: 0,
+          right: 0,
+          top: '50%',
+          transform: 'translateY(-50%)',
+        }}>
         <Container
           maxWidth="xs"
           sx={(theme) => ({
