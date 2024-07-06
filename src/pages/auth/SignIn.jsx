@@ -40,9 +40,6 @@ function SignIn() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box xs={12} sx={{ backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)', backgroundSize: 'cover', width: '100vw', height: '100vh' }}>
-        <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-      </Box>
 
       <Box position="fixed"
         sx={{
@@ -53,7 +50,10 @@ function SignIn() {
           right: 0,
           top: '50%',
           transform: 'translateY(-50%)',
+          width: '100vw', height: '100vh'
         }}>
+        <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+
         <Container
           maxWidth="xs"
           sx={(theme) => ({

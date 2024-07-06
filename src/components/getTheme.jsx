@@ -2,17 +2,31 @@ import { alpha } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 
 export const brand = {
-  50: '#F0F7FF',
-  100: '#CEE5FD',
-  200: '#9CCCFC',
-  300: '#55A6F6',
-  400: '#0A66C2',
-  500: '#0959AA',
-  600: '#064079',
-  700: '#033363',
-  800: '#02294F',
-  900: '#021F3B',
+  50: '#E3F3F3',
+  100: '#DFE0DC',
+  200: '#4791BB',
+  300: '#4187B0',
+  400: '#3B7CA4',
+  500: '#2878A6',
+  600: '#19253A',
+  700: '#0C1A29',
+  800: '#0C141E',
+  900: '#0C0D12'
 };
+
+export const main = {
+  50: '#E3F3F3',  // Muy claro
+  100: '#DFE0DC',  // Claro
+  200: '#4791BB',  // Azul más claro
+  300: '#4187B0',  // Azul claro ajustado
+  400: '#3B7CA4',  // Azul medio
+  600: '#0C1A29',  // Azul más oscuro
+  500: '#19253A',  // Azul oscuro
+  700: '#0C141E',  // Azul más fuerte
+  800: '#111827',  // Muy oscuro
+  900: '#010812'   // El más oscuro
+};
+
 
 export const secondary = {
   50: '#F9F0FF',
@@ -111,6 +125,18 @@ const getDesignTokens = (mode) => ({
       800: gray[800],
       900: gray[900],
     },
+    main: {
+      50: main[50],
+      100: main[100],
+      200: main[200],
+      300: main[300],
+      400: main[400],
+      500: main[500],
+      600: main[600],
+      700: main[700],
+      800: main[800],
+      900: main[900],
+    },
     divider: mode === 'dark' ? alpha(gray[600], 0.3) : alpha(gray[300], 0.5),
     background: {
       default: '#fff',
@@ -130,59 +156,54 @@ const getDesignTokens = (mode) => ({
     },
   },
   typography: {
-    fontFamily: '"Cabin", "Merriweather", sans-serif',
+    fontFamily: 'Rubik, Cabin, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif',
     h1: {
-      fontFamily: 'Merriweather, serif',
       fontSize: 60,
       fontWeight: 600,
-      lineHeight: 78 / 70,
+      lineHeight: 1.2,
       letterSpacing: -0.2,
     },
     h2: {
-      fontFamily: 'Merriweather, serif',
       fontSize: 48,
       fontWeight: 600,
       lineHeight: 1.2,
     },
     h3: {
-      fontFamily: 'Merriweather, serif',
       fontSize: 42,
+      fontWeight: 600,
       lineHeight: 1.2,
     },
     h4: {
-      fontFamily: 'Merriweather, serif',
       fontSize: 36,
       fontWeight: 500,
       lineHeight: 1.5,
     },
     h5: {
-      fontFamily: 'Merriweather, serif',
-      fontSize: 20,
-      fontWeight: 600,
+      fontSize: 24,
+      fontWeight: 500,
+      lineHeight: 1.5,
     },
     h6: {
-      fontFamily: 'Merriweather, serif',
       fontSize: 18,
-    },
-    subtitle1: {
-      fontSize: 18,
-    },
-    subtitle2: {
-      fontSize: 16,
+      fontWeight: 500,
+      lineHeight: 1.5,
     },
     body1: {
+      fontSize: 16,
       fontWeight: 400,
-      fontSize: 15,
+      lineHeight: 1.5,
     },
     body2: {
-      fontWeight: 400,
       fontSize: 14,
+      fontWeight: 400,
+      lineHeight: 1.5,
     },
     caption: {
-      fontWeight: 400,
       fontSize: 12,
+      fontWeight: 300,
+      lineHeight: 1.2,
     },
-  },
+  }
 });
 
 export default function getLPTheme(mode) {
@@ -302,17 +323,17 @@ export default function getLPTheme(mode) {
             }),
             ...(ownerState.variant === 'contained' &&
               ownerState.color === 'primary' && {
-                color: brand[50],
-                background: brand[500],
-                backgroundImage: `linear-gradient(to bottom, ${brand[400]}, ${brand[600]})`,
-                boxShadow: `inset 0 1px ${alpha(brand[300], 0.4)}`,
-                outline: `1px solid ${brand[700]}`,
-                '&:hover': {
-                  background: brand[400],
-                  backgroundImage: 'none',
-                  boxShadow: `0 0 0 1px  ${alpha(brand[300], 0.5)}`,
-                },
-              }),
+              color: brand[50],
+              background: brand[500],
+              backgroundImage: `linear-gradient(to bottom, ${brand[400]}, ${brand[600]})`,
+              boxShadow: `inset 0 1px ${alpha(brand[300], 0.4)}`,
+              outline: `1px solid ${brand[700]}`,
+              '&:hover': {
+                background: brand[400],
+                backgroundImage: 'none',
+                boxShadow: `0 0 0 1px  ${alpha(brand[300], 0.5)}`,
+              },
+            }),
             ...(ownerState.variant === 'outlined' && {
               backgroundColor: alpha(brand[300], 0.1),
               borderColor: brand[300],

@@ -42,7 +42,8 @@ export const register = async (username, password, email,) => {
 		if (!response.ok) {
 			throw new Error('Error en el registro');
 		}
-
+		const redirectUrl = `/login`;
+		window.location.href = redirectUrl;
 		const data = await response.json();
 		return response.status
 	} catch (error) {
