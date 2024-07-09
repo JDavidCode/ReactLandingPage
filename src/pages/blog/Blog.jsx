@@ -1,6 +1,7 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
+import { Grid, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './components/Header';
 import WidePaperPost from './components/posts/WidePaperPost';
@@ -13,121 +14,21 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import FAQ from '../components/FAQ';
 import { useInView } from 'react-intersection-observer';
-
-const mainFeaturedPost = {
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://source.unsplash.com/random?wallpapers',
-  imageText: 'main image description',
-  linkText: 'Continue reading…',
-};
-
-const SecondaryFeaturePost = [
-  {
-    title: 'Featured post',
-    date: 'Nov 12',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random?wallpapers',
-    imageLabel: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random?wallpapers',
-    imageLabel: 'Image Text',
-  },
-];
-const TercearyFeaturePost = [
-  {
-    title: 'Featured post',
-    date: 'Nov 12',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random?wallpapers',
-    imageLabel: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random?wallpapers',
-    imageLabel: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random?wallpapers',
-    imageLabel: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random?wallpapers',
-    imageLabel: 'Image Text',
-  },
-    {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random?wallpapers',
-    imageLabel: 'Image Text',
-  },
-      {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://picsum.photos/250/300',
-    imageLabel: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random?wallpapers',
-    imageLabel: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://picsum.photos/250/250',
-    imageLabel: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random?wallpapers',
-    imageLabel: 'Image Text',
-  },
-];
+import { fetchFeedContent } from '../../utils/apiContent';
+import HexLoader from '../../components/HexLoader';
 
 const FadeInSection = ({ children }) => {
   const { ref, inView } = useInView({
-    triggerOnce: true, // Activa solo una vez
-    threshold: 0.2, // Qué porcentaje del componente debe ser visible para activar
+    triggerOnce: true,
+    threshold: 0.2,
   });
 
   return (
     <div
       ref={ref}
       style={{
-        transition: 'opacity 1s ease-in-out', // Suaviza la animación
-        opacity: inView ? 1 : 0, // Cambia la opacidad en función de la visibilidad
+        transition: 'opacity 1s ease-in-out',
+        opacity: inView ? 1 : 0,
       }}
     >
       {children}
@@ -136,41 +37,78 @@ const FadeInSection = ({ children }) => {
 };
 
 export default function Blog() {
-  const [mode, setMode] = React.useState('dark');
+  const [mode, setMode] = useState('dark');
   const theme = createTheme(getLPTheme(mode));
+  const [blogContent, setBlogContent] = useState(null); // State to store fetched blog content
+  const [loading, setLoading] = useState(true); // Initialize loading state
 
   const toggleColorMode = () => {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const content = await fetchFeedContent(); 
+        setBlogContent(content); 
+      } catch (error) {
+        console.error('Error fetching blog content:', error.message);
+      } finally {
+        setLoading(false); 
+      }
+    };
+
+    fetchContent();
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <ScrollToTopOnMount />
+      {loading && (
+        <Grid item xs={12} md={12} sx={{
+          position: 'absolute', display: 'flex', justifyContent: 'center', backgroundColor: '#242424', height: '100vh', width: '100vw', top: 0, zIndex: 9999
+        }}>
+          <Box
+            sx={{
+              minHeight: '85vh',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              position: 'relative',
+            }}
+          >
+            <HexLoader />
+          </Box>
+        </Grid>
+      )}
       <Header mode={mode} toggleColorMode={toggleColorMode} />
       <Container maxWidth="lg">
         <FadeInSection>
-          <Box mt={12}>
-            <WidePaperPost post={mainFeaturedPost} />
-            <Stack display={'grid'} gridTemplateColumns={'3fr 3fr'} mt={2}>
-              {SecondaryFeaturePost.map((post) => (
-                <FadeInSection>
-                  <Box key={post.title}>
-                    <RightSideImagePost post={post} />
-                  </Box>
-                </FadeInSection>
-              ))}
-            </Stack>
-            <Stack mt={2} display={'grid'} gridTemplateColumns={'repeat(3, 1fr)'}>
-              {TercearyFeaturePost.map((post) => (
-                <FadeInSection key={post.title}>
-                  <Box>
-                    <TopSideImagePost post={post} />
-                  </Box>
-                </FadeInSection>
-              ))}
-            </Stack>
-          </Box>
+          {blogContent ? (
+            <Box mt={12}>
+              <WidePaperPost post={blogContent.main} />
+              <Stack display={'grid'} gridTemplateColumns={'3fr 3fr'} mt={2}>
+                {blogContent.secondary.map((post) => (
+                  <FadeInSection key={post.id}>
+                    <Box>
+                      <RightSideImagePost post={post} />
+                    </Box>
+                  </FadeInSection>
+                ))}
+              </Stack>
+              <Stack mt={2} display={'grid'} gridTemplateColumns={'repeat(3, 1fr)'}>
+                {blogContent.terceary.map((post) => (
+                  <FadeInSection key={post.id}>
+                    <Box>
+                      <TopSideImagePost post={post} />
+                    </Box>
+                  </FadeInSection>
+                ))}
+              </Stack>
+            </Box>
+          ) :
+            (<Typography>...</Typography>)}
         </FadeInSection>
       </Container>
       <FadeInSection>
@@ -181,4 +119,4 @@ export default function Blog() {
       </FadeInSection>
     </ThemeProvider>
   );
-}
+  }

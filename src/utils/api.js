@@ -3,7 +3,7 @@ import { getToken, saveToken } from './auth';
 // Función para manejar el login y obtener el token
 export const auth = async (username, password) => {
 	try {
-		const response = await fetch('http://localhost:3000/auth', {
+		const response = await fetch('http://localhost:3001/auth/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -12,14 +12,13 @@ export const auth = async (username, password) => {
 		});
 
 		if (!response.ok) {
-			console.log(response)
 			throw new Error('Error en el login');
 		}
 
 		const data = await response.json();
 		const token = data.token;
 		saveToken(token);
-		const redirectUrl = `http://127.0.0.1:5173/?token=${token}`;
+		const redirectUrl = `http://localhost:5174/?token=${token}`;
 		window.location.href = redirectUrl;
 
 	} catch (error) {
