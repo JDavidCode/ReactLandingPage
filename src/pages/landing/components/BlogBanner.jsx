@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button, Stack, Container } from '@mui/material';
 import TopSideImagePost from '../../blog/components/posts/TopSideImagePost'
-import { useContent } from '../../../components/Context';
+import { fetchUpdatesContent } from '../../../utils/apiContent';
 
 // BlogPage Component (Combines BlogBanner and BlogPostSection)
 function BlogPage() {
-  const { contentData } = useContent(); // Obtiene el userData del contexto de usuario
+  const [contentData, setBlogContent] = useState(null); // State to store fetched blog content
 
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const content = await fetchUpdatesContent();
+        setBlogContent(content);
+      } catch (error) {
+        console.error('Error fetching blog content:', error.message);
+      }
+    };
+
+    fetchContent();
+  }, []);
+  
   return (
     <Container sx={{ py: { xs: 8, sm: 16 } }}>
       <Box
@@ -36,7 +49,7 @@ function BlogPage() {
         gap={3}
       >
         {contentData ? (
-          contentData.map((post) => (
+          contentData.featured.map((post) => (
             <Box key={post.title}>
               <TopSideImagePost post={post} />
             </Box>

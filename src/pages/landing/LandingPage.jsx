@@ -15,8 +15,6 @@ import Footer from '../components/Footer';
 import BlogBanner from './components/BlogBanner';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
 import getTheme from '../../components/getTheme';
-import { ContentProvider, useContent } from '../../components/Context';
-import { handleContent } from '../../utils/Constants';
 
 const FadeInSection = ({ children }) => {
   const { ref, inView } = useInView({
@@ -40,21 +38,6 @@ const FadeInSection = ({ children }) => {
 const Landing = () => {
   const [mode, setMode] = useState('dark');
   const theme = createTheme(getTheme(mode));
-  const { contentData, updateContent } = useContent(); // Usa el hook useUser para acceder al contexto
-  
-  useEffect(() => {
-    const getContent = async () => {
-      try {
-        await handleContent(updateContent);
-      } catch (error) {
-        console.error('Error fetching user data:', error.message);
-      }
-    };
-
-    // Call getContent immediately after defining it
-    getContent();
-  }, []);
-
 
   const toggleColorMode = () => {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -103,10 +86,4 @@ const Landing = () => {
   );
 }
 
-const LandingWithContentProvider = () => (
-  <ContentProvider>
-    <Landing />
-  </ContentProvider>
-);
-
-export default LandingWithContentProvider;
+export default Landing;

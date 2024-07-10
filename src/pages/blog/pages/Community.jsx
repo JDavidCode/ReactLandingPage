@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import { fetchCommunityContent } from '../../../utils/apiContent';
 import HexLoader from '../../../components/HexLoader';
 import { Grid } from '@mui/material';
+import FadeInSection from '../../components/FadeInSection'
 
 export default function Community() {
 	const [mode, setMode] = React.useState('dark');
@@ -41,41 +42,26 @@ export default function Community() {
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<ScrollToTopOnMount />
-			{loading && (
-				<Grid item xs={12} md={12} sx={{
-					position: 'absolute', display: 'flex', justifyContent: 'center', backgroundColor: '#242424', height: '100vh', width: '100vw', top: 0, zIndex: 9999
-				}}>
-					<Box
-						sx={{
-							minHeight: '85vh',
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-							position: 'relative',
-						}}
-					>
-						<HexLoader />
-					</Box>
-				</Grid>
-			)}
 			<Header mode={mode} toggleColorMode={toggleColorMode} />
 			<Container maxWidth="lg" sx={{pt: { xs: 4, sm: 12 },}}>
-				<Box
-					alignItems={'center'}
-					mx='auto'
-	        sx={{
-	          width: { sm: '100%', md: '60%' },
-	          textAlign: 'center',
-	        }}
-	      >
-	        <Typography component="h2" variant="h4" color="text.primary">
-	          Community Post
-	        </Typography>
-	        <Typography variant="body1" color="text.secondary">
-	          Share your experiences with our products and let others know what you love about them. We're dedicated to efficiency, durability, and customer satisfaction. Join our community to share your ideas, recommendations, and feedback, and help us shape the future of quality and innovation.
-	        </Typography>
-	      </Box>
-				<CommunityPost />
+				<FadeInSection>
+					<Box
+						alignItems={'center'}
+						mx='auto'
+						sx={{
+							width: { sm: '100%', md: '60%' },
+							textAlign: 'center',
+						}}
+					>
+						<Typography component="h2" variant="h4" color="text.primary">
+							Community Post
+						</Typography>
+						<Typography variant="body1" color="text.secondary">
+							Share your experiences with our products and let others know what you love about them. We're dedicated to efficiency, durability, and customer satisfaction. Join our community to share your ideas, recommendations, and feedback, and help us shape the future of quality and innovation.
+						</Typography>
+					</Box>
+					<CommunityPost />
+				</FadeInSection>
 			</Container>
 			<Footer />
 		</ThemeProvider>
