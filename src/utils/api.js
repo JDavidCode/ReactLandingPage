@@ -30,7 +30,7 @@ export const auth = async (username, password) => {
 // Método para registrar al usuario
 export const register = async (username, password, email,) => {
 	try {
-		const response = await fetch('http://localhost:3000/register', {
+		const response = await fetch('http://localhost:3001/auth/register', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

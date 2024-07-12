@@ -22,7 +22,7 @@ function TopSideImageMiniPost(props) {
               {post.date}
             </Typography>
             <Typography variant="subtitle1" paragraph>
-              {post.description}
+              {post.content}
             </Typography>
             <Typography variant="subtitle1" color="primary">
               Continue reading...

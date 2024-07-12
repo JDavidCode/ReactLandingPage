@@ -37,7 +37,7 @@ function RightSideImageMiniPost(props) {
                 overflow: 'hidden',
               }}
             >
-              {post.description}
+              {post.content}
             </Typography>
             <Typography variant="subtitle1" color="primary">
               Continue reading...

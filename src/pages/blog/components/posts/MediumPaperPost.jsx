@@ -63,7 +63,7 @@ function MediumPaperPost(props) {
                 textOverflow: 'ellipsis', // Ensure text doesn't overflow
               }}
             >
-              {post.description}
+              {post.content}
             </Typography>
             <Link variant="subtitle1" href="#" sx={{ textOverflow: 'ellipsis' }}>
               {post.linkText}

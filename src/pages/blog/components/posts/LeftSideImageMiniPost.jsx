@@ -18,7 +18,7 @@ function LeftSideImageMiniPost(props) {
           <CardMedia
             component="img"
             sx={{
-              width: 100, 
+              width: 100,
               display: { xs: 'none', sm: 'block' },
               height: '100%', // Match the height of the card
             }}
@@ -46,7 +46,7 @@ function LeftSideImageMiniPost(props) {
                 overflow: 'hidden',
               }}
             >
-              {post.description}
+              {post.content}
             </Typography>
             <Typography variant="subtitle1" color="primary">
               Continue reading...

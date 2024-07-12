@@ -12,6 +12,7 @@ function BlogPage() {
       try {
         const content = await fetchUpdatesContent();
         setBlogContent(content);
+        console.log(content.featured); // Correctly log contentData after it's updated
       } catch (error) {
         console.error('Error fetching blog content:', error.message);
       }
@@ -19,7 +20,9 @@ function BlogPage() {
 
     fetchContent();
   }, []);
-  
+
+
+
   return (
     <Container sx={{ py: { xs: 8, sm: 16 } }}>
       <Box
@@ -49,7 +52,7 @@ function BlogPage() {
         gap={3}
       >
         {contentData ? (
-          contentData.featured.map((post) => (
+          contentData.main.map((post) => (
             <Box key={post.title}>
               <TopSideImagePost post={post} />
             </Box>

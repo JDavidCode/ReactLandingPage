@@ -7,11 +7,10 @@ import Footer from '../../components/Footer';
 import CommunityPost from '../components/posts/CommunityPost';
 import getTheme from '../../../components/getTheme';
 import ScrollToTopOnMount from '../../../components/ScrollToTop';
+import { Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { fetchCommunityContent } from '../../../utils/apiContent';
-import HexLoader from '../../../components/HexLoader';
-import { Grid } from '@mui/material';
 import FadeInSection from '../../components/FadeInSection'
 
 export default function Community() {
@@ -43,7 +42,7 @@ export default function Community() {
 			<CssBaseline />
 			<ScrollToTopOnMount />
 			<Header mode={mode} toggleColorMode={toggleColorMode} />
-			<Container maxWidth="lg" sx={{pt: { xs: 4, sm: 12 },}}>
+			<Container maxWidth="lg" sx={{ pt: { xs: 4, sm: 12 }, }}>
 				<FadeInSection>
 					<Box
 						alignItems={'center'}
@@ -60,7 +59,20 @@ export default function Community() {
 							Share your experiences with our products and let others know what you love about them. We're dedicated to efficiency, durability, and customer satisfaction. Join our community to share your ideas, recommendations, and feedback, and help us shape the future of quality and innovation.
 						</Typography>
 					</Box>
-					<CommunityPost />
+					{blogContent ? (
+						<Box mt={12}>
+							<Stack display={'grid'} gridTemplateColumns={'3fr 3fr'} mt={2} gap={2}>
+								{blogContent.main.map((post) => (
+									<FadeInSection key={post.id}>
+										<Box>
+											<CommunityPost post={post} key={post.id} />
+										</Box>
+									</FadeInSection>
+								))}
+							</Stack>
+						</Box>
+					) :
+						(<Typography>...</Typography>)}
 				</FadeInSection>
 			</Container>
 			<Footer />

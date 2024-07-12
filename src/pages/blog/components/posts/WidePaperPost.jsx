@@ -46,7 +46,7 @@ function WidePaperPost(props) {
               {post.title}
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
-              {post.description}
+              {post.content}
             </Typography>
             <Link variant="subtitle1" href="#">
               {post.linkText}
