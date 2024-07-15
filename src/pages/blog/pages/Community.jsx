@@ -16,8 +16,8 @@ import FadeInSection from '../../components/FadeInSection'
 export default function Community() {
 	const [mode, setMode] = React.useState('dark');
 	const theme = createTheme(getTheme(mode));
-	const [blogContent, setBlogContent] = useState(null); // State to store fetched blog content
-	const [loading, setLoading] = useState(true); // Initialize loading state
+	const [blogContent, setBlogContent] = useState(null);
+	const [loading, setLoading] = useState(true);
 
 	const toggleColorMode = () => {
 		setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
