@@ -20,4 +20,4 @@ FROM nginx:latest
 COPY --from=builder /app/dist/ /usr/share/nginx/html/
 
 # Expose port 80 for Nginx
-EXPOSE 80
+EXPOSE 8080
