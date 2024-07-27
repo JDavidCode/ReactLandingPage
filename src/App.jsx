@@ -3,11 +3,11 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import LandingPage from './pages/landing/LandingPage';
-import BlogPage from './blog/Blog';
-import CommunityBlogPage from './blog/pages/Community';
-import UpdatesBlogPage from './blog/pages/Updates';
-import SignInPage from './auth/SignIn';
-import SignUpPage from './auth/SignUp';
+import BlogPage from './pages/blog/Blog';
+import CommunityBlogPage from './pages/blog/pages/Community';
+import UpdatesBlogPage from './pages/blog/pages/Updates';
+import SignInPage from './pages/auth/SignIn';
+import SignUpPage from './pages/auth/SignUp';
 import HexLoader from './components/HexLoader'; // Ensure this path is correct
 import getLPTheme from './components/getTheme';
 import CssBaseline from '@mui/material/CssBaseline';
