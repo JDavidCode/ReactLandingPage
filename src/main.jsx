@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from './landing/LandingPage';
 import Countdown from './components/Countdown';
 
+import Countdown from './components/Countdown';
+
 import BlogPage from './blog/Blog';
 import CommunityBlogPage from './blog/pages/Community';
 import UpdatesBlogPage from './blog/pages/Updates';
@@ -25,11 +27,17 @@ ReactDOM.render(
           {/* 
                     <Route path="/" element={<LandingPage />} />
 
+          <Route path="/" element={<Countdown />} />
+          {/* 
+                    <Route path="/" element={<LandingPage />} />
+
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/updates" element={<UpdatesBlogPage />} />
           <Route path="/blog/community" element={<CommunityBlogPage />} />
           <Route path="/login" element={<SignInPage />} />
           <Route path="/register" element={<SignUpPage />} />
+          */}
+
           */}
 
 				</Routes>
