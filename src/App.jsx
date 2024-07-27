@@ -1,28 +1,40 @@
-import React, { useEffect } from 'react';
-import {
-  Routes,
-  Route,
-  useLocation
-} from 'react-router-dom';
-import './css/style.css';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import LandingPage from './pages/landing/LandingPage';
+import BlogPage from './pages/blog/Blog';
+import CommunityBlogPage from './pages/blog/pages/Community';
+import UpdatesBlogPage from './pages/blog/pages/Updates';
+import SignInPage from './pages/auth/SignIn';
+import SignUpPage from './pages/auth/SignUp';
+import getLPTheme from './components/getTheme';
+import CssBaseline from '@mui/material/CssBaseline';
 
-// Import pages
-import LandingPage from './components/Countdown';
+const theme = createTheme(getLPTheme('dark'));
 
-function App() {
-  const location = useLocation();
-  useEffect(() => {
-    document.querySelector('html').style.scrollBehavior = 'auto'
-    window.scroll({ top: 0 })
-    document.querySelector('html').style.scrollBehavior = ''
-  }, [location.pathname]); // triggered on route change
-
+const App = () => {
   return (
-    <>
-      <Routes>
-        <Route exact path="/" element={<LandingPage />} />
-      </Routes>
-    </>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/updates" element={<UpdatesBlogPage />} />
+              <Route path="/blog/community" element={<CommunityBlogPage />} />
+              <Route path="/login" element={<SignInPage />} />
+              <Route path="/register" element={<SignUpPage />} />
+            </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
-}
-export default App;
+};
+
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
