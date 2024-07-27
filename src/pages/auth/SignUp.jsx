@@ -42,10 +42,13 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box position="fixed"
+      <Box
         sx={{
           boxShadow: 0,
           backgroundImage: mode === 'dark' ? `url(${BackgroundDark})` : `url(${BackgroundWhite})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center', 
+          backgroundRepeat: 'no-repeat',
           width: '100vw',
           height: '100vh'
         }}>

@@ -44,7 +44,9 @@ function SignIn() {
         sx={{
           boxShadow: 0,
           backgroundImage: mode === 'dark' ? `url(${BackgroundDark})` : `url(${BackgroundWhite})`,
-          width: '100vw',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat', width: '100vw',
           height: '100vh'
         }}>
         <Container
