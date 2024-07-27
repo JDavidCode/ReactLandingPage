@@ -42,47 +42,28 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box xs={12} sx={{ backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)', backgroundSize: 'cover', width: '100vw', height: '100vh' }}>
-        <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-      </Box>
-
-
       <Box position="fixed"
         sx={{
           boxShadow: 0,
-          bgcolor: 'transparent',
           backgroundImage: mode === 'dark' ? `url(${BackgroundDark})` : `url(${BackgroundWhite})`,
-          left: 0,
-          right: 0,
-          top: '50%',
-          transform: 'translateY(-50%)',
+          width: '100vw',
+          height: '100vh'
         }}>
         <Container
           maxWidth="xs"
-          sx={(theme) => ({
-            bgcolor:
-              theme.palette.mode === 'light'
-                ? 'rgba(17, 24, 39, 1)'
-                : 'rgba(0, 0, 0, 0.4)',
-            backgroundColor: 'rgba(17, 24, 39, 1)',
-            borderRadius: '0.75rem',
-            padding: '2rem',
-            color: 'rgba(243, 244, 246, 1)',
-            boxShadow:
-              theme.palette.mode === 'light'
-                ? `0 0 1px rgba(85, 166, 246, 0.1), 1px 1.5px 2px -1px rgba(85, 166, 246, 0.15), 4px 4px 12px -2.5px rgba(85, 166, 246, 0.15)`
-                : '0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)',
-          })}
         >
           <CssBaseline />
           <ScrollToTopOnMount />
           <Box
+            position="fixed"
             maxWidth="xs"
             sx={{
               backgroundColor: 'rgba(17, 24, 39, 1)',
               borderRadius: '0.75rem',
               padding: '2rem',
               color: 'rgba(243, 244, 246, 1)',
+              top: '50%',
+              transform: 'translateY(-50%)',
             }}
           >
             <Typography
