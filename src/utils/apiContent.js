@@ -1,6 +1,6 @@
 export const fetchFeedContent = async () => {
 	try {
-		const response = await fetch('http://localhost:3003/content/feed', {
+		const response = await fetch('http://localhost:3003/feed', {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ export const fetchFeedContent = async () => {
 };
 export const fetchUpdatesContent = async () => {
 	try {
-		const response = await fetch('http://localhost:3003/content/updates', {
+		const response = await fetch('http://localhost:3003/updates', {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ export const fetchUpdatesContent = async () => {
 
 export const fetchCommunityContent = async () => {
 	try {
-		const response = await fetch('http://localhost:3003/content/community', {
+		const response = await fetch('http://localhost:3003/community', {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'

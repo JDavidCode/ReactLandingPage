@@ -33,7 +33,7 @@ function SignIn() {
       await auth(username, password);
 
     } catch (error) {
-      console.error("");
+      console.error(error);
     }
   };
 

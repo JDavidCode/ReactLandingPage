@@ -36,7 +36,7 @@ export default function SignUp() {
       // Redirect the user
       window.location.href = redirectUrl;
     } catch (error) {
-      console.error('Error en el login:', 'Error en el login.Verifica tus credenciales.');
+      console.error(error);
     }
   };
 

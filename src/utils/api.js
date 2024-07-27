@@ -3,7 +3,7 @@ import { getToken, saveToken } from './auth';
 // Función para manejar el login y obtener el token
 export const auth = async (username, password) => {
 	try {
-		const response = await fetch('http://localhost:3001/auth/login', {
+		const response = await fetch('http://localhost:3001/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ export const auth = async (username, password) => {
 // Método para registrar al usuario
 export const register = async (username, password, email,) => {
 	try {
-		const response = await fetch('http://localhost:3001/auth/register', {
+		const response = await fetch('http://localhost:3001/register', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
