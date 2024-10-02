@@ -50,7 +50,7 @@ export default function Blog() {
         <FadeInSection>
           {blogContent ? (
             <Box mt={12}>
-              <WidePaperPost post={blogContent.main} />
+              <WidePaperPost post={blogContent.main[0]} />
               <Stack display={'grid'} gridTemplateColumns={'3fr 3fr'} mt={2}>
                 {blogContent.secondary.map((post) => (
                   <FadeInSection key={post.id}>

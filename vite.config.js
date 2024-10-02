@@ -1,12 +1,26 @@
+import path from 'path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import svgr from "vite-plugin-svgr";
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), svgr()],
-  assetsInclude: "**/*.md",
-  preview: {
-    host: true,
-    port:8080
-  }
+  define: {
+    'process.env': process.env
+  },
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@tailwindConfig': path.resolve(__dirname, 'tailwind.config.js'),
+    },
+  },
+  optimizeDeps: {
+    include: [
+      '@tailwindConfig',
+    ]
+  }, 
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    }
+  } 
 })

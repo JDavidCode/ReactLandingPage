@@ -33,10 +33,9 @@ function Header({ mode, toggleColorMode }) {
           boxShadow: 0,
           bgcolor: 'transparent',
           backgroundImage: 'none',
-          mt: 1,
         }}
       >
-        <Container maxWidth="lg">
+        <Box>
           <Toolbar
             variant="regular"
             sx={(theme) => ({
@@ -44,11 +43,10 @@ function Header({ mode, toggleColorMode }) {
               alignItems: 'center',
               justifyContent: 'space-between',
               flexShrink: 0,
-              borderRadius: '999px',
               bgcolor:
                 theme.palette.mode === 'light'
-                  ? 'rgba(255, 255, 255, 0.4)'
-                  : 'rgba(0, 0, 0, 0.4)',
+                  ? 'rgba(255, 255, 255, 0.2)'
+                  : 'rgba(0, 0, 0, 0.2)',
               backdropFilter: 'blur(24px)',
               maxHeight: 40,
               border: '1px solid',
@@ -64,8 +62,8 @@ function Header({ mode, toggleColorMode }) {
                 mb={1}
                 mx={.7}
                 sx={(theme) => ({
-                  backgroundImage:  theme.palette.mode === 'light'
-                  ? `url(${BannerLight})`
+                  backgroundImage: theme.palette.mode === 'light'
+                    ? `url(${BannerLight})`
                     : `url(${BannerDark})`,
                   backgroundSize: 'cover',
                   width: 50,
@@ -205,7 +203,7 @@ function Header({ mode, toggleColorMode }) {
               </Drawer>
             </Box>
           </Toolbar>
-        </Container>
+        </Box>
 
       </AppBar>
     </div>
