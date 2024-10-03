@@ -16,9 +16,9 @@ export default function Services() {
       </div>
       <div className="mx-auto">
         <div className="container mx-auto w-10/12 mb-16">
-          <div className="my-16 text-center md:text-left">
+          <div className="my-16 text-center ">
             <h1 className="text-4xl font-extrabold text-black">Services</h1>
-            <p className="text-sm pt-4 pb-8">
+            <p className="text-sm pt-4 pb-8 w-2/3 mx-auto">
               Discover our adaptable services designed to meet every need.
               Whether you’re an individual seeking personalized support or a
               business with unique requirements, we have the flexibility and

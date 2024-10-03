@@ -41,7 +41,7 @@ const FAQ = () => {
   };
 
   return (
-    <div id="faq" className="py-8 px-6 sm:py-8 bg-gray-800 flex flex-col items-center gap-6">
+    <section id="faq" className="py-8 px-6 sm:py-8 bg-gray-800 flex flex-col items-center gap-6">
       <h2 className="text-2xl text-gray-100 text-center mb-4">Frequently Asked Questions</h2>
 
       <div className="w-full px-8 mx-auto container">
@@ -63,7 +63,7 @@ const FAQ = () => {
         ))}
       </div>
       <hr className="w-full my-8 border-gray-300" />
-    </div>
+    </section>
   );
 };
 

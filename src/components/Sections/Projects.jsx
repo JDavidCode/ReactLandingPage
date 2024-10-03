@@ -35,7 +35,7 @@ export default function Projects() {
         <div className="container mx-auto w-10/12">
           <div className="text-center">
             <h1 className="text-4xl font-extrabold text-black">Projects</h1>
-            <p className="text-sm pt-4 pb-8">
+            <p className="text-sm pt-4 mx-auto w-5/6 pb-8">
               Discover our innovative projects in AI, VR, and gaming. Dive into our latest developments to uncover unique features and benefits.
               <br />
               Every project is built upon our core features stack, ensuring innovation and quality in everything we create.              
