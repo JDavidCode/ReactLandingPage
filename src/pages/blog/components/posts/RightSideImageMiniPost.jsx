@@ -12,14 +12,14 @@ function RightSideImageMiniPost(props) {
         <Card
           sx={{
             display: 'flex',
-            height: 100, // Set fixed height for the card
-            overflow: 'hidden', // Prevent content overflow
+            height: 100, 
+            overflow: 'hidden', 
           }}
         >
           <CardContent
             sx={{
               flex: 1,
-              overflow: 'hidden', // Prevent content overflow
+              overflow: 'hidden', 
             }}
           >
             <Typography component="h2" variant="h5" noWrap>
@@ -32,7 +32,7 @@ function RightSideImageMiniPost(props) {
               variant="subtitle1"
               paragraph
               sx={{
-                whiteSpace: 'discard-after', // Prevent text wrapping
+                whiteSpace: 'discard-after', 
                 textOverflow: 'ellipsis',
                 overflow: 'hidden',
               }}
@@ -47,7 +47,7 @@ function RightSideImageMiniPost(props) {
             component="img"
             sx={{
               width: 160,
-              height: '100%', // Ensure it matches the card's height
+              height: '100%', 
               display: { xs: 'none', sm: 'block' },
             }}
             image={post.image}

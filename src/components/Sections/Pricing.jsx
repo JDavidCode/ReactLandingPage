@@ -1,5 +1,5 @@
 import React from "react";
-// Components
+
 import PricingTable from "../Elements/PricingTable";
 const userTiers = [
   {
@@ -46,7 +46,7 @@ const userTiers = [
     buttonVariant: "contained",
   },
   {
-    title: "Platinum",
+    title: "Emerald",
     price: "100",
     description: "",
     offers: [
@@ -77,7 +77,7 @@ const userTiers = [
   },
   {
     title: "Enterprise",
-    price: "$$",
+    price: "-",
     description: "",
     offers: [
       "As needed generations per hour",
@@ -94,7 +94,7 @@ const userTiers = [
 export default function Pricing() {
   return (
     <section className="w-full" id="pricing">
-      <div className="bg-white py-16">
+      <div className="py-16">
         <div className="container mx-auto w-10/12">
           <div className="mb-12 text-center md:text-left">
             <h1 className="text-4xl font-extrabold text-black pt-8">
@@ -112,15 +112,14 @@ export default function Pricing() {
             {userTiers.map((tier, index) => (
               <div key={index} className="w-full sm:w-1/3 p-2">
                 <PricingTable
-                  icon="roller" // Ajusta el ícono según sea necesario
-                  price={`$${tier.price}/mo`} // Formatea el precio como string
-                  title={tier.title} // Título del plan
-                  text={tier.description} // Une la descripción en una línea si es necesario
+                  price={`$${tier.price}`} 
+                  title={tier.title} 
+                  text={tier.description} 
                   offers={tier.offers.map((offer, i) => ({
                     name: offer,
                     checked: true,
-                  }))} // Marcamos todo como "checked"
-                  action={() => alert(`Selected ${tier.title} Plan`)} // Acción al hacer clic en el botón
+                  }))} 
+                  action={() => alert(`Selected ${tier.title} Plan`)} 
                 />
               </div>
             ))}

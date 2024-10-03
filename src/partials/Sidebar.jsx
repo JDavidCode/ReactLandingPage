@@ -1,5 +1,5 @@
 import React from "react";
-// Assets
+
 import CloseIcon from "../assets/svg/CloseIcon";
 import LogoIcon from "../assets/svg/Logo.svg";
 

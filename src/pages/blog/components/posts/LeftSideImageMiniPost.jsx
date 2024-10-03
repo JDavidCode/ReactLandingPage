@@ -11,8 +11,8 @@ function LeftSideImageMiniPost(props) {
         <Card
           sx={{
             display: 'flex',
-            height: 100, // Set fixed height for the card
-            overflow: 'hidden', // Avoid overflow
+            height: 100, 
+            overflow: 'hidden', 
           }}
         >
           <CardMedia
@@ -20,7 +20,7 @@ function LeftSideImageMiniPost(props) {
             sx={{
               width: 100,
               display: { xs: 'none', sm: 'block' },
-              height: '100%', // Match the height of the card
+              height: '100%', 
             }}
             image={post.image}
             alt={post.imageLabel}
@@ -28,7 +28,7 @@ function LeftSideImageMiniPost(props) {
           <CardContent
             sx={{
               flex: 1,
-              overflow: 'hidden', // Prevent content overflow
+              overflow: 'hidden', 
             }}
           >
             <Typography component="h2" variant="h5" noWrap>
@@ -41,7 +41,7 @@ function LeftSideImageMiniPost(props) {
               variant="subtitle1"
               paragraph
               sx={{
-                whiteSpace: 'discard-after', // Prevent text wrapping
+                whiteSpace: 'discard-after', 
                 textOverflow: 'ellipsis',
                 overflow: 'hidden',
               }}

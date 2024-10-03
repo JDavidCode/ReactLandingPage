@@ -1,5 +1,5 @@
 import React from "react";
-// Components
+
 import TestimonialBox from "../Elements/TestimonialBox";
 
 export default function TestimonialSlider() {

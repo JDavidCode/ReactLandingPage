@@ -1,23 +1,20 @@
 import React from "react";
-// Components
+
 import ClientSlider from "../Elements/ClientSlider";
 import ServiceBox from "../Elements/ServiceBox";
 import FullButton from "../Buttons/FullButton";
-// Assets
-import AddImage1 from "../../assets/img/add/people_branches.png";
-import AddImage2 from "../../assets/img/add/2.png";
-import AddImage3 from "../../assets/img/add/tech_idea.png";
-import AddImage4 from "../../assets/img/add/4.png";
+
+import Inspiration from "../../assets/svg/ideas_inspiration.svg";
 
 export default function Services() {
   return (
-    <section id="services" className="w-full bg-white">
-      <div className="bg-gray-200 py-16">
+    <section id="services" className="w-full">
+      <div className="bg-gray-200 py-20">
         <div className="container justify-center mx-auto">
           <ClientSlider />
         </div>
       </div>
-      <div className="bg-white mx-auto">
+      <div className="mx-auto">
         <div className="container mx-auto w-10/12 mb-16">
           <div className="my-16 text-center md:text-left">
             <h1 className="text-4xl font-extrabold text-black">Services</h1>
@@ -55,7 +52,7 @@ export default function Services() {
             </div>
             <div className="w-full sm:w-1/4 p-3">
               <ServiceBox
-                icon="application" // Corrected to 'application'
+                icon="application" 
                 title="Integrations"
                 subtitle="Streamline your workflow with easy integrations."
               />
@@ -64,12 +61,12 @@ export default function Services() {
         </div>
       </div>
 
-      <div className="bg-gray-100">
+      <div className="bg-gray-100 py-16">
         <div className="container mx-auto w-11/12">
           <div className="flex flex-wrap items-center justify-between relative">
             <div className="w-full md:w-1/2 p-4">
-              <h4 className="text-base font-semibold">Did you know?</h4>
-              <h2 className="text-4xl font-extrabold text-black">
+              <h4 className="text-base font-semibold pb-3">Did you know?</h4>
+              <h2 className="text-4xl font-extrabold text-black pb-3">
                 Your ideas move us
               </h2>
               <p className="text-sm max-w-lg">
@@ -98,32 +95,11 @@ export default function Services() {
 
             <div className="w-full md:w-1/2 relative md:right-0">
               <div className="flex flex-wrap justify-center">
-                <div className="w-1/2 p-2">
+                <div className="w-2/3">
                   <img
-                    src={AddImage1}
+                    src={Inspiration}
                     alt="office"
-                    className="w-[285px] h-[406px] rounded-lg shadow-lg"
-                  />
-                </div>
-                <div className="w-1/3 p-2">
-                  <img
-                    src={AddImage2}
-                    alt="office"
-                    className="w-full rounded-lg shadow-lg"
-                  />
-                </div>
-                <div className="w-1/4 p-2">
-                  <img
-                    src={AddImage3}
-                    alt="office"
-                    className="w-[125px] h-[125px] rounded-lg shadow-lg"
-                  />
-                </div>
-                <div className="w-1/3 p-2">
-                  <img
-                    src={AddImage4}
-                    alt="office"
-                    className="w-full rounded-lg shadow-lg"
+                    className="h-[400px] rounded-lg"
                   />
                 </div>
               </div>

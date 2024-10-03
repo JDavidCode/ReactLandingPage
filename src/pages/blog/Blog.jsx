@@ -22,7 +22,7 @@ import FadeInSection from '../components/FadeInSection'
 export default function Blog() {
   const [mode, setMode] = useState('dark');
   const theme = createTheme(getLPTheme(mode));
-  const [blogContent, setBlogContent] = useState(null); // State to store fetched blog content
+  const [blogContent, setBlogContent] = useState(null); 
 
   const toggleColorMode = () => {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));

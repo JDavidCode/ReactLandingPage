@@ -20,8 +20,8 @@ function MediumPaperPost(props) {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundImage: `url(${post.image})`,
-        height: 200, // Fix the maximum height to 200px
-        overflow: 'hidden', // Ensure no content overflow
+        height: 200, 
+        overflow: 'hidden', 
       }}
     >
       <img style={{ display: 'none' }} src={post.image} alt={post.imageText} />
@@ -42,7 +42,7 @@ function MediumPaperPost(props) {
               position: 'relative',
               p: { xs: 3, md: 6 },
               pr: { md: 0 },
-              overflow: 'hidden', // Ensure content remains within bounds
+              overflow: 'hidden', 
             }}
           >
             <Typography
@@ -59,8 +59,8 @@ function MediumPaperPost(props) {
               color="inherit"
               paragraph
               sx={{
-                whiteSpace: 'nowrap', // Prevent text wrapping
-                textOverflow: 'ellipsis', // Ensure text doesn't overflow
+                whiteSpace: 'nowrap', 
+                textOverflow: 'ellipsis', 
               }}
             >
               {post.content}

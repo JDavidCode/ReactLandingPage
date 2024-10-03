@@ -21,8 +21,8 @@ import FadeInSection from '../../components/FadeInSection'
 export default function Updates() {
 	const [mode, setMode] = React.useState('dark');
 	const theme = createTheme(getTheme(mode));
-	const [blogContent, setBlogContent] = useState(null); // State to store fetched blog content
-	const [socialIcons, setSocialIcons] = useState([]); // State to store loaded social icons
+	const [blogContent, setBlogContent] = useState(null); 
+	const [socialIcons, setSocialIcons] = useState([]); 
 
 	const toggleColorMode = () => {
 		setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -39,7 +39,7 @@ export default function Updates() {
 			setSocialIcons(loadedIcons);
 		} catch (error) {
 			console.error('Error loading icons:', error);
-			// Handle error state or fallback
+			
 		}
 	};
 
@@ -86,7 +86,7 @@ export default function Updates() {
 									title={blogContent.sidebar.title}
 									description={blogContent.sidebar.description}
 									archives={blogContent.sidebar.archives}
-									social={socialIcons} // Pass loaded social icons here
+									social={socialIcons} 
 								/>
 							</Box>
 						</Box>

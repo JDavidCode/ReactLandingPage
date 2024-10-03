@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-// Assets
+
 import ClientLogo01 from "../../assets/img/clients/logo01.svg";
 import ClientLogo02 from "../../assets/img/clients/logo02.svg";
 import ClientLogo03 from "../../assets/img/clients/logo03.svg";
@@ -12,7 +12,7 @@ export default function ClientSlider() {
 
 
   return (
-    <div className="relative overflow-hidden flex justify-center">
+    <div className="relative overflow-hidden flex justify-center ">
       <div
         ref={sliderRef}
         className="flex space-x-4 overflow-x-auto scroll-smooth no-scrollbar"

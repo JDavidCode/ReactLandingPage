@@ -1,5 +1,5 @@
 import React from "react";
-// Components
+
 import BlogBox from "../Elements/BlogBox";
 import FullButton from "../Buttons/FullButton";
 import TestimonialSlider from "../Elements/TestimonialSlider";
@@ -23,32 +23,20 @@ const blogPosts = [
     author: "Han Solo, 3 days ago",
   },
   {
-    title: "Tech Innovations",
-    text: "Join us as we explore the latest trends in technology and what to expect in the coming year.",
-    tag: "technology",
-    author: "Rey, 5 days ago",
-  },
-  {
     title: "Sustainability Initiatives",
     text: "Learn about our commitment to sustainability and the steps we're taking to reduce our footprint.",
     tag: "sustainability",
     author: "Chewbacca, 1 month ago",
-  },
-  {
-    title: "Community Spotlight",
-    text: "Read inspiring stories from our users who have made a difference using Arnica.",
-    tag: "community",
-    author: "C-3PO, 2 weeks ago",
-  },
+  }
 ];
 export default function Blog() {
   return (
-    <section id="blog" className="w-full pt-12 mx-auto bg-white">
+    <section id="blog" className="w-full pt-12">
       <div className="w-10/12 mx-auto">
-        <div className="container">
-          <div className="my-8">
+        <div className="container mx-auto">
+          <div className="my-8  text-center">
             <h1 className="text-4xl font-black text-black pt-4">
-              Our Blog Stories
+              From Our Blog
             </h1>
             <p className="text-sm pt-4 pb-8">
               Explore our latest articles, updates, and product launches.
@@ -73,13 +61,13 @@ export default function Blog() {
             </div>
           </div>
           <div className="flex justify-center mb-8">
-            <div className="my-12 w-52">
-              <FullButton title="Load More" action={() => alert("clicked")} />
+            <div className="my-12 w-36">
+              <FullButton title="See More!" action={() => alert("clicked")} />
             </div>
           </div>
         </div>
       </div>
-      <div className="py-12 bg-gray-200">
+      <div className="py-12 bg-gray-200 mx-auto">
         <div className="container mx-auto w-10/12 ">
           <div className="">
             <h1 className="text-4xl font-extrabold text-black">

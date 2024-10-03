@@ -10,8 +10,8 @@ import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import MenuIcon from '@mui/icons-material/Menu';
-import BannerDark from '../../../assets/BannerDark.webp'; // Import the image file
-import BannerLight from '../../../assets/BannerWhite.webp'; // Import the image file
+import BannerDark from '../../../assets/BannerDark.webp'; 
+import BannerLight from '../../../assets/BannerWhite.webp'; 
 
 import ToggleColorMode from '../../../components/ToggleColorMode';
 import { Link } from 'react-router-dom';

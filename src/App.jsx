@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import './css/style.css'
-// Import pages
+
 import Landing from "./pages/Landing.jsx";
 import Login from "./pages/auth/Login.jsx";
 import SignUp from "./pages/auth/SignUp.jsx";
@@ -19,7 +19,7 @@ function App() {
     document.querySelector('html').style.scrollBehavior = 'auto'
     window.scroll({ top: 0 })
     document.querySelector('html').style.scrollBehavior = ''
-  }, [location.pathname]); // triggered on route change
+  }, [location.pathname]); 
 
   return (
     <>

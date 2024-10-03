@@ -1,6 +1,6 @@
 import { getToken } from './Auth';
 
-// Función para obtener datos de usuarios desde el servidor
+
 export const fetchUserData = async () => {
 	try {
 		const token = getToken();

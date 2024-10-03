@@ -1,10 +1,10 @@
 import React from "react";
-// Assets
-import CloudIcon from "../../assets/svg/cloud.svg"; // Changed to CloudIcon
-import LockIcon from "../../assets/svg/lock.svg"; // Changed to LockIcon
-import ReportIcon from "../../assets/svg/report.svg"; // Changed to ReportIcon
-import ApplicationIcon from "../../assets/svg/application.svg"; // Changed to ApplicationIcon
-import ControlIcon from "../../assets/svg/adjust.svg"; // Changed to ApplicationIcon
+
+import CloudIcon from "../../assets/svg/cloud.svg"; 
+import LockIcon from "../../assets/svg/lock.svg"; 
+import ReportIcon from "../../assets/svg/report.svg"; 
+import ApplicationIcon from "../../assets/svg/application.svg"; 
+import ControlIcon from "../../assets/svg/adjust.svg"; 
 
 export default function ServiceBox({ icon, title, subtitle }) {
   let iconSrc;

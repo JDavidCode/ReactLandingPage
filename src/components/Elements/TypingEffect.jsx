@@ -6,15 +6,16 @@ const TypingEffect = ({ text, speed }) => {
   useEffect(() => {
     let index = 0;
     const typingInterval = setInterval(() => {
-      if (index < text.length-1) {
-        setDisplayedText((prev) => prev + text[index]);
+      if (index < text.length) {
+        const currentChar = text[index];
+        setDisplayedText((prevDisplayedText) => prevDisplayedText + currentChar);
         index++;
       } else {
         clearInterval(typingInterval);
       }
     }, speed);
 
-    return () => clearInterval(typingInterval); // Limpiar intervalo al desmontar
+    return () => clearInterval(typingInterval);
   }, [text, speed]);
 
   return <span>{displayedText}</span>;

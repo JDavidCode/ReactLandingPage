@@ -1,5 +1,5 @@
 import React from "react";
-// Assets
+
 import QuoteIcon from "../../assets/svg/Quotes";
 
 export default function TestimonialBox({ text, author }) {

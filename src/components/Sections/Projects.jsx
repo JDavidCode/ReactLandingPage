@@ -1,9 +1,9 @@
 import React from "react";
-// Components
+
 import ProjectBox from "../Elements/ProjectBox";
 import FullButton from "../Buttons/FullButton";
-// Assets
-import AddImage2 from "../../assets/img/add/msip_banner.png";
+
+import AddImage2 from "../../assets/img/msip_banner.png";
 
 
 const mainItems = [
@@ -31,7 +31,7 @@ const mainItems = [
 export default function Projects() {
   return (
     <section className="w-full" id="projects">
-      <div className="bg-white py-[100px]">
+      <div className="py-[100px]">
         <div className="container mx-auto w-10/12">
           <div className="text-center">
             <h1 className="text-4xl font-extrabold text-black">Projects</h1>
@@ -45,10 +45,10 @@ export default function Projects() {
             {mainItems.map((item, index) => (
               <div key={index} className="w-full sm:w-1/3 p-2">
                 <ProjectBox
-                  img={item.background_url} // Usamos la URL del fondo para la imagen
-                  title={item.title} // Título del proyecto
-                  text={item.description} // Descripción del proyecto
-                  action={() => alert(`Clicked on ${item.title}`)} // Acción para cuando se haga clic en el proyecto
+                  img={item.background_url}
+                  title={item.title}
+                  text={item.description}
+                  action={() => alert(`Clicked on ${item.title}`)}
                 />
               </div>
             ))}
