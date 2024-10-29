@@ -1,29 +1,50 @@
-import { getToken } from './Auth';
+import { getToken, saveToken } from './auth';
 
-
-export const fetchUserData = async () => {
+export const auth = async (email, password) => {
 	try {
-		const token = getToken();
-		if (!token) {
-			throw new Error('No se ha encontrado un token de autenticación');
-		}
+	  const response = await fetch('http://localhost/auth/login', {
+		method: 'POST',
+		headers: {
+		  'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ email, password }),
+	  });
+  
+	  if (!response.ok) {
+		const errorMessage = await response.text();
+		throw new Error(`Error en el login: ${errorMessage}`);
+	  }
+  
+	  const data = await response.json();
+	  const token = data.token;
+	  saveToken(token);
+	  window.location.href = `http://localhost:5174/?token=${token}`;
+	} catch (error) {
+	  console.error('Error:', error.message);
+	  throw new Error('Error en el login');
+	}
+  };
+  
 
-		const response = await fetch('http://127.0.0.1/auth/user/get', {
-			method: 'GET',
+export const register = async (username, password, email,) => {
+	try {
+		const response = await fetch('http://localhost:3001/register', {
+			method: 'POST',
 			headers: {
-				'Authorization': `Bearer ${token}`
-			}
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ username, password, email })
 		});
 
 		if (!response.ok) {
-			console.log('Response status:', response.status); 
-			throw new Error('Error al obtener los datos del perfil del usuario');
+			throw new Error('Error en el registro');
 		}
-
+		const redirectUrl = `/login`;
+		window.location.href = redirectUrl;
 		const data = await response.json();
-		return data;
+		return response.status
 	} catch (error) {
 		console.error('Error:', error.message);
-		throw new Error('Error al obtener los datos del perfil del usuario');
+		throw new Error('Error en el registro');
 	}
 };

@@ -1,6 +1,4 @@
 import { fetchUserData } from './Api';
-import { saveToken } from './Auth';
-
 
 const getParameterByName = (name, url) => {
 	if (!url) url = window.location.href;
@@ -12,17 +10,12 @@ const getParameterByName = (name, url) => {
 	return decodeURIComponent(results[2].replace(/\+/g, ' '));
 };
 
-
 const tokenFromUrl = getParameterByName('token');
 
 if (tokenFromUrl) {
-	
 	saveToken(tokenFromUrl)
-	
 	window.history.replaceState({}, document.title, '/');
 }
-
-
 
 export const handleLoginAndFetchData = async (updateUser) => {
 	try {
