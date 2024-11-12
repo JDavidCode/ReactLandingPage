@@ -1,4 +1,4 @@
-const TOKEN_KEY = 'ARNICAJWTTOKENTEMPORTAL';
+const TOKEN_KEY = 'accessToken';
 
 
 export const saveToken = (token) => {

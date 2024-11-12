@@ -1,28 +1,14 @@
 import { getToken, saveToken } from './auth';
 
-export const auth = async (email, password) => {
-	try {
-	  const response = await fetch('http://localhost/auth/login', {
-		method: 'POST',
-		headers: {
-		  'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({ email, password }),
-	  });
-  
-	  if (!response.ok) {
-		const errorMessage = await response.text();
-		throw new Error(`Error en el login: ${errorMessage}`);
-	  }
-  
-	  const data = await response.json();
-	  const token = data.token;
-	  saveToken(token);
-	  window.location.href = `http://localhost:5174/?token=${token}`;
-	} catch (error) {
-	  console.error('Error:', error.message);
-	  throw new Error('Error en el login');
-	}
+export const auth = async (username, password, ipAddress, userAgent) => {
+	const response = await fetch('http://127.0.0.1/auth/login', {
+	  method: 'POST',
+	  headers: {
+		'Content-Type': 'application/json',
+	  },
+	  body: JSON.stringify({ username, password, ipAddress, userAgent }),
+	});
+	return response;
   };
   
 

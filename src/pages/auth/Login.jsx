@@ -1,25 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../assets/svg/Logo.svg";
 import Svg from "../../assets/svg/stars.svg";
 import { auth } from "../../utils/api/Api";
 
 export default function Login() {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
     try {
-      const formData = new FormData(event.target);
-      const email = formData.get("email");
-      const password = formData.get("password");      
-      const response = await auth(email, password);
+      const userAgent = navigator.userAgent;
+      const ipAddress = "127.0.0.1";
+
+      const response = await auth(userName, password, ipAddress, userAgent);
+      console.log(userName, password)
       if (response.ok) {
-        console.log("Logged!");
+        const { accessToken, refreshToken, session } = await response.json();
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+        
+        console.log("Logged in successfully!");
+
+        window.location.href = "http://localhost:5174?token="+accessToken;//token on url is temporal while localStorage works towards same domain
       } else {
         const errorData = await response.json();
-        console.error("Error:", errorData.message);
-        alert("Login failed: " + errorData.message);
+        setErrorMessage(errorData.message);
+        console.error("Login failed:", errorData.message);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error during login:", error);
+      setErrorMessage("An error occurred while logging in.");
     }
   };
 
@@ -45,21 +58,29 @@ export default function Login() {
         <div className="relative sm:max-w-sm">
           {/* Form con onSubmit */}
           <form className="space-y-6" onSubmit={handleSubmit}>
+            {errorMessage && (
+              <div className="text-red-600 text-center mb-4">
+                {errorMessage}
+              </div>
+            )}
+            
             <div>
               <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                htmlFor="username"
+                className="block text-sm font-medium leading-6"
               >
                 Email address
               </label>
               <div className="mt-2">
                 <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  id="userName"
+                  name="userName"
+                  type="userName"
+                  autoComplete="userName"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -68,7 +89,7 @@ export default function Login() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6"
                 >
                   Password
                 </label>
@@ -76,7 +97,7 @@ export default function Login() {
                   <a
                     href="#"
                     className="font-semibold text-indigo-600 hover:text-indigo-500"
-                    onClick={(e) => e.preventDefault()} // Evitar comportamiento por defecto
+                    onClick={(e) => e.preventDefault()}
                   >
                     Forgot password?
                   </a>
@@ -87,6 +108,8 @@ export default function Login() {
                   id="password"
                   name="password"
                   type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   autoComplete="current-password"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
