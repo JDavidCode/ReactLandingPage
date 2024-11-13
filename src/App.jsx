@@ -10,6 +10,7 @@ import './css/style.css'
 import Landing from "./pages/Landing.jsx";
 import Login from "./pages/auth/Login.jsx";
 import SignUp from "./pages/auth/SignUp.jsx";
+import Blog from "./pages/blog/Blog.jsx"
 
 function App() {
 
@@ -26,7 +27,11 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route exact path='/login' element={<Login/>}/>
-        <Route exact path='/signup' element={<SignUp/>}/>        
+        <Route exact path='/signup' element={<SignUp/>}/>  
+        <Route exact path='/blog' element={<Blog/>}/> 
+        <Route exact path='/blog/updates' element={<Blog/>}/>        
+        <Route exact path='/blog/community' element={<Blog/>}/>        
+       
       </Routes>
     </>
   );

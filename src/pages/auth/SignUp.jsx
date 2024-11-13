@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios";
 import Logo from "../../assets/svg/Logo.svg";
 import Svg from "../../assets/svg/counting_stars.svg";
+import { signup } from "../../utils/lib/Api";
 
 export default function Register() {
   const [formData, setFormData] = useState({
     name: "",
-    userName: "",
+    username: "",
     birthday: "",
     email: "",
     password: "",
@@ -29,15 +29,15 @@ export default function Register() {
       return;
     }
     try {
-      const response = await axios.post("http://127.0.0.1/auth/register", {
-        name: formData.name,
-        userName: formData.userName,
-        birthday: formData.birthday,
-        email: formData.email,
-        password: formData.password,
-      });
-      setMessage(response.data.message);
-      if (response.status === 201) {
+      const response = await signup(
+        formData.name,
+        formData.username,
+        formData.birthday,
+        formData.email,
+        formData.password
+      );
+      setMessage(response.statusText);
+      if (response.ok) {
         window.location.href = "http://localhost:5173/login";
       }
     } catch (error) {
@@ -48,11 +48,11 @@ export default function Register() {
   };
 
   return (
-    <div className="bg-white flex absolute min-h-full min-w-full">
+    <div className="flex absolute min-h-full min-w-full">
       <div className="min-h-full w-9/12 px-16 py-8">
         <img src={Svg} alt="" className="" />
       </div>
-      <div className="bg-gray-200 w-1/3 px-12 pt-4">
+      <div className="w-1/3 px-12 pt-4">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
           <a href="/" className="flex items-center cursor-pointer">
             <img
@@ -88,16 +88,16 @@ export default function Register() {
 
             <div>
               <label
-                htmlFor="userName"
+                htmlFor="username"
                 className="block text-sm font-medium leading-6 "
               >
                 Username
               </label>
               <input
-                id="userName"
-                name="userName"
+                id="username"
+                name="username"
                 type="text"
-                value={formData.userName}
+                value={formData.username}
                 onChange={handleChange}
                 required
                 className="mt-2 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

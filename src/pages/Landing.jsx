@@ -1,17 +1,15 @@
 import React from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
-
-import TopNavbar from "../partials/TopNavbar";
-import Header from "../components/Sections/Header";
-import Services from "../components/Sections/Services";
-import Projects from "../components/Sections/Projects";
-import Blog from "../components/Sections/Blog";
-import Pricing from "../components/Sections/Pricing";
-import Contact from "../components/Sections/Contact";
-import FAQ from "../components/Sections/FAQ";
-import Footer from "../components/Sections/Footer";
+import Header from "../partials/Header";
+import Hero from "./scenes/Hero";
+import Services from "./scenes/Services";
+import Projects from "./scenes/Projects";
+import Blog from "./scenes/Blog";
+import Pricing from "./scenes/Pricing";
+import Contact from "./scenes/Contact";
+import FAQ from "./scenes/FAQ";
+import Footer from "./scenes/Footer";
 
 const Section = ({ children }) => {
   const controls = useAnimation();
@@ -49,10 +47,10 @@ const Section = ({ children }) => {
 export default function Landing() {
   return (
     <>
-      <TopNavbar />
+      <Header />
       <AnimatePresence>
         <Section>
-          <Header />
+          <Hero />
         </Section>
         <Section>
           <Services />

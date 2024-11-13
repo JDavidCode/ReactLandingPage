@@ -1,9 +1,9 @@
 import React from "react";
 
-import FullButton from "../Buttons/FullButton";
+import FullButton from "./Buttons/FullButton";
 
-import CheckMark from "../../assets/svg/Checkmark";
-import GemIcon from "../../assets/svg/GemTiers";
+import CheckMark from "../assets/svg/Checkmark";
+import GemIcon from "../assets/svg/GemTiers";
 
 export default function PricingTable({
   price,
@@ -13,17 +13,17 @@ export default function PricingTable({
   action,
 }) {
   return (
-    <div className="bg-white rounded-lg shadow p-5 mt-7 text-left min-h-[500px] flex flex-col justify-between">
+    <div className="rounded-lg shadow p-5 mt-7 text-left min-h-[500px] flex flex-col justify-between bg-slate-900">
       <div>
         <div className="flex flex-row items-center">
-          <p className="text-3xl font-extrabold text-black">{price}</p>
+          <p className="text-3xl font-extrabold ">{price}</p>
         </div>
         <div className="my-8 flex items-center relative">
           <div className="w-10 h-10">
             <GemIcon tier={title} />
           </div>
           <div className="ml-2">
-            <h4 className="text-3xl font-extrabold text-black">{title}</h4>
+            <h4 className="text-3xl font-extrabold ">{title}</h4>
             <p className="text-sm text-gray-600">{text}</p>
           </div>
         </div>
@@ -38,7 +38,7 @@ export default function PricingTable({
                 >
                   {item.checked ? <CheckMark /> : <div />}
                 </div>
-                <p className="text-sm font-extrabold text-black">{item.name}</p>
+                <p className="text-sm font-extrabold ">{item.name}</p>
               </div>
             ))}
         </div>

@@ -1,60 +1,27 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
-import Box from '@mui/material/Box';
 
-function WidePaperPost(props) {
-  const { post } = props;
-
+function WidePaperPost({ post }) {
   return (
-    <Paper
-      sx={{
-        position: 'relative',
-        backgroundColor: 'grey.800',
-        color: '#fff',
-        mt: 2,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        backgroundImage: `url(${post.image})`,
-      }}
+    <div
+      className="relative mt-8 bg-gray-800 text-white bg-cover bg-center"
+      style={{ backgroundImage: `url(${post.image})` }}
     >
-      {<img style={{ display: 'none' }} src={post.image} alt={post.imageLabel} />}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          right: 0,
-          left: 0,
-          backgroundColor: 'rgba(0,0,0,.3)',
-        }}
-      />
-      <Grid container>
-        <Grid item md={6}>
-          <Box
-            sx={{
-              position: 'relative',
-              p: { xs: 3, md: 6 },
-              pr: { md: 0 },
-            }}
-          >
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-              {post.title}
-            </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
-              {post.content}
-            </Typography>
-            <Link variant="subtitle1" href="#">
+      <img className="hidden" src={post.image} alt={post.imageLabel} />
+      <div className="absolute inset-0 bg-black bg-opacity-30" />
+
+      <div className="container mx-auto">
+        <div className="flex flex-col md:flex-row">
+          <div className="relative p-6 md:p-12 max-w-md">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
+            <p className="text-lg mb-6">{post.content}</p>
+            <a href="#" className="text-blue-300 text-lg font-medium hover:underline">
               {post.linkText}
-            </Link>
-          </Box>
-        </Grid>
-      </Grid>
-    </Paper>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

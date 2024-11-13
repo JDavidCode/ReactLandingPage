@@ -41,12 +41,12 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="py-8 px-6 sm:py-8 bg-gray-800 flex flex-col items-center gap-6">
+    <section id="faq" className="py-16 px-6 sm:py-12 bg-gray-800 flex flex-col items-center gap-6">
       <h2 className="text-2xl text-gray-100 text-center mb-4">Frequently Asked Questions</h2>
 
       <div className="w-full px-8 mx-auto container">
         {items.map((item, index) => (
-          <div key={index} className="border border-gray-200 mb-2 rounded-md shadow-sm">
+          <div key={index} className="border border-gray-200/10 mb-2 rounded-md shadow-sm">
             <button
               onClick={() => handleChange(item.panel)}
               className="flex justify-between items-center w-full p-2 text-left focus:outline-none"
@@ -55,8 +55,8 @@ const FAQ = () => {
               <span className="ml-4">{expanded === item.panel ? '-' : '+'}</span>
             </button>
             {expanded === item.panel && (
-              <div className="p-3 bg-gray-300">
-                <p className="text-gray-600 text-sm">{item.answer}</p>
+              <div className="p-3 bg-gray-300/20 rounded-b-md">
+                <p className="text-sm">{item.answer}</p>
               </div>
             )}
           </div>

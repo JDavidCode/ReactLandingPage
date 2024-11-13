@@ -1,20 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=fallback');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=fallback");
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 
 /* Additional styles */
-@import 'additional-styles/utility-patterns.css';
-@import 'additional-styles/flatpickr.css';
+@import "additional-styles/utility-patterns.css";
+@import "additional-styles/flatpickr.css";
 
-@import 'tailwindcss/utilities';
+@import "tailwindcss/utilities";
 
 html {
-    scroll-behavior: smooth;
-    overflow-y: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer and Edge */
-  }
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
 html::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, and Opera */
-  }
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+body {
+  background-color: rgb(31 41 55) !important;
+}

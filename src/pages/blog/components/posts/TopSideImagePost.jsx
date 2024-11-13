@@ -1,44 +1,25 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 
-function TopSideImagePost(props) {
-  const { post } = props;
-
+function TopSideImagePost({ post }) {
   return (
-    <Grid item m={2} >
-      <CardActionArea component="a" href="#">
-        <Card>
-          {/* Image at the top */}
-          <CardMedia
-            component="img"
-            sx={{ width: '100%', height: 160 }}
-            image={post.image}
-            alt={post.imageLabel}
-          />
-          {/* Content underneath the image */}
-          <CardContent>
-            <Typography component="h2" variant="h5">
-              {post.title}
-            </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
-              {post.date}
-            </Typography>
-            <Typography variant="subtitle1" paragraph>
-              {post.content}
-            </Typography>
-            <Typography variant="subtitle1" color="primary">
-              Continue reading...
-            </Typography>
-          </CardContent>
-        </Card>
-      </CardActionArea>
-    </Grid>
+    <div className="m-4">
+      <a href="#" className="block hover:shadow-lg rounded-lg overflow-hidden">
+        {/* Imagen en la parte superior */}
+        <img
+          className="w-full h-40 object-cover"
+          src={post.image}
+          alt={post.imageLabel}
+        />
+        {/* Contenido debajo de la imagen */}
+        <div className="p-4 bg-white">
+          <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
+          <p className="text-sm text-gray-500 mb-4">{post.date}</p>
+          <p className="text-base text-gray-700 mb-4">{post.content}</p>
+          <p className="text-blue-600 font-medium">Continue reading...</p>
+        </div>
+      </a>
+    </div>
   );
 }
 

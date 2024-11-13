@@ -1,42 +1,25 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 
-function RightSideImagePost(props) {
-  const { post } = props;
-
+function RightSideImagePost({ post }) {
   return (
-    <Grid item mx={2}>
-      <CardActionArea component="a" href="#">
-        <Card sx={{ display: 'flex' }}>
-          <CardContent sx={{ flex: 1 }}>
-            <Typography component="h2" variant="h5">
-              {post.title}
-            </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
-              {post.date}
-            </Typography>
-            <Typography variant="subtitle1" paragraph>
-              {post.content}
-            </Typography>
-            <Typography variant="subtitle1" color="primary">
-              Continue reading...
-            </Typography>
-          </CardContent>
-          <CardMedia
-            component="img"
-            sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-            image={post.image}
-            alt={post.imageLabel}
-          />
-        </Card>
-      </CardActionArea>
-    </Grid>
+    <div className="mx-4">
+      <a href="#" className="flex flex-col sm:flex-row rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+        {/* Contenido principal */}
+        <div className="flex-1 p-4">
+          <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
+          <p className="text-sm text-gray-500 mb-4">{post.date}</p>
+          <p className="text-base text-gray-700 mb-4">{post.content}</p>
+          <p className="text-blue-600 font-medium">Continue reading...</p>
+        </div>
+        {/* Imagen a la derecha en pantallas medianas y grandes */}
+        <img
+          className="w-full h-40 object-cover sm:w-40 sm:h-auto"
+          src={post.image}
+          alt={post.imageLabel}
+        />
+      </a>
+    </div>
   );
 }
 

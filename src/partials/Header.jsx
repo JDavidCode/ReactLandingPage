@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
-import Backdrop from "../components/Elements/Backdrop";
+import Backdrop from "../components/Backdrop";
 import LogoIcon from "../assets/svg/Logo.svg";
 import BurgerIcon from "../assets/svg/BurgerIcon";
 
@@ -36,7 +36,6 @@ export default function TopNavbar() {
       const sectionElement = document.querySelector(`#${section}`);
       if (sectionElement) {
         const { top, bottom } = sectionElement.getBoundingClientRect();
-        // Verifica si la sección está en la vista
         if (top <= window.innerHeight / 2 && bottom >= window.innerHeight / 2) {
           setActiveSection(`#${section}`);
         }
@@ -62,11 +61,11 @@ export default function TopNavbar() {
     <>
     <Sidebar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
     {sidebarOpen && <Backdrop toggleSidebar={toggleSidebar} />}
-    <nav className={`flex items-center justify-center shadow-sm w-full fixed top-0 left-0 z-50 ${y > 80 ? "h-16" : "h-20"} bg-white`}>
+    <nav className={`flex items-center justify-center shadow-sm w-full fixed top-0 left-0 z-50 ${y > 80 ? "h-12" : "h-16"} bg-slate-800  font-mono transition-all ease-out`}>
       <div className="container flex items-center justify-between h-full">
         <div className="flex items-center">
           <a href="#home" className="flex items-center cursor-pointer">
-            <img src={LogoIcon} alt="Logo" className="h-[6rem] w-[6rem]" />
+            <img src={LogoIcon} alt="Logo" className="h-16 w-16" />
           </a>
         </div>
         <button className="outline-none border-0 bg-transparent h-full px-4 md:hidden" onClick={() => toggleSidebar(!sidebarOpen)}>
@@ -77,7 +76,7 @@ export default function TopNavbar() {
             <li key={section} className="relative font-semibold text-base cursor-pointer h-full">
               <a
                 href={`#${section}`}
-                className={`px-4 ${y > 80 ? "py-5" : "py-7"} block ${activeSection === `#${section}` && !["faq", "footer"].includes(section) ? `border-b-2 ${sectionStyles[section]}` : 'border-b-2 border-transparent'} rounded transition-all duration-200`}
+                className={`px-4 ${y > 80 ? "py-3" : "py-5"} block ${activeSection === `#${section}` && !["faq", "footer"].includes(section) ? `border-b-2 ${sectionStyles[section]}` : 'border-b-2 border-transparent'} rounded transition-all duration-200`}
                 onClick={(e) => handleNavClick(e, `#${section}`)}
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}

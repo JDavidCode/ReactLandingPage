@@ -1,10 +1,10 @@
 import React from "react";
 
-import CloudIcon from "../../assets/svg/cloud.svg"; 
-import LockIcon from "../../assets/svg/lock.svg"; 
-import ReportIcon from "../../assets/svg/report.svg"; 
-import ApplicationIcon from "../../assets/svg/application.svg"; 
-import ControlIcon from "../../assets/svg/adjust.svg"; 
+import CloudIcon from "../assets/svg/cloud.svg"; 
+import LockIcon from "../assets/svg/lock.svg"; 
+import ReportIcon from "../assets/svg/report.svg"; 
+import ApplicationIcon from "../assets/svg/application.svg"; 
+import ControlIcon from "../assets/svg/adjust.svg"; 
 
 export default function ServiceBox({ icon, title, subtitle }) {
   let iconSrc;
@@ -38,10 +38,10 @@ export default function ServiceBox({ icon, title, subtitle }) {
         <img src={iconSrc} alt={title} className="w-16 h-16" />{" "}
         {/* Load SVG using img */}
       </div>
-      <h2 className="text-2xl font-extrabold text-center py-4 md:py-2 text-black">
+      <h2 className="text-2xl font-extrabold text-center py-4 md:py-2">
         {title}
       </h2>
-      <p className="text-base text-center text-gray-600">{subtitle}</p>
+      <p className="text-base text-center">{subtitle}</p>
     </div>
   );
 }

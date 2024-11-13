@@ -1,6 +1,6 @@
 import React from "react";
 
-import PricingTable from "../Elements/PricingTable";
+import PricingTable from "../../components/PricingTable";
 const userTiers = [
   {
     title: "Bronze",
@@ -97,7 +97,7 @@ export default function Pricing() {
       <div className="py-16">
         <div className="container mx-auto w-10/12">
           <div className="mb-12 text-center md:text-left">
-            <h1 className="text-4xl font-extrabold text-black pt-8">
+            <h1 className="text-4xl font-extrabold pt-8">
               Check Our Pricing
             </h1>
             <p className="text-sm pt-4 pb-8">

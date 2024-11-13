@@ -1,10 +1,10 @@
 import React from "react";
 
-import QuoteIcon from "../../assets/svg/Quotes";
+import QuoteIcon from "../assets/svg/Quotes";
 
 export default function TestimonialBox({ text, author }) {
   return (
-    <div className="w-full p-5 mt-8 bg-gray-800 rounded-lg flex flex-col items-center">
+    <div className="p-5 mt-8 bg-gray-900 rounded-lg flex flex-col items-center">
       <div className="relative -top-10">
         <QuoteIcon />
       </div>
