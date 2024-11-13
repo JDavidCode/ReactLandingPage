@@ -16,7 +16,7 @@ function Copyright() {
 
 export default function Footer() {
   return (
-    <section id="footer" className="flex flex-col items-center py-2 bg-gray-800 text-center sm:text-left pb-10">
+    <section id="footer" className="flex flex-col items-center py-8 bg-gray-800 text-center sm:text-left pb-10">
       <div className="flex flex-col sm:flex-row justify-between w-10/12 mx-auto container">
         <div className="flex flex-col w-full sm:w-3/5">
           <div className="w-full sm:w-3/5 pb-3">

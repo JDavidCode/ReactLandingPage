@@ -1,27 +1,12 @@
 import React from "react";
 
-import CloseIcon from "../assets/svg/CloseIcon";
-import LogoIcon from "../assets/svg/Logo.svg";
-
 export default function Sidebar({ sidebarOpen, toggleSidebar }) {
   return (
     <nav
       className={`fixed top-0 h-full bg-darkBg p-7 z-50 transition-all duration-300 ${
         sidebarOpen ? "right-0" : "-right-full"
-      } w-96 md:w-full`}
+      } w-full md:w-1/3 bg-slate-800 block lg:hidden`}
     >
-      <div className="flex justify-between items-center py-5">
-        <div className="flex items-center">
-        <img src={LogoIcon} alt="Logo" className=" h-10 w-10" />
-        </div>
-        <button
-          onClick={() => toggleSidebar(!sidebarOpen)}
-          className="transition-all duration-300 cursor-pointer p-2"
-        >
-          <CloseIcon />
-        </button>
-      </div>
-
       <ul className="flex flex-col items-center py-10">
         {["home", "services", "projects", "blog", "pricing", "contact"].map((section) => (
           <li className="font-semibold text-sm cursor-pointer mb-5" key={section}>

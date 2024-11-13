@@ -9,19 +9,14 @@ import FeaturesImage from "../../assets/img/features.png";
 
 export default function Services() {
   return (
-    <section  className="w-full  bg-gradient-to-r from-green-50/50 via-teal-50 to-green-50/50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800">
-      <div className="py-20">
-        <div className="container justify-center mx-auto">
-          <ClientSlider />
-        </div>
-      </div>
-      <section id="services" className="relative">
+    <section className="w-full" id="services">
+      <div className="relative">
         <div
           className="pointer-events-none absolute left-1/2 top-0 -z-10 -mt-20 -translate-x-1/2"
           aria-hidden="true"
         >
           <img
-            className="max-w-none"
+            className="max-w-screen"
             src={BlurredShapeGray}
             width={760}
             height={668}
@@ -33,7 +28,7 @@ export default function Services() {
           aria-hidden="true"
         >
           <img
-            className="max-w-none"
+            className="max-w-screen"
             src={BlurredShape}
             width={760}
             height={668}
@@ -41,12 +36,12 @@ export default function Services() {
           />
         </div>
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="border-t py-12 [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1] md:py-20">
+          <div className="border-t [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1] py-8">
             {/* Section header */}
             <div className="mx-auto max-w-3xl pb-4 text-center md:pb-12">
               <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
                 <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
-                  Advanced Controls
+                  You are on Control
                 </span>
               </div>
               <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text pb-4 font-nacelle text-3xl font-semibold text-transparent md:text-4xl">
@@ -61,19 +56,17 @@ export default function Services() {
               </p>
             </div>
             <div
-              className="flex justify-center pb-4 md:pb-12"
+              className="flex justify-center pb-4 md:pb-12 overflow-hidden"
               data-aos="fade-up"
             >
               <img
-                className="max-w-none"
+                className="md:w-screen mx-[-100px]"
                 src={FeaturesImage}
-                width={1104}
-                height={384}
                 alt="Features"
               />
             </div>
             {/* Items */}
-            <div className="mx-auto grid max-w-sm gap-12 sm:max-w-none sm:grid-cols-2 md:gap-x-14 md:gap-y-16 lg:grid-cols-3">
+            <div className="mx-auto grid max-w-sm gap-12 sm:max-w-none sm:grid-cols-2 md:gap-x-14 md:gap-y-16 lg:grid-cols-3 py-6">
               <article>
                 <svg
                   className="mb-3 fill-indigo-500"
@@ -205,9 +198,9 @@ export default function Services() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <div className="mx-auto">
+      <div className="mx-auto py-6">
         <div className="container mx-auto w-10/12 mb-16">
           <div className="my-16 text-center ">
             <h1 className="text-4xl font-extrabold">Our Four Rules</h1>
@@ -244,48 +237,42 @@ export default function Services() {
           </div>
         </div>
       </div>
-      <div className="py-16">
-        <div className="container mx-auto w-11/12">
-          <div className="flex flex-wrap items-center justify-between relative">
-            <div className="w-full md:w-1/2 p-4">
-              <h4 className="font-semibold pb-3">Did you know?</h4>
-              <h2 className="text-4xl font-extrabold pb-3">
-                Your ideas move us
-              </h2>
-              <p className="text-sm max-w-lg">
-                We are passionate about turning your ideas into reality. Our
-                team thrives on creativity and is dedicated to crafting
-                innovative solutions that elevate you. Together, we can
-                transform your vision into success.
-              </p>
+      <div className="py-6 flex flex-wrap items-center justify-between relative container mx-auto">
+        <div className="w-full md:w-1/2 p-4">
+          <h4 className="font-semibold pb-3">Did you know?</h4>
+          <h2 className="text-4xl font-extrabold pb-3">Your ideas move us</h2>
+          <p className="text-sm max-w-lg">
+            We are passionate about turning your ideas into reality. Our team
+            thrives on creativity and is dedicated to crafting innovative
+            solutions that elevate you. Together, we can transform your vision
+            into success.
+          </p>
 
-              <div className="flex justify-start mt-8">
-                <div className="mr-4">
-                  <FullButton
-                    title="Get Started Now"
-                    action={() => alert("clicked")}
-                  />
-                </div>
-                <div>
-                  <FullButton
-                    title="Contact Us"
-                    action={() => alert("clicked")}
-                    border
-                  />
-                </div>
-              </div>
+          <div className="flex justify-start mt-8">
+            <div className="mr-4">
+              <FullButton
+                title="Get Started Now"
+                action={() => alert("clicked")}
+              />
             </div>
+            <div>
+              <FullButton
+                title="Contact Us"
+                action={() => alert("clicked")}
+                border
+              />
+            </div>
+          </div>
+        </div>
 
-            <div className="w-full md:w-1/2 relative md:right-0">
-              <div className="flex flex-wrap justify-center">
-                <div className="w-2/3">
-                  <img
-                    src={Inspiration}
-                    alt="office"
-                    className="h-[400px] rounded-lg"
-                  />
-                </div>
-              </div>
+        <div className="w-full md:w-1/2 relative md:right-0 hidden md:block">
+          <div className="flex flex-wrap justify-center">
+            <div className="w-2/3">
+              <img
+                src={Inspiration}
+                alt="office"
+                className="h-[400px] rounded-lg"
+              />
             </div>
           </div>
         </div>

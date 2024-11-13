@@ -20,5 +20,29 @@ html::-webkit-scrollbar {
 }
 
 body {
-  background-color: rgb(31 41 55) !important;
+  background: linear-gradient(
+    to right,
+    rgba(240, 253, 244, 0.5),
+    rgba(230, 255, 250, 1),
+    rgba(240, 255, 244, 0.5)
+  ) !important;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(
+      to right,
+      #0f141b,
+      #1c222e,
+      #202634,
+      #252f3f,
+      #273044,
+      #252f3f,
+      #202634,
+      #1c222e,
+      #0f141b 
+    ) !important;
+    background-size: 300% 300%;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAgAB/azqG7sAAAAASUVORK5CYII=');
+    background-blend-mode: overlay;
+  }
 }

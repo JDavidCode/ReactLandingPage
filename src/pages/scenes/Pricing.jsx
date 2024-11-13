@@ -93,38 +93,32 @@ const userTiers = [
 ];
 export default function Pricing() {
   return (
-    <section className="w-full" id="pricing">
-      <div className="py-16">
-        <div className="container mx-auto w-10/12">
-          <div className="mb-12 text-center md:text-left">
-            <h1 className="text-4xl font-extrabold pt-8">
-              Check Our Pricing
-            </h1>
-            <p className="text-sm pt-4 pb-8">
-              Our pricing is tailored to your unique needs, so you only pay for
-              the services and features you choose.
-              <br />
-              If you're looking for convenience, we also offer pre-built
-              packages designed to suit a range of common requirements.
-            </p>
+    <section className="py-8 mx-auto w-10/12" id="pricing">
+      <div className="pb-8 text-center md:text-left">
+        <h1 className="text-4xl font-extrabold pt-8">Check Our Pricing</h1>
+        <p className="text-sm pt-4">
+          Our pricing is tailored to your unique needs, so you only pay for the
+          services and features you choose.
+          <br />
+          If you're looking for convenience, we also offer pre-built packages
+          designed to suit a range of common requirements.
+        </p>
+      </div>
+      <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 place-items-center">
+        {userTiers.map((tier, index) => (
+          <div key={index} className="w-full">
+            <PricingTable
+              price={`$${tier.price}`}
+              title={tier.title}
+              text={tier.description}
+              offers={tier.offers.map((offer, i) => ({
+                name: offer,
+                checked: true,
+              }))}
+              action={() => alert(`Selected ${tier.title} Plan`)}
+            />
           </div>
-          <div className="flex flex-wrap justify-between">
-            {userTiers.map((tier, index) => (
-              <div key={index} className="w-full sm:w-1/3 p-2">
-                <PricingTable
-                  price={`$${tier.price}`} 
-                  title={tier.title} 
-                  text={tier.description} 
-                  offers={tier.offers.map((offer, i) => ({
-                    name: offer,
-                    checked: true,
-                  }))} 
-                  action={() => alert(`Selected ${tier.title} Plan`)} 
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

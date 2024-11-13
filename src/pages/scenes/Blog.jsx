@@ -96,7 +96,7 @@ export default function Blog() {
     fetchBlogPosts();
   }, []);
   return (
-    <section id="blog" className="w-full pt-12">
+    <section id="blog" className="w-full py-8">
       <div className="w-10/12 mx-auto">
         <div className="container mx-auto">
           <div className="my-8  text-center">
@@ -148,7 +148,7 @@ export default function Blog() {
       <div className="py-14 mt-10 bg-gray-900">
         <div className="container mx-auto  w-11/12">
           <div className="flex flex-wrap justify-between items-center py-24">
-            <div className="relative w-full md:w-1/2 mb-8 md:mb-0">
+            <div className="relative w-full md:w-1/2 mb-8 md:mb-0 hidden md:block">
               <div className="absolute top-[-300px] left-0 w-full">
                 <img
                   className="rounded-lg w-[426px] h-[607px]"

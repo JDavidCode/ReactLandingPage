@@ -28,44 +28,38 @@ const mainItems = [
 
 export default function Projects() {
   return (
-    <section
-      className="w-full bg-gradient-to-r from-green-50/50 via-teal-50 to-green-50/50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 space-y-10"
-      id="projects"
-    >
-      <div className="py-[100px]">
-        <div className="container mx-auto w-10/12">
-          <div className="text-center">
-            <h1 className="text-4xl font-extrabold ">Projects</h1>
-            <p className="text-sm pt-4 mx-auto w-5/6 pb-8">
-              Discover our innovative projects in AI, VR, and gaming. Dive into
-              our latest developments to uncover unique features and benefits.
-              <br />
-              Every project is built upon our core features stack, ensuring
-              innovation and quality in everything we create.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center">
-            {mainItems.map((item, index) => (
-              <div key={index} className="w-full sm:w-1/3 p-2">
-                <ProjectBox
-                  img={item.background_url}
-                  title={item.title}
-                  text={item.description}
-                  action={() => alert(`Clicked on ${item.title}`)}
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className="flex justify-center mt-8">
-            <div style={{ width: "200px" }}>
-              <FullButton title="Load More" action={() => alert("clicked")} />
+    <section className="w-full py-8" id="projects">
+      <div className="container mx-auto w-10/12 space-y-4">
+        <div className="text-center">
+          <h1 className="text-4xl font-extrabold mt-8">Projects</h1>
+          <p className="text-sm pt-4 mx-auto w-5/6 pb-8">
+            Discover our innovative projects in AI, VR, and gaming. Dive into
+            our latest developments to uncover unique features and benefits.
+            <br />
+            Every project is built upon our core features stack, ensuring
+            innovation and quality in everything we create.
+          </p>
+        </div>
+        <div className="flex flex-wrap justify-center">
+          {mainItems.map((item, index) => (
+            <div key={index} className="sm:w-1/3 p-2">
+              <ProjectBox
+                img={item.background_url}
+                title={item.title}
+                text={item.description}
+                action={() => alert(`Clicked on ${item.title}`)}
+              />
             </div>
+          ))}
+        </div>
+
+        <div className="flex justify-center py-4">
+          <div style={{ width: "200px" }}>
+            <FullButton title="Load More" action={() => alert("clicked")} />
           </div>
         </div>
       </div>
-        <FastTrackSection />
-      
+      <FastTrackSection />
     </section>
   );
 }

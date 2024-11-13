@@ -13,7 +13,7 @@ export default function PricingTable({
   action,
 }) {
   return (
-    <div className="rounded-lg shadow p-5 mt-7 text-left min-h-[500px] flex flex-col justify-between bg-slate-900">
+    <div className="rounded-lg shadow p-5 mt-7 text-left min-h-[500px] flex flex-col justify-between bg-slate-900 mx-2">
       <div>
         <div className="flex flex-row items-center">
           <p className="text-3xl font-extrabold ">{price}</p>

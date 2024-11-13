@@ -4,7 +4,7 @@ import HangoutSvg from "../../assets/svg/group_hangout.svg";
 
 export default function Contact() {
   return (
-    <section id="contact" className="w-full">
+    <section id="contact" className="w-full py-8">
       <div className="max-w-screen-lg mx-auto p-5">
         <div className="grid grid-cols-1 md:grid-cols-12 border-l-4 rounded-md shadow-md shadow-slate-900">
           <div className="bg-gray-900 md:col-span-4 p-10 text-white">
@@ -42,7 +42,7 @@ export default function Contact() {
                 </g>
               </svg>
               <span className="text-sm">
-                House #14, Street #12, Darulaman Road, Kabul, Afghanistan.
+                144 Wall Street, EE UU. 
               </span>
             </div>
             <div className="flex items-center mt-5">
@@ -50,7 +50,6 @@ export default function Contact() {
                 className="h-6 mr-2 text-indigo-600"
                 fill="currentColor"
                 version="1.1"
-                id="Capa_1"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
                 x="0px"
@@ -95,7 +94,7 @@ export default function Contact() {
                   ></path>
                 </g>
               </svg>
-              <span className="text-sm">+93 749 99 65 50</span>
+              <span className="text-sm">+00 00 000 0000 000</span>
             </div>
             <div className="flex items-center mt-5">
               <svg

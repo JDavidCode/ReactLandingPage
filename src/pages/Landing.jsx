@@ -10,11 +10,12 @@ import Pricing from "./scenes/Pricing";
 import Contact from "./scenes/Contact";
 import FAQ from "./scenes/FAQ";
 import Footer from "./scenes/Footer";
+import ClientSlider from "../components/ClientSlider";
 
-const Section = ({ children }) => {
+const Section = ({ children, id}) => {
   const controls = useAnimation();
   const { ref, inView } = useInView({
-    threshold: 0.12,
+    threshold: 0.03,
   });
 
   React.useEffect(() => {
@@ -33,11 +34,13 @@ const Section = ({ children }) => {
 
   return (
     <motion.div
+      id={id}
       ref={ref}
       initial="hidden"
       animate={controls}
       exit="exit"
       variants={variants}
+      className="py-4"
     >
       {children}
     </motion.div>
@@ -49,10 +52,15 @@ export default function Landing() {
     <>
       <Header />
       <AnimatePresence>
-        <Section>
+        <Section id="home">
           <Hero />
         </Section>
         <Section>
+          <div className="justify-center mx-auto pb-8">
+            <ClientSlider />
+          </div>
+        </Section>
+        <Section id="services">
           <Services />
         </Section>
         <Section>
