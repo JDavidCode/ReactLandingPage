@@ -72,7 +72,7 @@ export default function TopNavbar() {
       {sidebarOpen && <Backdrop toggleSidebar={toggleSidebar} />}
       <nav
         className={`flex items-center justify-center shadow-sm w-screen fixed top-0 left-0 z-50 ${
-          y > 80 ? "h-11" : "h-14"
+          y > 80 ? "md:h-11" : "h-14"
         } bg-slate-900 font-sans font-medium text-sm transition-all ease-out`}
       >
         <div className="container flex items-center justify-between h-full">

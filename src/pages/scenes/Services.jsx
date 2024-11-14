@@ -2,7 +2,6 @@ import React from "react";
 import ClientSlider from "../../components/ClientSlider";
 import ServiceBox from "../../components/ServiceBox";
 import FullButton from "../../components/Buttons/FullButton";
-import Inspiration from "../../assets/svg/ideas_inspiration.svg";
 import BlurredShapeGray from "../../assets/img/blurred-shape-gray.svg";
 import BlurredShape from "../../assets/img/blurred-shape.svg";
 import FeaturesImage from "../../assets/img/features.png";
@@ -37,17 +36,16 @@ export default function Services() {
         </div>
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="border-t [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1] py-8">
-            {/* Section header */}
             <div className="mx-auto max-w-3xl pb-4 text-center md:pb-12">
-              <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
-                <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
+              <div className="inline-flex items-center gap-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
+                <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent text-sm">
                   You are on Control
                 </span>
               </div>
-              <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text pb-4 font-nacelle text-3xl font-semibold text-transparent md:text-4xl">
+              <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text pb-4 text-4xl font-black text-white/80">
                 Built for modern product teams
               </h2>
-              <p className="text-lg text-indigo-200/65">
+              <p className="text-md text-indigo-200/65">
                 Discover our adaptable services designed to meet every need.
                 Whether you’re an individual seeking personalized support or a
                 business with unique requirements, we have the flexibility and
@@ -66,7 +64,7 @@ export default function Services() {
               />
             </div>
             {/* Items */}
-            <div className="mx-auto grid max-w-sm gap-12 sm:max-w-none sm:grid-cols-2 md:gap-x-14 md:gap-y-16 lg:grid-cols-3 py-6">
+            <div className="mx-auto grid max-w-sm gap-12 sm:max-w-none sm:grid-cols-2 md:gap-x-14 md:gap-y-16 lg:grid-cols-3 py-6 w-10/12 lg:w-full">
               <article>
                 <svg
                   className="mb-3 fill-indigo-500"
@@ -200,81 +198,44 @@ export default function Services() {
         </div>
       </div>
 
-      <div className="mx-auto py-6">
-        <div className="container mx-auto w-10/12 mb-16">
-          <div className="my-16 text-center ">
-            <h1 className="text-4xl font-extrabold">Our Four Rules</h1>
-          </div>
-          <div className="flex flex-wrap pb-12">
-            <div className="w-full sm:w-1/4 p-3">
-              <ServiceBox
-                icon="lock"
-                title="Security"
-                subtitle="Protect your assets with our robust security solutions."
-              />
-            </div>
-            <div className="w-full sm:w-1/4 p-3 mx-auto">
-              <ServiceBox
-                icon="cloud"
-                title="Cloud"
-                subtitle="Seamlessly scale your operations with our cloud services."
-              />
-            </div>
-            <div className="w-full sm:w-1/4 p-3">
-              <ServiceBox
-                icon="control"
-                title="Customization"
-                subtitle="Tailored solutions to fit your specific needs."
-              />
-            </div>
-            <div className="w-full sm:w-1/4 p-3">
-              <ServiceBox
-                icon="application"
-                title="Integrations"
-                subtitle="Streamline your workflow with easy integrations."
-              />
-            </div>
-          </div>
-        </div>
+      <div className="my-16 text-center w-10/12 mx-auto">
+        <h1 className="pb-4 text-5xl font-extrabold text-white/90">
+          Our Core Principles
+        </h1>
+        <p className="text-md text-indigo-200/65 max-w-2xl mx-auto">
+          At Arnica, we are driven by four core principles that define our
+          approach and commitment to quality.
+        </p>
       </div>
-      <div className="py-6 flex flex-wrap items-center justify-between relative container mx-auto">
-        <div className="w-full md:w-1/2 p-4">
-          <h4 className="font-semibold pb-3">Did you know?</h4>
-          <h2 className="text-4xl font-extrabold pb-3">Your ideas move us</h2>
-          <p className="text-sm max-w-lg">
-            We are passionate about turning your ideas into reality. Our team
-            thrives on creativity and is dedicated to crafting innovative
-            solutions that elevate you. Together, we can transform your vision
-            into success.
-          </p>
 
-          <div className="flex justify-start mt-8">
-            <div className="mr-4">
-              <FullButton
-                title="Get Started Now"
-                action={() => alert("clicked")}
-              />
-            </div>
-            <div>
-              <FullButton
-                title="Contact Us"
-                action={() => alert("clicked")}
-                border
-              />
-            </div>
-          </div>
+      <div className="flex flex-wrap justify-center mx-auto w-full">
+        <div className="w-full sm:w-1/2 lg:w-1/4 p-4">
+          <ServiceBox
+            icon="lock"
+            title="Security"
+            subtitle="Protect your assets with our advanced, multi-layered security solutions."
+          />
         </div>
-
-        <div className="w-full md:w-1/2 relative md:right-0 hidden md:block">
-          <div className="flex flex-wrap justify-center">
-            <div className="w-2/3">
-              <img
-                src={Inspiration}
-                alt="office"
-                className="h-[400px] rounded-lg"
-              />
-            </div>
-          </div>
+        <div className="w-full sm:w-1/2 lg:w-1/4 p-4">
+          <ServiceBox
+            icon="cloud"
+            title="Cloud"
+            subtitle="Scale your operations effortlessly with reliable cloud services."
+          />
+        </div>
+        <div className="w-full sm:w-1/2 lg:w-1/4 p-4">
+          <ServiceBox
+            icon="control"
+            title="Customization"
+            subtitle="Enjoy personalized solutions tailored to meet your unique needs."
+          />
+        </div>
+        <div className="w-full sm:w-1/2 lg:w-1/4 p-4">
+          <ServiceBox
+            icon="application"
+            title="Integrations"
+            subtitle="Enhance efficiency with seamless and comprehensive integrations."
+          />
         </div>
       </div>
     </section>

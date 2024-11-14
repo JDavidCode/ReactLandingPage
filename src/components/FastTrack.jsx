@@ -29,7 +29,7 @@ function FastTrackSection() {
         </div>
 
         {/* Right Side: Stats */}
-        <div className="grid grid-cols-2 gap-4 text-center">
+        <div className="md:grid grid-cols-2 gap-4 text-center hidden">
           <div className="bg-gray-800 p-6 rounded-lg">
             <p className="text-2xl font-bold">70k+</p>
             <p className="text-gray-400 text-sm">customers equipped — from DIY to major construction firms</p>

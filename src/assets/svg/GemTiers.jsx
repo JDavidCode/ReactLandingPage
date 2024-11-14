@@ -59,11 +59,6 @@ function SvgComponent({ tier }) {
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 512 512"
-      shapeRendering="geometricPrecision"
-      textRendering="geometricPrecision"
-      projectId="5d735ef92d124cdfa7a767f4ed522995"
-      exportId="221f68970d5d4ecb92315174d89c58b4"
-      cached="false"
     >
       <path
         d="M427.5,330.65c-7.9-1.3-60-12.6-78.7-16.9-.9-2.3-88.2-171.5-90.4-173.4-2.2,2.1-85.8,157.9-94.5,173.9-14.2,2.9-29.809146,6.572428-43.2,9.5c6.9-13.5,116.1-223.45,132.8-255.05c3.8-7.1,5.8-14.1,5.6-22.3-.4-15.1-.1-30.2-.1-45.4"

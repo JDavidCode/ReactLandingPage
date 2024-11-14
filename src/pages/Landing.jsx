@@ -11,6 +11,8 @@ import Contact from "./scenes/Contact";
 import FAQ from "./scenes/FAQ";
 import Footer from "./scenes/Footer";
 import ClientSlider from "../components/ClientSlider";
+import Testimonials from "./scenes/Testimonials";
+import MoveUsBanner from "../components/MoveUsBanner";
 
 const Section = ({ children, id}) => {
   const controls = useAnimation();
@@ -52,7 +54,7 @@ export default function Landing() {
     <>
       <Header />
       <AnimatePresence>
-        <Section id="home">
+        <Section>
           <Hero />
         </Section>
         <Section>
@@ -60,8 +62,11 @@ export default function Landing() {
             <ClientSlider />
           </div>
         </Section>
-        <Section id="services">
+        <Section>
           <Services />
+        </Section>
+        <Section>
+          <MoveUsBanner />
         </Section>
         <Section>
           <Projects />
@@ -69,6 +74,10 @@ export default function Landing() {
         <Section>
           <Blog />
         </Section>
+        <Section>
+          <Testimonials />
+        </Section>
+        
         <Section>
           <Pricing />
         </Section>

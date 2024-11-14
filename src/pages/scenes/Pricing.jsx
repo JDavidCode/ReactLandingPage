@@ -95,7 +95,7 @@ export default function Pricing() {
   return (
     <section className="py-8 mx-auto w-10/12" id="pricing">
       <div className="pb-8 text-center md:text-left">
-        <h1 className="text-4xl font-extrabold pt-8">Check Our Pricing</h1>
+        <h1 className="text-4xl font-black text-white/80 pt-4">Check Our Pricing</h1>
         <p className="text-sm pt-4">
           Our pricing is tailored to your unique needs, so you only pay for the
           services and features you choose.

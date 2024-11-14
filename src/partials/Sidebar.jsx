@@ -23,12 +23,12 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
 
       <ul className="flex justify-center items-center py-5">
         <li className="font-semibold text-sm cursor-pointer mr-8">
-          <a href="/" className="text-white px-3">
+          <a href="/login" className="text-white px-3">
             Log in
           </a>
         </li>
         <li className="font-semibold text-sm cursor-pointer">
-          <a href="/" className="bg-lightBg rounded-lg px-4 py-2">
+          <a href="/signup" className="bg-lightBg rounded-lg px-4 py-2">
             Get Started
           </a>
         </li>

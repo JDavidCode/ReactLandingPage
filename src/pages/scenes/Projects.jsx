@@ -29,10 +29,10 @@ const mainItems = [
 export default function Projects() {
   return (
     <section className="w-full py-8" id="projects">
-      <div className="container mx-auto w-10/12 space-y-4">
+      <div className="container mx-auto w-10/12 mb-8">
         <div className="text-center">
-          <h1 className="text-4xl font-extrabold mt-8">Projects</h1>
-          <p className="text-sm pt-4 mx-auto w-5/6 pb-8">
+          <h1 className="text-4xl font-black text-white/80 py-4">Projects</h1>
+          <p className="text-sm mx-auto w-5/6">
             Discover our innovative projects in AI, VR, and gaming. Dive into
             our latest developments to uncover unique features and benefits.
             <br />
@@ -53,7 +53,7 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="flex justify-center py-4">
+        <div className="flex justify-center py-8">
           <div style={{ width: "200px" }}>
             <FullButton title="Load More" action={() => alert("clicked")} />
           </div>

@@ -6,7 +6,7 @@ export default function BlogBox({ tag, title, text, action, author }) {
       className="animate pointer w-full bg-transparent border-0 outline-none hover:opacity-50"
       onClick={action ? () => action() : null}
     >
-      <div className="rounded-lg shadow-md p-5 mt-7 min-h-[300px] bg-gradient-to-t from-gray-900 max-h-[300px] flex flex-col">
+      <div className="rounded-lg shadow-md p-5 min-h-[300px] bg-gradient-to-t from-gray-900 max-h-[300px] flex flex-col">
         <div className="flex-grow">
           <h3 className="text-lg font-extrabold">{title}</h3>
           <div className="relative overflow-hidden max-h-[200px]">

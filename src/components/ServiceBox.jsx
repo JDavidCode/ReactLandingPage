@@ -1,10 +1,10 @@
 import React from "react";
 
-import CloudIcon from "../assets/svg/cloud.svg"; 
-import LockIcon from "../assets/svg/lock.svg"; 
-import ReportIcon from "../assets/svg/report.svg"; 
-import ApplicationIcon from "../assets/svg/application.svg"; 
-import ControlIcon from "../assets/svg/adjust.svg"; 
+import CloudIcon from "../assets/svg/cloud.svg";
+import LockIcon from "../assets/svg/lock.svg";
+import ReportIcon from "../assets/svg/report.svg";
+import ApplicationIcon from "../assets/svg/application.svg";
+import ControlIcon from "../assets/svg/adjust.svg";
 
 export default function ServiceBox({ icon, title, subtitle }) {
   let iconSrc;
@@ -31,17 +31,16 @@ export default function ServiceBox({ icon, title, subtitle }) {
   }
 
   return (
-    <div className="flex flex-col items-center w-full max-w-sm mx-auto">
-      <div className="flex justify-center mb-4">
-        {" "}
-        {/* Added margin-bottom for spacing */}
-        <img src={iconSrc} alt={title} className="w-16 h-16" />{" "}
-        {/* Load SVG using img */}
+    <div className="flex-shrink-0 relative rounded-lg max-w-xs shadow-lg shadow-teal-200/5 bg-gray-800 flex items-center flex-col justify-center self-center mx-auto">
+      <div class="rounded-xl p-6 text-center shadow-xl">
+        <div class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full">
+          <img className="relative w-40" src={iconSrc} alt={title} />
+        </div>
+        <h1 class="text-darken mb-3 text-xl font-medium text-white/90">
+          {title}
+        </h1>
+        <p class="px-4 text-gray-500 text-sm">{subtitle}</p>
       </div>
-      <h2 className="text-2xl font-extrabold text-center py-4 md:py-2">
-        {title}
-      </h2>
-      <p className="text-base text-center">{subtitle}</p>
     </div>
   );
 }
