@@ -5,12 +5,12 @@ import LogoIcon from "../assets/svg/Logo.svg";
 import BurgerIcon from "../assets/svg/BurgerIcon";
 
 const sectionStyles = {
-  home: "border-sky-500", // Borde rojo
-  services: "border-purple-500", // Borde verde
-  projects: "border-blue-500", // Borde azul
-  blog: "border-yellow-500", // Borde amarillo
-  pricing: "border-green-500", // Borde púrpura
-  contact: "border-orange-500", // Borde naranja
+  home: "border-sky-500",
+  services: "border-purple-500",
+  projects: "border-blue-500",
+  blog: "border-yellow-500",
+  pricing: "border-green-500",
+  contact: "border-orange-500",
 };
 
 export default function TopNavbar() {

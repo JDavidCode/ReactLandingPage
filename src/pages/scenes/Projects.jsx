@@ -21,7 +21,7 @@ const mainItems = [
   {
     title: "GAMES",
     description:
-      "Our games project ensures seamless gameplay across all platforms—web, mobile, and desktop. We focus on delivering enjoyable gaming experiences to players everywhere.",
+      "Our games project ensures seamless Game Play across all platforms—web, mobile, and desktop. We focus on delivering enjoyable gaming experiences to players everywhere.",
     background_url: "https://random.imagecdn.app/376/309",
   },
 ];

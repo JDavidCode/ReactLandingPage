@@ -208,8 +208,8 @@ export default function Services() {
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center mx-auto w-full">
-        <div className="w-full sm:w-1/2 lg:w-1/4 p-4">
+      <div className="flex flex-wrap justify-center items-center gap-2">
+        <div className="sm:w-1/2 lg:w-1/4 p-4">
           <ServiceBox
             icon="lock"
             title="Security"
