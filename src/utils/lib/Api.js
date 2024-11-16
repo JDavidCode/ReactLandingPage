@@ -12,12 +12,8 @@ export const login = async (username, password, ipAddress, userAgent) => {
     if (!response.ok) {
       throw new Error(response.status);
     }
-
-    const {accessToken, refreshToken, userUUIDToken, session} = response
-    saveAccessToken(accessToken);
-    saveRefreshToken(refreshToken);
-    saveUUIDToken(userUUIDToken);
-    window.location.href = "http://localhost:5174?token=" + accessToken; //token on url is temporal while localStorage works towards same domain
+    const responseData = await response.url;
+    window.location.href = responseData;
   } catch (error) {
     console.log('Failed: ', error.message);
 	return response
