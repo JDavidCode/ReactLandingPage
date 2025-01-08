@@ -15,10 +15,8 @@ export default function Blog() {
   useEffect(() => {
     const fetchBlogPosts = async () => {
       try {
-        const fetchedPosts = await fetchFeedContent();
+        const fetchedPosts = await fetchFeedContent("tags=updates&tags=company&limit=3");
         setBlogPosts(fetchedPosts);
-        console.log(blogPosts);
-        setTestimonialsPosts(fetchedPosts);
       } catch {
         setBlogPosts([
           {

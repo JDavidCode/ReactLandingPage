@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import BannerLight from '../../../assets/svg/Logo.svg';
+import LogoIcon from "../../../assets/svg/Logo.svg";
 
 function Header() {
   const [open, setOpen] = React.useState(false);
@@ -12,25 +12,24 @@ function Header() {
 
   return (
     <header className="fixed w-full bg-transparent backdrop-blur-lg shadow-md z-50">
-      <nav className="flex items-center justify-between px-4 py-2 border-b border-gray-200 dark:bg-gray-800">
-        <Link to="/" className="flex-shrink-0">
-          <div
-            className="w-12 h-5 bg-cover"
-            style={{
-              backgroundImage: `url(${BannerLight})`,
-            }}
-          />
+      <nav className="flex items-center justify-between px-4 py-2 overflow-y-hidden h-11">
+        <Link to="/" className="">
+          <div className="flex items-center">
+            <a href="#home" className="flex items-center cursor-pointer">
+              <img src={LogoIcon} alt="Logo" className="h-16 w-16" />
+            </a>
+          </div>
         </Link>
         
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8 text-sm">
           <Link to="/blog" className="text-gray-900 dark:text-white hover:underline">Feed</Link>
           <Link to="/blog/updates" className="text-gray-900 dark:text-white hover:underline">Updates</Link>
           <Link to="/blog/community" className="text-gray-900 dark:text-white hover:underline">Community</Link>
         </div>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4 text-sm">
           <Link to="/login" className="text-blue-500 hover:underline">Sign in</Link>
-          <Link to="/register" className="px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Sign up</Link>
+          <Link to="/register" className="px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Sign up</Link>
         </div>
 
         <button

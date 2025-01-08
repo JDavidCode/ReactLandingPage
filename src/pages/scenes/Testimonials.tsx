@@ -8,7 +8,7 @@ export default function Testimonials() {
   useEffect(() => {
     const fetchBlogPosts = async () => {
       try {
-        const fetchedPosts = await fetchFeedContent();
+        const fetchedPosts = await fetchFeedContent("tags=testimonials&limit=4");
         setTestimonialsPosts(fetchedPosts);
       } catch {
         setTestimonialsPosts([

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { TwitterIcon, GitHubIcon, FacebookIcon } from "@icons";
 
 function Copyright() {
   return (
@@ -16,7 +16,10 @@ function Copyright() {
 
 export default function Footer() {
   return (
-    <section id="footer" className="flex flex-col items-center py-8 bg-gray-800 text-center sm:text-left pb-10">
+    <section
+      id="footer"
+      className="flex flex-col items-center py-8 bg-gray-800 text-center sm:text-left pb-10"
+    >
       <div className="flex flex-col sm:flex-row justify-between w-10/12 mx-auto container">
         <div className="flex flex-col w-full sm:w-3/5">
           <div className="w-full sm:w-3/5 pb-3">
@@ -84,21 +87,21 @@ export default function Footer() {
             aria-label="GitHub"
             className="hover:text-gray-700"
           >
-            <FaGithub />
+            <GitHubIcon />
           </a>
           <a
             href="https://twitter.com/MaterialUI"
             aria-label="Twitter"
             className="hover:text-gray-700"
           >
-            <FaTwitter />
+            <TwitterIcon />
           </a>
           <a
             href="https://www.linkedin.com/company/mui/"
             aria-label="LinkedIn"
             className="hover:text-gray-700"
           >
-            <FaLinkedin />
+            <FacebookIcon />
           </a>
         </div>
       </div>

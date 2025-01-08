@@ -2,7 +2,7 @@ import React from "react";
 
 import FullButton from "./Buttons/FullButton";
 
-import CheckMark from "../assets/svg/Checkmark";
+import { CheckIcon } from "@icons";
 import GemIcon from "../assets/svg/GemTiers";
 
 export default function PricingTable({
@@ -36,7 +36,7 @@ export default function PricingTable({
                   className="relative top-[-1px] mr-4"
                   style={{ minWidth: "20px" }}
                 >
-                  {item.checked ? <CheckMark /> : <div />}
+                  {item.checked ? <CheckIcon /> : <div />}
                 </div>
                 <p className="text-sm font-extrabold ">{item.name}</p>
               </div>

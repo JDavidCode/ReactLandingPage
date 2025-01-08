@@ -24,7 +24,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-full min-w-full overflow-hidden">
+    <div className="flex min-h-full min-w-full overflow-hidden justify-center items-center">
       <div className="min-h-full w-9/12 p-24 hidden lg:flex flex-1 overflow-hidden max-h-screen">
         <img src={Svg} alt="" className="" />
       </div>

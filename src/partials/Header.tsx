@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import Backdrop from "../components/Backdrop";
 import LogoIcon from "../assets/svg/Logo.svg";
-import BurgerIcon from "../assets/svg/BurgerIcon";
 
 const sectionStyles = {
   home: "border-sky-500",
