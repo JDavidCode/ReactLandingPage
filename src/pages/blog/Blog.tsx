@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import WidePaperPost from './components/posts/WidePaperPost';
-import RightSideImagePost from './components/posts/RightSideImagePost';
-import TopSideImagePost from './components/posts/TopSideImagePost';
-import Footer from '../scenes/Footer';
-import FAQ from '../scenes/FAQ';
-import { fetchFeedContent } from '../../utils/lib/ApiContent';
-import FadeInSection from './components/FadeInSection';
+import { useState, useEffect } from "react";
+import Header from "./components/Header";
+import WidePaperPost from "./components/posts/WidePaperPost";
+import RightSideImagePost from "./components/posts/RightSideImagePost";
+import TopSideImagePost from "./components/posts/TopSideImagePost";
+import Footer from "../../partials/Footer";
+import FAQ from "../../partials/FAQ";
+import { fetchFeedContent } from "../../utils/lib/ApiContent";
+import FadeInSection from "./components/FadeInSection";
 
 export default function Blog() {
   const [blogContent, setBlogContent] = useState(null);
@@ -17,17 +17,17 @@ export default function Blog() {
         const content = await fetchFeedContent();
         setBlogContent(content);
       } catch (error) {
-        console.error('Error fetching blog content:', error.message);
+        console.error("Error fetching blog content:", error.message);
       }
     };
     fetchContent();
   }, []);
 
   return (
-    <div className={`min-h-screen`}>
-      <Header  />
+    <main className="w-full h-full bg-gradient-to-tl from-slate-950 to-slate-900">
+      <Header />
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="mx-auto px-4 mt-16">
         <FadeInSection>
           {blogContent ? (
             <div className="mt-12">
@@ -60,10 +60,10 @@ export default function Blog() {
       <FadeInSection>
         <FAQ />
       </FadeInSection>
-      
+
       <FadeInSection>
         <Footer />
       </FadeInSection>
-    </div>
+    </main>
   );
 }

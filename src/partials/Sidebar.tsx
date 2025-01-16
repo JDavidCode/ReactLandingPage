@@ -8,17 +8,22 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
       } w-full md:w-1/3 bg-slate-800 block lg:hidden`}
     >
       <ul className="flex flex-col items-center py-10">
-        {["home", "services", "projects", "blog", "pricing", "contact"].map((section) => (
-          <li className="font-semibold text-sm cursor-pointer mb-5" key={section}>
-            <a
-              onClick={() => toggleSidebar(!sidebarOpen)}
-              className="text-white px-4 py-2"
-              href={`#${section}`}
+        {["home", "services", "projects", "blog", "pricing", "contact"].map(
+          (section) => (
+            <li
+              className="font-semibold text-sm cursor-pointer mb-5"
+              key={section}
             >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
-            </a>
-          </li>
-        ))}
+              <a
+                onClick={() => toggleSidebar(!sidebarOpen)}
+                className="text-white px-4 py-2"
+                href={`#${section}`}
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </a>
+            </li>
+          ),
+        )}
       </ul>
 
       <ul className="flex justify-center items-center py-5">

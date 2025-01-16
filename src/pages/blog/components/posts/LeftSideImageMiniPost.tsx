@@ -1,6 +1,13 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import { Grid, Card, CardActionArea, CardMedia, CardContent, Typography } from '@mui/material';
+import * as React from "react";
+import PropTypes from "prop-types";
+import {
+  Grid,
+  Card,
+  CardActionArea,
+  CardMedia,
+  CardContent,
+  Typography,
+} from "@mui/material";
 
 function LeftSideImageMiniPost(props) {
   const { post } = props;
@@ -10,17 +17,17 @@ function LeftSideImageMiniPost(props) {
       <CardActionArea component="a" href="#">
         <Card
           sx={{
-            display: 'flex',
-            height: 100, 
-            overflow: 'hidden', 
+            display: "flex",
+            height: 100,
+            overflow: "hidden",
           }}
         >
           <CardMedia
             component="img"
             sx={{
               width: 100,
-              display: { xs: 'none', sm: 'block' },
-              height: '100%', 
+              display: { xs: "none", sm: "block" },
+              height: "100%",
             }}
             image={post.image}
             alt={post.imageLabel}
@@ -28,7 +35,7 @@ function LeftSideImageMiniPost(props) {
           <CardContent
             sx={{
               flex: 1,
-              overflow: 'hidden', 
+              overflow: "hidden",
             }}
           >
             <Typography component="h2" variant="h5" noWrap>
@@ -41,9 +48,9 @@ function LeftSideImageMiniPost(props) {
               variant="subtitle1"
               paragraph
               sx={{
-                whiteSpace: 'discard-after', 
-                textOverflow: 'ellipsis',
-                overflow: 'hidden',
+                whiteSpace: "discard-after",
+                textOverflow: "ellipsis",
+                overflow: "hidden",
               }}
             >
               {post.content}

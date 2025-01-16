@@ -1,6 +1,4 @@
-import React from "react";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { AnimatePresence } from "framer-motion";
 import Header from "../partials/Header";
 import Hero from "./scenes/Hero";
 import Services from "./scenes/Services";
@@ -8,85 +6,54 @@ import Projects from "./scenes/Projects";
 import Blog from "./scenes/Blog";
 import Pricing from "./scenes/Pricing";
 import Contact from "./scenes/Contact";
-import FAQ from "./scenes/FAQ";
-import Footer from "./scenes/Footer";
+import FAQ from "../partials/FAQ";
+import Footer from "../partials/Footer";
 import ClientSlider from "../components/ClientSlider";
 import Testimonials from "./scenes/Testimonials";
-import MoveUsBanner from "../components/MoveUsBanner";
-
-const Section = ({ children, id}) => {
-  const controls = useAnimation();
-  const { ref, inView } = useInView({
-    threshold: 0.03,
-  });
-
-  React.useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
-  }, [controls, inView]);
-
-  const variants = {
-    hidden: { opacity: 0, y: -25 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.1 } },
-    exit: { opacity: 0, y: 25, transition: { duration: 0.8, delay: 0.1 } },
-  };
-
-  return (
-    <motion.div
-      id={id}
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      exit="exit"
-      variants={variants}
-      className="py-4"
-    >
-      {children}
-    </motion.div>
-  );
-};
+import FreeTierBanner from "@components/banners/FreeTierBanner";
+import Section from "@components/Section";
+import Features from "./scenes/Features";
 
 export default function Landing() {
   return (
-    <>
+    <main className="w-full h-full bg-gradient-to-tl from-slate-950 to-slate-900">
       <Header />
       <AnimatePresence>
-        <Section>
+        <Section id="home">
           <Hero />
         </Section>
-        <Section>
-          <div className="justify-center mx-auto pb-8">
+        <Section id="clients">
+          <div className="justify-center mx-auto">
             <ClientSlider />
           </div>
         </Section>
-        <Section>
+        <Section id="services">
           <Services />
         </Section>
-        <Section>
-          <MoveUsBanner />
+        <Section id="features">
+          <Features />
         </Section>
-        <Section>
+        <Section id="free-tier-banner">
+          <FreeTierBanner />
+        </Section>
+        <Section id="projects">
           <Projects />
         </Section>
-        <Section>
+        <Section id="blog">
           <Blog />
         </Section>
-        <Section>
+        <Section id="testimonials">
           <Testimonials />
         </Section>
-        
-        <Section>
+        <Section id="pricing">
           <Pricing />
         </Section>
-        <Section>
+        <Section id="contact">
           <Contact />
         </Section>
       </AnimatePresence>
       <FAQ />
       <Footer />
-    </>
+    </main>
   );
 }

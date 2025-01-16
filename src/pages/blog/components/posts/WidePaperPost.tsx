@@ -1,5 +1,5 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import * as React from "react";
+import PropTypes from "prop-types";
 
 function WidePaperPost({ post }) {
   return (
@@ -13,9 +13,14 @@ function WidePaperPost({ post }) {
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row">
           <div className="relative p-6 md:p-12 max-w-md">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+              {post.title}
+            </h1>
             <p className="text-lg mb-6">{post.content}</p>
-            <a href="#" className="text-blue-300 text-lg font-medium hover:underline">
+            <a
+              href="#"
+              className="text-blue-300 text-lg font-medium hover:underline"
+            >
               {post.linkText}
             </a>
           </div>

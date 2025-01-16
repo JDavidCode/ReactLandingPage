@@ -1,10 +1,13 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import * as React from "react";
+import PropTypes from "prop-types";
 
 function RightSideImagePost({ post }) {
   return (
     <div className="mx-4">
-      <a href="#" className="flex flex-col sm:flex-row rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+      <a
+        href="#"
+        className="flex flex-col sm:flex-row rounded-lg overflow-hidden shadow-md hover:shadow-lg"
+      >
         {/* Contenido principal */}
         <div className="flex-1 p-4">
           <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>

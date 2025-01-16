@@ -1,65 +1,148 @@
+import PathLinkBox from "@components/buttons/PathLinkBox";
 import React from "react";
+import {
+  SiAdobe,
+  SiApple,
+  SiFacebook,
+  SiGoogle,
+  SiLinkedin,
+  SiShopify,
+  SiSoundcloud,
+  SiSpotify,
+  SiTiktok,
+} from "react-icons/si";
+type ItemType = "Micro Service" | "App" | "Agent";
 
-import ProjectBox from "../../components/ProjectBox";
-import FullButton from "../../components/Buttons/FullButton";
+type ProjectItem = {
+  id: number;
+  type: ItemType;
+  name: string;
+  shortName: string;
+  description: string;
+  tag: string;
+};
 
-import FastTrackSection from "../../components/FastTrack";
-
-const mainItems = [
+const items: ProjectItem[] = [
   {
-    title: "AI",
+    id: 1,
+    type: "Micro Service",
+    name: "Quantum Resource Optimizer",
+    shortName: "QRO",
     description:
-      "Our AI project offers flexible and customizable solutions for various industries. With adaptable features, users can create tailored applications to meet their specific needs.",
-    background_url: "https://random.imagecdn.app/376/309",
+      "Intelligent system that dynamically allocates cloud resources using quantum-inspired algorithms for optimal performance and cost efficiency.",
+    tag: "Backend Optimization",
   },
   {
-    title: "VR",
+    id: 2,
+    type: "App",
+    name: "DeepSight Analytics",
+    shortName: "DSA",
     description:
-      "Our VR project delivers immersive virtual reality experiences using the latest technology. We create captivating environments and interactive simulations for entertainment, education, and more.",
-    background_url: "https://random.imagecdn.app/376/309",
+      "Advanced computer vision platform that processes real-time video streams to detect safety violations in industrial environments.",
+    tag: "Computer Vision",
   },
   {
-    title: "GAMES",
+    id: 3,
+    type: "Agent",
+    name: "Empathy Bridge",
+    shortName: "EB",
     description:
-      "Our games project ensures seamless Game Play across all platforms—web, mobile, and desktop. We focus on delivering enjoyable gaming experiences to players everywhere.",
-    background_url: "https://random.imagecdn.app/376/309",
+      "Emotional intelligence-powered chatbot that adapts its communication style based on user sentiment and conversation context.",
+    tag: "Conversational AI",
+  },
+  {
+    id: 4,
+    type: "Micro Service",
+    name: "Nexus Stream Processor",
+    shortName: "NSP",
+    description:
+      "High-throughput data processing engine that handles multiple data streams with advanced pattern recognition and anomaly detection.",
+    tag: "Data Analytics",
+  },
+  {
+    id: 5,
+    type: "App",
+    name: "VitalSync Pro",
+    shortName: "VSP",
+    description:
+      "Comprehensive health tracking platform that integrates with multiple wearable devices and provides predictive health insights.",
+    tag: "Wellness Tools",
+  },
+  {
+    id: 6,
+    type: "Agent",
+    name: "Momentum AI Assistant",
+    shortName: "MOM",
+    description:
+      "Context-aware productivity assistant that learns from user behavior to automate routine tasks and optimize workflow patterns.",
+    tag: "Productivity AI",
+  },
+  {
+    id: 7,
+    type: "Micro Service",
+    name: "Chronos Edge Orchestrator",
+    shortName: "CEO",
+    description:
+      "Distributed event scheduling system that handles complex recurring patterns and manages conflicts across multiple time zones.",
+    tag: "Event Management",
+  },
+  {
+    id: 8,
+    type: "App",
+    name: "StrategyForge Companion",
+    shortName: "SFC",
+    description:
+      "Real-time gaming assistant that provides strategic recommendations and tracks performance metrics across multiple game genres.",
+    tag: "Gaming Tools",
+  },
+  {
+    id: 9,
+    type: "Agent",
+    name: "MindScribe Tutor",
+    shortName: "MST",
+    description:
+      "Adaptive learning system that creates personalized study plans and provides interactive explanations based on individual learning patterns.",
+    tag: "Educational AI",
   },
 ];
 
 export default function Projects() {
   return (
-    <section className="w-full py-8" id="projects">
-      <div className="container mx-auto w-10/12 mb-8">
+    <section className="w-full">
+      <div className="container mx-auto w-10/12 mb-8 flex flex-col gap-4 items-center">
         <div className="text-center">
+        <div className="inline-flex items-center gap-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
+            <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent text-sm">
+              Take a tour into our
+            </span>
+          </div>
           <h1 className="text-4xl font-black text-white/80 py-4">Projects</h1>
           <p className="text-sm mx-auto w-5/6">
-            Discover our innovative projects in AI, VR, and gaming. Dive into
-            our latest developments to uncover unique features and benefits.
-            <br />
-            Every project is built upon our core features stack, ensuring
-            innovation and quality in everything we create.
+            Discover our innovative projects in microservices, Apps, and AI
+            agents. Dive into our latest developments to uncover unique features
+            and benefits. Every project is built upon our core features stack,
+            ensuring innovation and quality in everything we create.
           </p>
         </div>
-        <div className="flex flex-wrap justify-center">
-          {mainItems.map((item, index) => (
-            <div key={index} className="sm:w-1/3 p-2">
-              <ProjectBox
-                img={item.background_url}
-                title={item.title}
-                text={item.description}
-                action={() => alert(`Clicked on ${item.title}`)}
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="flex justify-center py-8">
-          <div style={{ width: "200px" }}>
-            <FullButton title="Load More" action={() => alert("clicked")} />
-          </div>
-        </div>
+        <div className="w-full bg-gray-950 overflow-hidden rounded-xl">
+        <div className="divide-y divide-neutral-900 border border-neutral-900 rounded-xl overflow-hidden">
+      <div className="grid grid-cols-2 divide-x divide-neutral-900 rounded-t-lg">
+        <PathLinkBox Icon={SiGoogle} href="" />
+        <PathLinkBox Icon={SiShopify} href="" />
       </div>
-      <FastTrackSection />
+      <div className="grid grid-cols-4 divide-x divide-neutral-900">
+        <PathLinkBox Icon={SiApple} href="" />
+        <PathLinkBox Icon={SiSoundcloud} href="" />
+        <PathLinkBox Icon={SiAdobe} href="" />
+        <PathLinkBox Icon={SiFacebook} href="" />
+      </div>
+      <div className="grid grid-cols-3 divide-x divide-neutral-900">
+        <PathLinkBox Icon={SiTiktok} href="" />
+        <PathLinkBox Icon={SiSpotify} href="" />
+        <PathLinkBox Icon={SiLinkedin} href="" />
+      </div>
+    </div>        </div>
+      </div>
     </section>
   );
 }

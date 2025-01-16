@@ -1,7 +1,9 @@
 // Ensure base URL is configured
 const baseUrl = import.meta.env.VITE_CONTENT_API_URL;
 if (!baseUrl) {
-  throw new Error("The environment variable VITE_CONTENT_API_URL is not configured.");
+  throw new Error(
+    "The environment variable VITE_CONTENT_API_URL is not configured.",
+  );
 }
 
 export const fetchFeedContent = async (query?: string): Promise<any> => {

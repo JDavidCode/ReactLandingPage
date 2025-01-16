@@ -1,168 +1,193 @@
 import { useState } from "react";
-import Logo from "../../assets/svg/Logo.svg";
-import Svg from "../../assets/svg/counting_stars.svg";
-import { signup } from "../../utils/lib/Api";
+import Logo from "@assets/svg/Logo.svg";
+import { signup } from "@utils/lib/Api";
+import VerticalAccordion from "./components/VerticalAccordion";
 
 const Step1 = ({ formData, handleChange }) => (
   <>
-    <div>
-      <label
-        htmlFor="name"
-        className="dark:text-gray-400 text-xs font-semibold"
-      >
-        Name
-      </label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        value={formData.name}
-        onChange={handleChange}
-        required
-        className="border p-1 dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-      />
+    <div className="bg-slate-950 rounded-lg">
+      <div className="relative bg-inherit">
+        <input
+          className="peer bg-transparent h-10 w-80 rounded-lg text-gray-200 placeholder-transparent ring-2 px-4 ring-transparent focus:ring-sky-600 focus:outline-none "
+          placeholder="Enter your name"
+          id="name"
+          name="name"
+          type="text"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <label
+          className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all rounded-lg"
+          htmlFor="name"
+        >
+          Name
+        </label>
+      </div>
     </div>
-    <div>
-      <label
-        htmlFor="username"
-        className="dark:text-gray-400 text-xs font-semibold"
-      >
-        Username
-      </label>
-      <input
-        id="username"
-        name="username"
-        type="text"
-        value={formData.username}
-        onChange={handleChange}
-        required
-        className="border p-1 dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-      />
+    <div className="bg-slate-950 rounded-lg">
+      <div className="relative bg-inherit">
+        <input
+          className="peer bg-transparent h-10 w-80 rounded-lg text-gray-200 placeholder-transparent ring-2 px-4 ring-transparent focus:ring-sky-600 focus:outline-none "
+          placeholder="Enter your username"
+          id="username"
+          name="username"
+          type="text"
+          value={formData.username}
+          onChange={handleChange}
+          required
+        />
+        <label
+          className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all rounded-lg"
+          htmlFor="username"
+        >
+          Username
+        </label>
+      </div>
     </div>
   </>
 );
 
 const Step2 = ({ formData, handleChange }) => (
   <>
-    <div>
-      <label
-        htmlFor="birthday"
-        className="dark:text-gray-400 text-xs font-semibold"
-      >
-        Birthday
-      </label>
-      <input
-        id="birthday"
-        name="birthday"
-        type="date"
-        value={formData.birthday}
-        onChange={handleChange}
-        required
-        className="border p-1 dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-      />
+    <div className="bg-slate-950 rounded-lg">
+      <div className="relative bg-inherit">
+        <input
+          className="peer bg-transparent h-10 w-80 rounded-lg text-gray-200 placeholder-transparent ring-2 px-4 ring-transparent focus:ring-sky-600 focus:outline-none "
+          placeholder="Select your birthday"
+          id="birthday"
+          name="birthday"
+          type="date"
+          value={formData.birthday}
+          onChange={handleChange}
+          required
+        />
+        <label
+          className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all rounded-lg"
+          htmlFor="birthday"
+        >
+          Birthday
+        </label>
+      </div>
     </div>
-    <div>
-      <label
-        htmlFor="email"
-        className="dark:text-gray-400 text-xs font-semibold"
-      >
-        Email address
-      </label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        value={formData.email}
-        onChange={handleChange}
-        required
-        className="border p-1 dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-      />
+    <div className="bg-slate-950 rounded-lg">
+      <div className="relative bg-inherit">
+        <input
+          className="peer bg-transparent h-10 w-80 rounded-lg text-gray-200 placeholder-transparent ring-2 px-4 ring-transparent focus:ring-sky-600 focus:outline-none "
+          placeholder="Enter your email"
+          id="email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <label
+          className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all rounded-lg"
+          htmlFor="email"
+        >
+          Email
+        </label>
+      </div>
     </div>
   </>
 );
 
 const Step3 = ({ formData, handleChange }) => (
   <>
-    <div>
-      <label
-        htmlFor="password"
-        className="dark:text-gray-400 text-xs font-semibold"
-      >
-        Password
-      </label>
-      <input
-        id="password"
-        name="password"
-        type="password"
-        value={formData.password}
-        onChange={handleChange}
-        required
-        className="border p-1 dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-      />
+    <div className="bg-slate-950 rounded-lg">
+      <div className="relative bg-inherit">
+        <input
+          className="peer bg-transparent h-10 w-80 rounded-lg text-gray-200 placeholder-transparent ring-2 px-4 ring-transparent focus:ring-sky-600 focus:outline-none "
+          placeholder="Enter your password"
+          id="password"
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        <label
+          className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all rounded-lg"
+          htmlFor="password"
+        >
+          Password
+        </label>
+      </div>
     </div>
-    <div>
-      <label
-        htmlFor="confirmPassword"
-        className="dark:text-gray-400 text-xs font-semibold"
-      >
-        Confirm Password
-      </label>
-      <input
-        id="confirmPassword"
-        name="confirmPassword"
-        type="password"
-        value={formData.confirmPassword}
-        onChange={handleChange}
-        required
-        className="border p-1 dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-      />
+    <div className="bg-slate-950 rounded-lg">
+      <div className="relative bg-inherit">
+        <input
+          className="peer bg-transparent h-10 w-80 rounded-lg text-gray-200 placeholder-transparent ring-2 px-4 ring-transparent focus:ring-sky-600 focus:outline-none "
+          placeholder="Confirm your password"
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          required
+        />
+        <label
+          className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all rounded-lg"
+          htmlFor="confirmPassword"
+        >
+          Confirm Password
+        </label>
+      </div>
     </div>
   </>
 );
+
 const Step4 = ({ formData, handleChange }) => (
   <>
-    <div className="flex flex-col">
-      <label
-        htmlFor="phone"
-        className="dark:text-gray-400 text-xs font-semibold"
-      >
-        Mobile Phone (with country code)
-      </label>
-      <input
-        id="phone"
-        name="phone"
-        type="tel"
-        value={formData.phone}
-        onChange={handleChange}
-        required
-        placeholder="+1 234 567 8901" // Placeholder for country code
-        className="border p-1 dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-      />
+    <div className="bg-slate-950 rounded-lg">
+      <div className="relative bg-inherit">
+        <input
+          className="peer bg-transparent h-10 w-80 rounded-lg text-gray-200 placeholder-transparent ring-2 px-4 ring-transparent focus:ring-sky-600 focus:outline-none "
+          placeholder="Enter your phone number"
+          id="phone"
+          name="phone"
+          type="tel"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+        />
+        <label
+          className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all rounded-lg"
+          htmlFor="phone"
+        >
+          Mobile Phone (with country code)
+        </label>
+      </div>
     </div>
   </>
 );
 
 const Step5 = ({ formData, handleChange }) => (
   <>
-    <div>
-      <label
-        htmlFor="city"
-        className="dark:text-gray-400 text-xs font-semibold"
-      >
-        City
-      </label>
-      <input
-        id="city"
-        name="city"
-        type="text"
-        value={formData.city}
-        onChange={handleChange}
-        required
-        className="border p-1 dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 shadow-md placeholder:text-base focus:scale-105 ease-in-out duration-300 border-gray-300 rounded-lg w-full"
-      />
+    <div className="bg-slate-950 rounded-lg">
+      <div className="relative bg-inherit">
+        <input
+          className="peer bg-transparent h-10 w-80 rounded-lg text-gray-200 placeholder-transparent ring-2 px-4 ring-transparent focus:ring-sky-600 focus:outline-none "
+          placeholder="Enter your city"
+          id="city"
+          name="city"
+          type="text"
+          value={formData.city}
+          onChange={handleChange}
+          required
+        />
+        <label
+          className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all rounded-lg"
+          htmlFor="city"
+        >
+          City
+        </label>
+      </div>
     </div>
   </>
 );
+
 export default function Register() {
   const [formData, setFormData] = useState({
     name: "",
@@ -208,145 +233,119 @@ export default function Register() {
       if (response.ok) {
         window.location.href = "/login";
       }
-    } catch (error) {
+    } catch (error: any) {
       setMessage("Error: " + (error.message || "Something went wrong"));
     }
   };
 
   return (
-    <div className="flex min-h-full min-w-full overflow-hidden">
-      <div className="min-h-full w-9/12 p-24 hidden lg:flex flex-1 overflow-hidden max-h-screen">
-        <img src={Svg} alt="" className="" />
+    <div className="flex justify-center items-center min-h-screen min-w-screen overflow-hidden">
+      <div className="flex-1 h-screen">
+        <VerticalAccordion />
       </div>
-      <div className="right-0 flex-0">
-        <div className="flex font-poppins items-center justify-center">
-          <div className="h-screen flex justify-center items-center dark:bg-gray-900">
-            <div
-              id="back-div"
-              className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl m-4 h-[95dvh] my-auto flex "
-            >
-              <div className="border-[20px] border-transparent rounded-[20px] dark:bg-gray-900 bg-white shadow-lg m-2 flex items-center justify-center flex-col w-96">
-                <a href="/" className="flex items-center cursor-pointer">
-                  <img
-                    src={Logo}
-                    alt="Logo"
-                    className="mx-auto h-24 2xl:h-40 relative"
-                  />
-                </a>
-                <h1 className="pb-4 font-bold dark:text-gray-400 text-2xl text-center cursor-default">
-                  Sign Up
-                </h1>
-                <form className="space-y-2" onSubmit={handleSubmit}>
-                  {message && (
-                    <div className="text-red-600 text-center mb-4">
-                      {message}
-                    </div>
-                  )}
-                  {step === 1 && (
-                    <Step1 formData={formData} handleChange={handleChange} />
-                  )}
-                  {step === 2 && (
-                    <Step2 formData={formData} handleChange={handleChange} />
-                  )}
-                  {step === 3 && (
-                    <Step3 formData={formData} handleChange={handleChange} />
-                  )}
-                  {step === 4 && (
-                    <Step4 formData={formData} handleChange={handleChange} />
-                  )}
-                  {step === 5 && (
-                    <Step5 formData={formData} handleChange={handleChange} />
-                  )}
-                  <div className="flex justify-between w-full">
-                    {step > 1 && (
-                      <button
-                        type="button"
-                        onClick={handleBack}
-                        className="bg-gray-300 text-black rounded-lg p-2 min-w-[100px]"
-                      >
-                        Back
-                      </button>
-                    )}
-                    <button
-                      type={step < 5 ? "button" : "submit"}
-                      onClick={step < 5 ? handleNext : undefined}
-                      className="bg-blue-500 text-white rounded-lg p-2 min-w-[100px]"
-                    >
-                      {step < 5 ? "Next" : "Sign Up"}
-                    </button>
-                  </div>
-                </form>
-                <div className="flex flex-col mt-4 items-center justify-center text-sm">
-                  <h3 className="dark:text-gray-300">
-                    Already have an account?{" "}
-                    <a
-                      className="group text-blue-400 transition-all duration-100 ease-in-out"
-                      href="/login"
-                    >
-                      <span className="bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                        Sign in
-                      </span>
-                    </a>
-                  </h3>
-                </div>
-                <span className="text-xs my-2">or</span>
-                <div
-                  id="third-party-auth"
-                  className="flex items-center justify-center flex-wrap [&>button]:shadow-gray-600/70"
+      <div className="h-screen flex justify-center items-center bg-slate-950 py-2 right-0 flex-0 w-5/12">
+        <div className="bg-gradient-to-r from-sky-800 to-indigo-800 rounded-xl m-4 h-full flex w-full">
+          <div className="flex flex-col items-center justify-center rounded-md bg-slate-950 shadow-lg m-2 relative w-full">
+            <div className="absolute top-8">
+              <a href="/" className="flex items-center cursor-pointer">
+                <img
+                  src={Logo}
+                  alt="Logo"
+                  className="mx-auto h-24 2xl:h-40  relative"
+                />
+              </a>
+              <h1 className="pb-4 font-bold dark:text-gray-400 text-2xl text-center cursor-default">
+                Sign Up
+              </h1>
+            </div>
+            <form className="space-y-2" onSubmit={handleSubmit}>
+              {message && (
+                <div className="text-red-600 text-center mb-4">{message}</div>
+              )}
+              {step === 1 && (
+                <Step1 formData={formData} handleChange={handleChange} />
+              )}
+              {step === 2 && (
+                <Step2 formData={formData} handleChange={handleChange} />
+              )}
+              {step === 3 && (
+                <Step3 formData={formData} handleChange={handleChange} />
+              )}
+              {step === 4 && (
+                <Step4 formData={formData} handleChange={handleChange} />
+              )}
+              {step === 5 && (
+                <Step5 formData={formData} handleChange={handleChange} />
+              )}
+              <div className="flex justify-between w-full">
+                {step > 1 && (
+                  <button
+                    type="button"
+                    onClick={handleBack}
+                    className="bg-gray-300 text-black rounded-lg p-2 min-w-[100px]"
+                  >
+                    Back
+                  </button>
+                )}
+                <button
+                  type={step < 5 ? "button" : "submit"}
+                  onClick={step < 5 ? handleNext : undefined}
+                  className="bg-blue-500 text-white rounded-lg p-2 min-w-[100px]"
                 >
-                  <button
+                  {step < 5 ? "Next" : "Sign Up"}
+                </button>
+              </div>
+            </form>
+            <div className="flex flex-col mt-4 items-center justify-center text-sm">
+              <h3 className="text-gray-300">
+                Already have an account?{" "}
+                <a
+                  className="group text-blue-400 transition-all duration-100 ease-in-out"
+                  href="/login"
+                >
+                  <span className="bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                    Sign in
+                  </span>
+                </a>
+              </h3>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-2 absolute bottom-0 p-2">
+              <span>or</span>
+              <div className="flex items-center justify-center flex-wrap [&>button]:shadow-slate-800/80 [&>button]:bg-slate-900">
+                <button className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1">
+                  <img
+                    className="w-6"
+                    src="https://ucarecdn.com/8f25a2ba-bdcf-4ff1-b596-088f330416ef/"
+                    alt="Google"
+                  />
+                </button>
+                <button className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1">
+                  <img
+                    className="w-6 filter invert"
+                    src="https://ucarecdn.com/be5b0ffd-85e8-4639-83a6-5162dfa15a16/"
+                    alt="Github"
+                  />
+                </button>
+                <button className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1">
+                  <img
+                    className="w-6"
+                    src="https://ucarecdn.com/6f56c0f1-c9c0-4d72-b44d-51a79ff38ea9/"
+                    alt="Facebook"
+                  />
+                </button>
+              </div>
+              <div className="text-slate-500 flex text-center flex-col items-center text-xs">
+                <p className="cursor-default">
+                  By signing up, you agree to our{" "}
+                  <a
+                    className="group text-blue-400 transition-all duration-100 ease-in-out"
                     href="#"
-                    className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
                   >
-                    <img
-                      className="max-w-[25px]"
-                      src="https://ucarecdn.com/8f25a2ba-bdcf-4ff1-b596-088f330416ef/"
-                      alt="Google"
-                    />
-                  </button>
-                  <button
-                    href="#"
-                    className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-                  >
-                    <img
-                      className="max-w-[25px] filter dark:invert"
-                      src="https://ucarecdn.com/be5b0ffd-85e8-4639-83a6-5162dfa15a16/"
-                      alt="Github"
-                    />
-                  </button>
-                  <button
-                    href="#"
-                    className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-                  >
-                    <img
-                      className="max-w-[25px]"
-                      src="https://ucarecdn.com/6f56c0f1-c9c0-4d72-b44d-51a79ff38ea9/"
-                      alt="Facebook"
-                    />
-                  </button>
-                </div>
-                <div className="text-gray-500 flex text-center flex-col mt-4 items-center text-sm">
-                  <p className="cursor-default text-xs">
-                    By signing up, you agree to our{" "} <br />
-                    <a
-                      className="group text-blue-400 transition-all duration-100 ease-in-out"
-                      href="#"
-                    >
-                      <span className="cursor-pointer bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                        Terms{" "}
-                      </span>
-                    </a>
-                    and{" "}
-                    <a
-                      className="group text-blue-400 transition-all duration-100 ease-in-out"
-                      href="#"
-                    >
-                      <span className="cursor-pointer bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                        Privacy Policy
-                      </span>
-                    </a>
-                  </p>
-                </div>
+                    <span className="cursor-pointer bg-left-bottom bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                      Terms and Privacy Policy
+                    </span>
+                  </a>
+                </p>
               </div>
             </div>
           </div>

@@ -1,14 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { fetchFeedContent } from "../../utils/lib/ApiContent";
-import QuoteIcon from "../../assets/svg/Quotes";
+import Card from "@components/cards/TestimonialCard";
+import { fetchFeedContent } from "@utils/lib/ApiContent";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  animate,
+  AnimatePresence,
+} from "framer-motion";
+import { useEffect, useState } from "react";
 
-export default function Testimonials() {
-  const [testimonialsPosts, setTestimonialsPosts] = useState([]);
+interface Stat {
+  value: string;
+  description: string;
+  color: string;
+}
+interface Testimonial {
+  id: number;
+  content: string;
+  authorName: string;
+}
+function Testimonials() {
+  const [testimonialsPosts, setTestimonialsPosts] = useState<Testimonial[]>([]);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const fetchBlogPosts = async () => {
       try {
-        const fetchedPosts = await fetchFeedContent("tags=testimonials&limit=4");
+        const fetchedPosts: Testimonial[] = await fetchFeedContent(
+          "tags=testimonials&limit=4"
+        );
         setTestimonialsPosts(fetchedPosts);
       } catch {
         setTestimonialsPosts([
@@ -54,35 +74,123 @@ export default function Testimonials() {
 
     fetchBlogPosts();
   }, []);
+  const stats: Stat[] = [
+    {
+      value: "70k+",
+      description: "users optimizing their daily workflows with Arnica",
+      color: "text-white",
+    },
+    {
+      value: "35%",
+      description:
+        "boost in efficiency when managing projects and tasks with our tools",
+      color: "text-orange-500",
+    },
+    {
+      value: "15.3%",
+      description:
+        "reduction in correction and maintenance times thanks to our solutions",
+      color: "text-orange-500",
+    },
+    {
+      value: "2x",
+      description: "faster execution of daily tasks and project management",
+      color: "text-white",
+    },
+  ];
+
+  function getAnimationTarget(value: string): number {
+    const numericValue = parseFloat(value);
+    return isNaN(numericValue) ? 0 : numericValue;
+  }
+
+  function getSuffix(value: string): string {
+    return value.replace(/[0-9.]/g, "");
+  }
+
   return (
-    <section className="py-8 mx-auto w-10/12">
-        <div className="">
-          <h1 className="text-4xl font-black text-white/80">
-            What Do They Say?
-          </h1>
-          <p className="text-sm pb-9 pt-3">
-            "Our experience has been outstanding. The team is highly
-            professional and dedicated to delivering quality results.
-            <br />
-            They exceeded our expectations, and we are thrilled with the
-            outcome."
-          </p>
-        </div>
-        <div className="flex flex-wrap justify-center">
-          <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 space-x-2">
-            {testimonialsPosts.map((item) => (
-              <div key={item.id} className="p-5 mt-8 bg-gray-900 rounded-lg flex flex-col items-center">
-                <div className="relative -top-10">
-                  <QuoteIcon />
-                </div>
-                <p className="text-sm pb-8">{item.content}</p>
-                <p className="text-orange-500 text-sm self-end">
-                  <em>{item.authorName}</em>
-                </p>
-              </div>
-            ))}
+    <section className="bg-slate-900 text-white p-20">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-2">
+        {/* Left Side */}
+        <div>
+          <div className="pb-4">
+            <div className="inline-flex items-center gap-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
+              <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent text-sm">
+                Testimonials
+              </span>
+            </div>
+            <h1 className="text-4xl font-black text-white/80">
+              What Do They Say?
+            </h1>
           </div>
+          <motion.div className="w-96 h-20 relative hidden md:block">
+            <AnimatePresence initial={false}>
+              <Card key={index + 1} frontCard={false} />
+              <Card
+                key={index}
+                frontCard={true}
+                index={index}
+                setIndex={setIndex}
+                drag="x"
+              />
+            </AnimatePresence>
+          </motion.div>
         </div>
+
+        {/* Right Side: Stats */}
+        <div className="md:grid grid-cols-2 gap-4 text-center space-y-4 md:space-y-0">
+          {stats.map((stat, index) => {
+            const numericValue = getAnimationTarget(stat.value);
+            const suffix = getSuffix(stat.value);
+            return (
+              <div
+                key={index}
+                className="flex flex-col items-center justify-center bg-slate-800 p-6 rounded-lg"
+              >
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 * index }}
+                >
+                  <AnimatedValue
+                    value={numericValue}
+                    suffix={suffix}
+                    color={stat.color}
+                  />
+                </motion.div>
+                <p className="text-gray-400 text-sm">{stat.description}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }
+
+interface AnimatedValueProps {
+  value: number;
+  suffix: string;
+  color: string;
+}
+
+function AnimatedValue({ value, suffix, color }: AnimatedValueProps) {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, Math.round);
+
+  useEffect(() => {
+    const animation = animate(count, value, {
+      duration: 2,
+    });
+    return animation.stop;
+  }, [value]);
+
+  return (
+    <p className={`text-2xl font-bold ${color}`}>
+      <motion.span>{rounded}</motion.span>
+      {suffix}
+    </p>
+  );
+}
+
+export default Testimonials;

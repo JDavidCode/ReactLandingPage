@@ -28,9 +28,9 @@ const baseUrl = import.meta.env.VITE_AUTH_API_URL;
 
 if (!baseUrl) {
   throw new Error(
-    "The environment variable VITE_AUTH_API_URL is not configured."
+    "The environment variable VITE_AUTH_API_URL is not configured.",
   );
-};
+}
 
 const getCsrfTokenFromCookies = (): string | null => {
   const csrfToken = document.cookie
@@ -41,10 +41,10 @@ const getCsrfTokenFromCookies = (): string | null => {
 
 export const login = async (
   username: string,
-  password: string
+  password: string,
 ): Promise<boolean> => {
   try {
-    const fingerprint=""
+    const fingerprint = "";
     const body: LoginRequest = { username, password, fingerprint };
 
     const response = await fetch(`${baseUrl}/user/login`, {
@@ -59,13 +59,13 @@ export const login = async (
       const errorBody = await response.json();
       throw new Error(JSON.stringify(errorBody));
     }
-    
+
     // Get CSRF Token from cookies
     const csrfToken = getCsrfTokenFromCookies();
     if (!csrfToken) {
       throw new Error("CSRF Token is missing.");
     }
-    console.log(csrfToken)
+    console.log(csrfToken);
     //window.location.href = responseData.url;
   } catch (error: any) {
     console.error("Failed: ", error.message);
@@ -82,7 +82,7 @@ export const signup = async (
   email: string,
   password: string,
   phone: string,
-  city: string
+  city: string,
 ): Promise<SignupResponse | any> => {
   try {
     const body: SignupRequest = {
@@ -107,7 +107,7 @@ export const signup = async (
       const errorBody = await response.json();
       throw new Error(JSON.stringify(errorBody));
     }
-    
+
     return response;
   } catch (error: any) {
     console.error("Failed: ", error.message);

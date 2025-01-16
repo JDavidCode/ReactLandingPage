@@ -1,66 +1,138 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import LogoIcon from "../../../assets/svg/Logo.svg";
+import { useEffect, useState } from "react";
+import Sidebar from "./Sidebar";
+import Backdrop from "@components/Backdrop";
+import LogoIcon from "@assets/svg/Logo.svg";
 
-function Header() {
-  const [open, setOpen] = React.useState(false);
+const sectionStyles = {
+  blog: "border-yellow-500",
+  updates: "border-green-500",
+  community: "border-orange-500",
+};
 
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
+export default function TopNavbar() {
+  const [y, setY] = useState(window.scrollY);
+  const [sidebarOpen, toggleSidebar] = useState(false);
+  const [activeSection, setActiveSection] = useState("#blog");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setY(window.scrollY);
+      updateActiveSection();
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const updateActiveSection = () => {
+    const sections = [
+      "blog",
+      "updates",
+      "community",
+    ];
+
+    sections.forEach((section) => {
+      const sectionElement = document.querySelector(`#${section}`);
+      if (sectionElement) {
+        const { top, bottom } = sectionElement.getBoundingClientRect();
+        if (top <= window.innerHeight / 2 && bottom >= window.innerHeight / 2) {
+          setActiveSection(`#${section}`);
+        }
+      }
+    });
+  };
+
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    const targetElement = document.querySelector(targetId);
+    const rect = targetElement.getBoundingClientRect();
+    const offset = window.scrollY + rect.top;
+
+    const adjustedOffset = y > offset ? offset : offset;
+
+    window.scrollTo({
+      top: adjustedOffset,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <header className="fixed w-full bg-transparent backdrop-blur-lg shadow-md z-50">
-      <nav className="flex items-center justify-between px-4 py-2 overflow-y-hidden h-11">
-        <Link to="/" className="">
+    <>
+      {sidebarOpen && <Backdrop toggleSidebar={toggleSidebar} />}
+      <nav
+        className={`flex items-center justify-center shadow-sm w-screen fixed top-0 left-0 z-50 text-slate-200 ${
+          y > 80 ? "md:h-10" : "h-12"
+        } font-sans font-medium text-sm transition-all ease-out bg-slate-950`}
+      >
+        <div className="container flex items-center justify-between h-full">
           <div className="flex items-center">
-            <a href="#home" className="flex items-center cursor-pointer">
+            <a href="/" className="flex items-center cursor-pointer">
               <img src={LogoIcon} alt="Logo" className="h-16 w-16" />
             </a>
           </div>
-        </Link>
-        
-        <div className="hidden md:flex items-center gap-8 text-sm">
-          <Link to="/blog" className="text-gray-900 dark:text-white hover:underline">Feed</Link>
-          <Link to="/blog/updates" className="text-gray-900 dark:text-white hover:underline">Updates</Link>
-          <Link to="/blog/community" className="text-gray-900 dark:text-white hover:underline">Community</Link>
-        </div>
+          <button
+            className="outline-none border-0 bg-transparent h-full px-4 lg:hidden text-slate-200 "
+            onClick={() => toggleSidebar(!sidebarOpen)}
+          >
+            <div className="block w-3 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <span
+                aria-hidden="true"
+                className={`block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out ${
+                  sidebarOpen ? "rotate-45" : "-translate-y-1.5"
+                }`}
+              ></span>
+              <span
+                aria-hidden="true"
+                className={`block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out ${
+                  sidebarOpen ? "opacity-0" : ""
+                }`}
+              ></span>
+              <span
+                aria-hidden="true"
+                className={`block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out ${
+                  sidebarOpen ? "-rotate-45" : "translate-y-1.5"
+                }`}
+              ></span>
+            </div>
+          </button>
 
-        <div className="hidden md:flex items-center gap-4 text-sm">
-          <Link to="/login" className="text-blue-500 hover:underline">Sign in</Link>
-          <Link to="/register" className="px-2 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Sign up</Link>
-        </div>
-
-        <button
-          className="md:hidden p-2"
-          onClick={toggleDrawer(true)}
-          aria-label="Open menu"
-        >
-        </button>
-        
-        {/* Mobile Drawer */}
-        <div className={`fixed inset-0 bg-gray-900 bg-opacity-50 z-50 transform ${open ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out md:hidden`} onClick={toggleDrawer(false)}>
-          <div className="absolute right-0 w-3/5 h-full dark:bg-gray-800 p-4">
-            <button onClick={toggleDrawer(false)} className="text-gray-600 dark:text-gray-300">
-              Close
-            </button>
-            <Link to="/blog" className="block my-2 text-gray-900 dark:text-white">Feed</Link>
-            <Link to="/blog/updates" className="block my-2 text-gray-900 dark:text-white">Updates</Link>
-            <Link to="/blog/community" className="block my-2 text-gray-900 dark:text-white">Community</Link>
-            <div className="border-t border-gray-200 dark:border-gray-600 my-4"></div>
-            <Link to="/register" className="block text-center my-2 bg-blue-500 text-white py-2 rounded-lg">Sign up</Link>
-            <Link to="/login" className="block text-center my-2 border border-blue-500 text-blue-500 py-2 rounded-lg">Sign in</Link>
-          </div>
+          <ul className="hidden lg:flex space-x-2">
+            {[
+              "blog",
+              "updates",
+              "community",
+            ].map((section) => (
+              <li key={section} className="relative cursor-pointer h-full">
+                <a
+                  href={`#${section}`}
+                  className={`px-4 ${y > 80 ? "py-2" : "py-3"} block ${
+                    activeSection === `#${section}` &&
+                    !["faq", "footer"].includes(section)
+                      ? `border-b-2 ${sectionStyles[section]}`
+                      : "border-b-2 border-transparent"
+                  } rounded transition-all duration-200`}
+                  onClick={(e) => handleNavClick(e, `#${section}`)}
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <ul className="hidden lg:flex items-center space-x-4 font-sans">
+            <li className="cursor-pointer">
+              <a href="/login" className="py-2 pr-8">
+                Log in
+              </a>
+            </li>
+            <li className="cursor-pointer">
+              <a href="/signup" className="bg-light rounded-lg py-2 px-4">
+                Sign Up
+              </a>
+            </li>
+          </ul>
         </div>
       </nav>
-    </header>
+    </>
   );
 }
-
-Header.propTypes = {
-  mode: PropTypes.oneOf(['dark', 'light']).isRequired,
-  toggleColorMode: PropTypes.func.isRequired,
-};
-
-export default Header;
