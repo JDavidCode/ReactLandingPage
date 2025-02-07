@@ -14,10 +14,6 @@ interface SignupRequest {
   city: string;
 }
 
-interface LoginResponse {
-  url: string;
-}
-
 interface SignupResponse {
   success: boolean;
   message: string;
@@ -28,20 +24,20 @@ const baseUrl = import.meta.env.VITE_AUTH_API_URL;
 
 if (!baseUrl) {
   throw new Error(
-    "The environment variable VITE_AUTH_API_URL is not configured.",
+    "The environment variable VITE_AUTH_API_URL is not configured."
   );
 }
 
 const getCsrfTokenFromCookies = (): string | null => {
   const csrfToken = document.cookie
     .split("; ")
-    .find((row) => row.startsWith("csrfToken="));
+    .find((row) => row.startsWith("X-CSRF-Token-client="));
   return csrfToken ? csrfToken.split("=")[1] : null;
 };
 
 export const login = async (
   username: string,
-  password: string,
+  password: string
 ): Promise<boolean> => {
   try {
     const fingerprint = "";
@@ -53,20 +49,20 @@ export const login = async (
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
+      credentials: "include",
     });
 
     if (!response.ok) {
       const errorBody = await response.json();
       throw new Error(JSON.stringify(errorBody));
     }
-
-    // Get CSRF Token from cookies
-    const csrfToken = getCsrfTokenFromCookies();
-    if (!csrfToken) {
-      throw new Error("CSRF Token is missing.");
+    const rest = await response.json();
+    const url = rest.url;
+    if (url) {
+      window.location.href = url;
+    } else {
+      console.warn("No redirection URL found in response.");
     }
-    console.log(csrfToken);
-    //window.location.href = responseData.url;
   } catch (error: any) {
     console.error("Failed: ", error.message);
     return false;
@@ -82,7 +78,7 @@ export const signup = async (
   email: string,
   password: string,
   phone: string,
-  city: string,
+  city: string
 ): Promise<SignupResponse | any> => {
   try {
     const body: SignupRequest = {

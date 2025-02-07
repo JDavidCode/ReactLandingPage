@@ -128,7 +128,11 @@ export default function Blog() {
             ))}
           </div>
         </div>
-
+        <div className="flex justify-center py-2">
+          <div className="mt-2 mb-12 w-36">
+            <FullButton title="See More!" action={() => handleClick()} />
+          </div>
+        </div>
       </div>
     </section>
   );
