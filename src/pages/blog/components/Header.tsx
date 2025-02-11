@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import Backdrop from "@components/Backdrop";
-import LogoIcon from "@assets/svg/Logo.svg";
+import LogoIcon from "@assets/LogoV1White.png";
 
 const sectionStyles = {
   blog: "border-yellow-500",

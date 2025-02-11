@@ -2,8 +2,6 @@ import Typewrite from "@components/texts/Typewriting";
 import BounceCard from "@components/cards/BounceCard";
 import BubbleText from "@components/texts/Bubble";
 
-
-
 export default function Hero() {
   return (
     <section

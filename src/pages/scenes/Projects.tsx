@@ -111,7 +111,7 @@ export default function Projects() {
     <section className="w-full">
       <div className="container mx-auto w-10/12 mb-8 flex flex-col gap-4 items-center">
         <div className="text-center">
-        <div className="inline-flex items-center gap-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
+          <div className="inline-flex items-center gap-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
             <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent text-sm">
               Take a tour into our
             </span>
@@ -125,23 +125,24 @@ export default function Projects() {
           </p>
         </div>
         <div className="w-full bg-gray-950 overflow-hidden rounded-xl">
-        <div className="divide-y divide-neutral-900 border border-neutral-900 rounded-xl overflow-hidden">
-      <div className="grid grid-cols-2 divide-x divide-neutral-900 rounded-t-lg">
-        <PathLinkBox Icon={SiGoogle} href="" />
-        <PathLinkBox Icon={SiShopify} href="" />
-      </div>
-      <div className="grid grid-cols-4 divide-x divide-neutral-900">
-        <PathLinkBox Icon={SiApple} href="" />
-        <PathLinkBox Icon={SiSoundcloud} href="" />
-        <PathLinkBox Icon={SiAdobe} href="" />
-        <PathLinkBox Icon={SiFacebook} href="" />
-      </div>
-      <div className="grid grid-cols-3 divide-x divide-neutral-900">
-        <PathLinkBox Icon={SiTiktok} href="" />
-        <PathLinkBox Icon={SiSpotify} href="" />
-        <PathLinkBox Icon={SiLinkedin} href="" />
-      </div>
-    </div>        </div>
+          <div className="divide-y divide-neutral-900 border border-neutral-900 rounded-xl overflow-hidden">
+            <div className="grid grid-cols-2 divide-x divide-neutral-900 rounded-t-lg">
+              <PathLinkBox Icon={SiGoogle} href="" />
+              <PathLinkBox Icon={SiShopify} href="" />
+            </div>
+            <div className="grid grid-cols-4 divide-x divide-neutral-900">
+              <PathLinkBox Icon={SiApple} href="" />
+              <PathLinkBox Icon={SiSoundcloud} href="" />
+              <PathLinkBox Icon={SiAdobe} href="" />
+              <PathLinkBox Icon={SiFacebook} href="" />
+            </div>
+            <div className="grid grid-cols-3 divide-x divide-neutral-900">
+              <PathLinkBox Icon={SiTiktok} href="" />
+              <PathLinkBox Icon={SiSpotify} href="" />
+              <PathLinkBox Icon={SiLinkedin} href="" />
+            </div>
+          </div>{" "}
+        </div>
       </div>
     </section>
   );

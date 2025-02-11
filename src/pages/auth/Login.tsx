@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Logo from "@assets/svg/Logo.svg";
+import Logo from "@assets/IconV1White.png";
 import { login } from "../../utils/lib/Api";
 import AnimatedGrid from "./components/AnimatedGrid";
 
